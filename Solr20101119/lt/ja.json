@@ -1,0 +1,23 @@
+{
+  "styles" : [["base" , {"wordWrap": "CJK" }]
+  ],
+  "fontsAlias" : {
+    "stdFont": "IPAPGothic",
+    "stdBold": "IPAPGothic-Bold",
+    "stdItalic": "IPAPGothic-Italic",
+    "stdBoldItalic": "IPAPGothic-BoldItalic",
+    "stdSans": "IPAPMincho",
+    "stdSansBold": "IPAPMincho-Bold",
+    "stdSansItalic": "IPAPMincho-Italic",
+    "stdSansBoldItalic": "IPAPMincho-BoldItalic",
+    "stdMono": "IPAGothic",
+    "stdMonoItalic": "IPAGothic-Italic",
+    "stdMonoBold": "IPAGothic-Bold",
+    "stdMonoBoldItalic": "IPAGothic-BoldItalic",
+    "stdSerif": "IPAPGothic",
+    "stdSerifItalic": "IPAPGothic-Italic",
+    "stdSerifBold": "IPAPGothic-Bold",
+    "stdSerifBoldItalic": "IPAPGothic-BoldItalic"
+  }
+
+}
