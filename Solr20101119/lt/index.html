@@ -346,8 +346,8 @@ ul.auto-toc {
 <ul class="simple">
 <li>単一のshard</li>
 <li>複数のshard</li>
-<li>出入口</li>
-<li>いろいろ</li>
+<li>uniqueKeyを重複させたい場合</li>
+<li>拡張</li>
 </ul>
 
 </div>
@@ -370,8 +370,28 @@ ul.auto-toc {
 <p>src/java/org/apache/solr/handler/component/</p>
 <p>QueryComponent.java で処理されている</p>
 <ul class="simple">
-<li>uniqueKeyの重複を検出したら結果に含めない<ul>
+<li>uniqueKeyの重複を検出したら...<ul>
 <li>一番最初に処理されたものが結果に入る それ以外は結果に含まれない</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="uniquekey">
+<h1>uniqueKeyを重複させたい場合</h1>
+<ul class="simple">
+<li>一部の文書だけ頻繁に更新したい<ul>
+<li>最新情報の反映</li>
+<li>...</li>
+</ul>
+</li>
+<li>更新は重たい<ul>
+<li>冗長性確保のために分散させてるとさらに面倒</li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>更新用のデータ数の小さいshardを作って<ul>
+<li>特定のshardを優先させたり, 更新日時が新しいものを使う</li>
 </ul>
 </li>
 </ul>
@@ -380,7 +400,7 @@ ul.auto-toc {
 <h1>拡張</h1>
 <ul class="simple">
 <li>shardの名前の大小で優先順位を付ける</li>
-<li>timestampのようなフィールドで優先順位をつける</li>
+<li>timestampのフィールドで優先順位をつける</li>
 </ul>
 <ul class="simple">
 <li>作ってみた<ul>
