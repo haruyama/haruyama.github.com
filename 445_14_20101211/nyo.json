@@ -87,7 +87,7 @@
     }],
     ["bodytext" , {
       "parent": "normal",
-      "alignment": "TA_JUSTIFY",
+      "alignment": "TA_LEFT",
       "hyphenation": true
     }],
     ["heading", {

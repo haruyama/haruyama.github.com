@@ -347,6 +347,7 @@ ul.auto-toc {
 <li>自己紹介</li>
 <li>パスワードの保存</li>
 <li>パスワードの話題いろいろ(TODO)<ul>
+<li>攻撃</li>
 <li>定期更新</li>
 <li>ユーザ側での管理</li>
 <li>強度</li>
@@ -382,10 +383,20 @@ ul.auto-toc {
 </ul>
 </div>
 <div class="slide" id="id5">
+<h1>本講演の経緯</h1>
+<ul class="simple">
+<li><a class="reference external" href="http://atnd.org/events/8398">第1回神泉セキュリティ勉強会</a> にて, パスワードの保存(10分)の話を講演</li>
+<li><a class="reference external" href="http://twitter.com/ikepyon">&#64;ikepyon</a> から同じテーマでまっちゃ445講演の依頼を受ける<ul>
+<li>時間は1時間</li>
+</ul>
+</li>
+<li>まずご要望を満すために 「パスワードの保存」の話をして, その後その他のテーマの話をします.</li>
+</ul>
+</div>
+<div class="slide" id="id7">
 <h1>パスワードの保存</h1>
 <ul class="simple">
 <li>パスワード保存の常識(?)</li>
-<li>Unixのパスワード保存の歴史</li>
 <li>Unix的パスワード保存<ul>
 <li>概要</li>
 <li>ハッシュ</li>
@@ -397,7 +408,7 @@ ul.auto-toc {
 <li>Windowsのパスワード保存(?)</li>
 </ul>
 </div>
-<div class="slide" id="id6">
+<div class="slide" id="id8">
 <h1>パスワード保存の常識(?)</h1>
 <p>Webシステムの記事では, パスワードの保存に</p>
 <p>「saltを付けてハッシュ」</p>
@@ -419,11 +430,9 @@ ul.auto-toc {
 </dl>
 </div>
 <div class="slide" id="unix">
-<h1>Unixのパスワード保存の歴史</h1>
-</div>
-<div class="slide" id="id7">
 <h1>Unix的パスワード保存</h1>
 <p>GNU/Linuxの場合</p>
+<p>TODO: 色付けたり(?)</p>
 <dl class="docutils">
 <dt>形式</dt>
 <dd>$id$salt$hashed</dd>
@@ -439,52 +448,56 @@ ul.auto-toc {
 <li>hashed: ハッシュ化されたパスワード情報</li>
 </ul>
 </div>
-<div class="slide" id="id8">
+<div class="slide" id="id9">
 <h1>ハッシュとは?</h1>
 <p>TODO: 書き直す</p>
-<p><a class="reference external" href="http://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%AD%A6%E7%9A%84%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E9%96%A2%E6%95%B0">暗号学的ハッシュ関数 - Wikipedia</a> より</p>
+<p><a class="reference external" href="http://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%AD%A6%E7%9A%84%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E9%96%A2%E6%95%B0">暗号学的ハッシュ関数 - Wikipedia</a> より(一部変更)</p>
 <ul class="simple">
 <li>与えられたメッセージに対してハッシュ値を 容易に計算できる。</li>
-<li>ハッシュ値から元のメッセージを得ることが 事実上不可能であること。</li>
-<li>ハッシュ値を変えずにメッセージを改竄することが 事実上不可能であること。</li>
-<li>同じハッシュ値を持つ2つのメッセージを求めることが 事実上不可能であること。</li>
+<li>ハッシュ値から元のメッセージを得ることが 事実上不可能であること。<ul>
+<li>一方向性</li>
+</ul>
+</li>
+<li>衝突耐性を持つこと</li>
 <li>例: MD5, SHA1, SHA-256,512</li>
 </ul>
 </div>
 <div class="slide" id="salt">
 <h1>salt(ソルト, お塩)とは?</h1>
 <p>ハッシュの値をかきまぜる「お塩」.</p>
-<ul>
-<li><p class="first">ハッシュ化するだけでは, 同じパスワードを利用する人が複数いるとき 同じパスワード情報が生成されてしまう</p>
+</div>
+<div class="slide" id="id10">
+<h1>なぜ salt は必要なのか</h1>
+<p>TODO: 資料をみてちゃんと書く</p>
 <ul class="simple">
+<li><a class="reference external" href="http://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%A4%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB">レインボーテーブル</a><ul>
+<li>ハッシュ値から平文が得られるテーブル</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://www.freerainbowtables.com/">Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE</a></li>
+</ul>
+</div>
+<div class="slide" id="id11">
+<h1>なぜ salt はユーザ毎に違う必要があるか</h1>
+<ul class="simple">
+<li>同じsaltを利用すると
+同じパスワードを利用する人が複数いるとき
+同じパスワード情報が生成されてしまう</li>
 <li>ユーザごとに異なる必要がある<ul>
 <li>ランダムでなくてもよい</li>
 </ul>
 </li>
-<li>同時に多数のパスワード情報の解析を不可能に</li>
 </ul>
-</li>
-<li><p class="first">saltのサイズ</p>
-<blockquote>
+</div>
+<div class="slide" id="id12">
+<h1>saltのサイズ</h1>
 <ul class="simple">
-<li>伝統的なunix: 12bit /  現在のGNU/Linux: 96bit</li>
+<li>伝統的なunix: 12bit</li>
+<li>現在のGNU/Linux: 96bit</li>
 <li>CRYPTOGRAPHY ENGINEERING: ハッシュのサイズ</li>
 </ul>
-</blockquote>
-</li>
-</ul>
 </div>
-<div class="slide" id="id9">
-<h1>なぜ saltが必要か</h1>
-<p>TODO</p>
-<p><a class="reference external" href="http://www.freerainbowtables.com/">Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE</a></p>
-</div>
-<div class="slide" id="id10">
-<h1>なぜ salt はいくつも必要か</h1>
-<p>TODO</p>
-<p><a class="reference external" href="http://www.freerainbowtables.com/">Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE</a></p>
-</div>
-<div class="slide" id="id11">
+<div class="slide" id="id13">
 <h1>実際の処理</h1>
 <ul class="simple">
 <li>CRYPTOGRAPHY ENGINEERING p304 の方式</li>
@@ -599,7 +612,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 <p>MD5だと..(TODO)</p>
 <p>stretchの強度は, (回数) x (1回あたりの実行時間)で比較</p>
 </div>
-<div class="slide" id="id12">
+<div class="slide" id="id14">
 <h1>方式の保存</h1>
 <p>現在は問題なくても, 将来問題になるかもしれない</p>
 <ul class="simple">
@@ -609,7 +622,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </ul>
 <p>長く運用するシステムでは, パスワード保存方式(のID)をパスワード情報と共に保存する必要がある.</p>
 </div>
-<div class="slide" id="id13">
+<div class="slide" id="id15">
 <h1>なぜUnixはこの方式なのか?</h1>
 <p>先に歴史で説明する?(TODO)</p>
 <ul class="simple">
@@ -628,7 +641,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id14">
+<div class="slide" id="id16">
 <h1>Unix的パスワード保存まとめ</h1>
 <ul>
 <li><p class="first">パスワードはハッシュ化して保存</p>
@@ -666,7 +679,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id15">
+<div class="slide" id="id17">
 <h1>鍵を用いる場合の手法案</h1>
 <ul class="simple">
 <li>(共通鍵)暗号</li>
@@ -674,7 +687,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 <li>鍵付きハッシュ</li>
 </ul>
 </div>
-<div class="slide" id="id16">
+<div class="slide" id="id18">
 <h1>(共通鍵)暗号</h1>
 <ul class="simple">
 <li>メリット<ul>
@@ -688,7 +701,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id17">
+<div class="slide" id="id19">
 <h1>ハッシュ+暗号</h1>
 <p>常識(?)通りにハッシュ化したあとで暗号化</p>
 <ul class="simple">
@@ -703,7 +716,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id18">
+<div class="slide" id="id20">
 <h1>鍵付きハッシュ(1)</h1>
 <ul>
 <li><p class="first">saltの一部を固定の鍵に?</p>
@@ -717,7 +730,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id19">
+<div class="slide" id="id21">
 <h1>鍵付きハッシュ(2)</h1>
 <ul class="simple">
 <li>HMACには前述の問題はない<ul>
@@ -730,7 +743,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id20">
+<div class="slide" id="id22">
 <h1>鍵付きハッシュ(3)</h1>
 <ul class="simple">
 <li>メリット<ul>
@@ -747,8 +760,9 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id21">
+<div class="slide" id="id23">
 <h1>まとめ</h1>
+<p>TODO: 平文も追加</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="27%" />
@@ -787,7 +801,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </tbody>
 </table>
 </div>
-<div class="slide" id="id22">
+<div class="slide" id="id24">
 <h1>参考文献</h1>
 <p>man 3 crypt</p>
 <blockquote>

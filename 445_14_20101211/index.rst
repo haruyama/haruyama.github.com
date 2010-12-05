@@ -4,6 +4,7 @@
 * パスワードの保存
 * パスワードの話題いろいろ(TODO)
 
+  * 攻撃
   * 定期更新
   * ユーザ側での管理
   * 強度
@@ -43,11 +44,26 @@
 
     PageBreak
 
+本講演の経緯
+======================================
+
+* `第1回神泉セキュリティ勉強会 <http://atnd.org/events/8398>`_ にて, パスワードの保存(10分)の話を講演
+* `@ikepyon <http://twitter.com/ikepyon>`_ から同じテーマでまっちゃ445講演の依頼を受ける
+
+  * 時間は1時間
+
+* まずご要望を満すために 「パスワードの保存」の話をして, その後その他のテーマの話をします.
+
+
+
+.. raw:: pdf
+
+    PageBreak
+
 パスワードの保存
 ======================================
 
 * パスワード保存の常識(?)
-* Unixのパスワード保存の歴史
 * Unix的パスワード保存
 
   * 概要
@@ -84,17 +100,12 @@ Webシステムの記事では, パスワードの保存に
 
     PageBreak
 
-Unixのパスワード保存の歴史
-======================================
-
-.. raw:: pdf
-
-    PageBreak
-
 Unix的パスワード保存
 =============================================================
 
 GNU/Linuxの場合
+
+TODO: 色付けたり(?)
 
 形式
   $id$salt$hashed
@@ -115,15 +126,15 @@ GNU/Linuxの場合
 ハッシュとは?
 ==========================================
 
-TODO: 書き直す
-
-`暗号学的ハッシュ関数 - Wikipedia <http://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%AD%A6%E7%9A%84%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E9%96%A2%E6%95%B0>`_ より
+`暗号学的ハッシュ関数 - Wikipedia <http://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%AD%A6%E7%9A%84%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E9%96%A2%E6%95%B0>`_ より(一部変更)
 
 
 * 与えられたメッセージに対してハッシュ値を 容易に計算できる。
 * ハッシュ値から元のメッセージを得ることが 事実上不可能であること。
-* ハッシュ値を変えずにメッセージを改竄することが 事実上不可能であること。
-* 同じハッシュ値を持つ2つのメッセージを求めることが 事実上不可能であること。
+
+  * 一方向性
+ 
+* 衝突耐性を持つこと
 
 * 例: MD5, SHA1, SHA-256,512
 
@@ -136,39 +147,48 @@ salt(ソルト, お塩)とは?
 
 ハッシュの値をかきまぜる「お塩」.
 
-* ハッシュ化するだけでは, 同じパスワードを利用する人が複数いるとき 同じパスワード情報が生成されてしまう
+.. raw:: pdf
 
-  * ユーザごとに異なる必要がある
+    PageBreak
+
+なぜ salt は必要なのか
+==========================================
+
+TODO: 資料をみてちゃんと書く
+
+* `レインボーテーブル <http://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%A4%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB>`__
+
+  * ハッシュ値から平文が得られるテーブル
+
+* `Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE <http://www.freerainbowtables.com/>`__
+
+
+.. raw:: pdf
+
+    PageBreak
+
+なぜ salt はユーザ毎に違う必要があるか
+==========================================
+
+* 同じsaltを利用すると
+  同じパスワードを利用する人が複数いるとき
+  同じパスワード情報が生成されてしまう
+
+* ユーザごとに異なる必要がある
     
-    * ランダムでなくてもよい
-
-  * 同時に多数のパスワード情報の解析を不可能に
-
-* saltのサイズ
-
-    * 伝統的なunix: 12bit /  現在のGNU/Linux: 96bit
-    * CRYPTOGRAPHY ENGINEERING: ハッシュのサイズ
-
+  * ランダムでなくてもよい
 
 .. raw:: pdf
 
     PageBreak
 
-なぜ saltが必要か
+saltのサイズ
 ==========================================
-TODO
 
-`Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE <http://www.freerainbowtables.com/>`__
+* 伝統的なunix: 12bit
+* 現在のGNU/Linux: 96bit
+* CRYPTOGRAPHY ENGINEERING: ハッシュのサイズ
 
-.. raw:: pdf
-
-    PageBreak
-
-なぜ salt はいくつも必要か
-==========================================
-TODO
-
-`Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE <http://www.freerainbowtables.com/>`__
 
 .. raw:: pdf
 
@@ -465,6 +485,9 @@ Webシステムでは?
 
 まとめ
 ================
+
+TODO: 平文も追加
+
 
 ==============================   ==================================   ============================  =================
 方式                              弱パスワードの保護                         生パスワード                     鍵管理
