@@ -477,6 +477,11 @@ ul.auto-toc {
 <p><a class="reference external" href="http://www.freerainbowtables.com/">Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE</a></p>
 </div>
 <div class="slide" id="id10">
+<h1>なぜ salt はいくつも必要か</h1>
+<p>TODO</p>
+<p><a class="reference external" href="http://www.freerainbowtables.com/">Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE</a></p>
+</div>
+<div class="slide" id="id11">
 <h1>実際の処理</h1>
 <ul class="simple">
 <li>CRYPTOGRAPHY ENGINEERING p304 の方式</li>
@@ -591,7 +596,17 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 <p>MD5だと..(TODO)</p>
 <p>stretchの強度は, (回数) x (1回あたりの実行時間)で比較</p>
 </div>
-<div class="slide" id="id11">
+<div class="slide" id="id12">
+<h1>方式の保存</h1>
+<p>現在は問題なくても, 将来問題になるかもしれない</p>
+<ul class="simple">
+<li>ハッシュ関数自体</li>
+<li>ハッシュ化の方法</li>
+<li>stretch回数</li>
+</ul>
+<p>長く運用するシステムでは, パスワード保存方式(のID)をパスワード情報と共に保存する必要がある.</p>
+</div>
+<div class="slide" id="id13">
 <h1>なぜUnixはこの方式なのか?</h1>
 <ul class="simple">
 <li>なぜ可逆な暗号化ではないのか?<ul>
@@ -609,7 +624,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id12">
+<div class="slide" id="id14">
 <h1>Unix的パスワード保存まとめ</h1>
 <ul>
 <li><p class="first">パスワードはハッシュ化して保存</p>
@@ -647,7 +662,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id13">
+<div class="slide" id="id15">
 <h1>鍵を用いる場合の手法案</h1>
 <ul class="simple">
 <li>(共通鍵)暗号</li>
@@ -655,7 +670,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 <li>鍵付きハッシュ</li>
 </ul>
 </div>
-<div class="slide" id="id14">
+<div class="slide" id="id16">
 <h1>(共通鍵)暗号</h1>
 <ul class="simple">
 <li>メリット<ul>
@@ -669,7 +684,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id15">
+<div class="slide" id="id17">
 <h1>ハッシュ+暗号</h1>
 <p>常識(?)通りにハッシュ化したあとで暗号化</p>
 <ul class="simple">
@@ -684,7 +699,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id16">
+<div class="slide" id="id18">
 <h1>鍵付きハッシュ(1)</h1>
 <ul>
 <li><p class="first">saltの一部を固定の鍵に?</p>
@@ -698,7 +713,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id17">
+<div class="slide" id="id19">
 <h1>鍵付きハッシュ(2)</h1>
 <ul class="simple">
 <li>HMACには前述の問題はない<ul>
@@ -711,7 +726,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id18">
+<div class="slide" id="id20">
 <h1>鍵付きハッシュ(3)</h1>
 <ul class="simple">
 <li>メリット<ul>
@@ -728,7 +743,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id19">
+<div class="slide" id="id21">
 <h1>まとめ</h1>
 <table border="1" class="docutils">
 <colgroup>
@@ -768,7 +783,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </tbody>
 </table>
 </div>
-<div class="slide" id="id20">
+<div class="slide" id="id22">
 <h1>参考文献</h1>
 <p>man 3 crypt</p>
 <blockquote>

@@ -158,6 +158,17 @@ TODO
 
     PageBreak
 
+なぜ salt はいくつも必要か
+==========================================
+TODO
+
+`Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE <http://www.freerainbowtables.com/>`__
+
+.. raw:: pdf
+
+    PageBreak
+
+
 
 実際の処理
 ==========================================
@@ -267,6 +278,21 @@ stretchの効果(4)
 MD5だと..(TODO)
 
 stretchの強度は, (回数) x (1回あたりの実行時間)で比較
+
+.. raw:: pdf
+
+    PageBreak
+    
+方式の保存
+==============================================
+
+現在は問題なくても, 将来問題になるかもしれない
+
+* ハッシュ関数自体
+* ハッシュ化の方法
+* stretch回数
+
+長く運用するシステムでは, パスワード保存方式(のID)をパスワード情報と共に保存する必要がある.
 
 .. raw:: pdf
 
