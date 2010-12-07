@@ -38,6 +38,12 @@ TODO: s5での体裁
     * http://bit.ly/fJP5du
     * http://goo.gl/fKzJ5
 
+  * PDF版
+
+    * http://haruyama.github.com/445_14_20101211/index.pdf
+
+
+
 .. raw:: pdf
 
     PageBreak
