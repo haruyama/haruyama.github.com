@@ -356,6 +356,7 @@ ul.auto-toc {
 </li>
 <li>まとめ</li>
 </ul>
+<p>TODO: s5での体裁</p>
 
 </div>
 <div class="slide" id="id2">
@@ -377,7 +378,11 @@ ul.auto-toc {
 <h1>資料</h1>
 <ul class="simple">
 <li>本資料<ul>
-<li>TODO</li>
+<li><a class="reference external" href="http://haruyama.github.com/445_14_20101211/">http://haruyama.github.com/445_14_20101211/</a><ul>
+<li><a class="reference external" href="http://bit.ly/fJP5du">http://bit.ly/fJP5du</a></li>
+<li><a class="reference external" href="http://goo.gl/fKzJ5">http://goo.gl/fKzJ5</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -386,11 +391,11 @@ ul.auto-toc {
 <h1>本講演の経緯</h1>
 <ul class="simple">
 <li><a class="reference external" href="http://atnd.org/events/8398">第1回神泉セキュリティ勉強会</a> にて, パスワードの保存(10分)の話を講演</li>
-<li><a class="reference external" href="http://twitter.com/ikepyon">&#64;ikepyon</a> から同じテーマでまっちゃ445講演の依頼を受ける<ul>
+<li><a class="reference external" href="http://twitter.com/ikepyon">&#64;ikepyon</a> さんから講演依頼<ul>
 <li>時間は1時間</li>
 </ul>
 </li>
-<li>まずご要望を満すために 「パスワードの保存」の話をして, その後その他のテーマの話をします.</li>
+<li>まずご要望を満たすために 「パスワードの保存」の話をして, その後その他のテーマの話をします.</li>
 </ul>
 </div>
 <div class="slide" id="id7">
@@ -401,17 +406,16 @@ ul.auto-toc {
 <li>概要</li>
 <li>ハッシュ</li>
 <li>Salt</li>
-<li>Streatch</li>
+<li>Stretch</li>
 </ul>
 </li>
 <li>Webシステムでのパスワード保存</li>
-<li>Windowsのパスワード保存(?)</li>
 </ul>
 </div>
 <div class="slide" id="id8">
 <h1>パスワード保存の常識(?)</h1>
-<p>Webシステムの記事では, パスワードの保存に</p>
-<p>「saltを付けてハッシュ」</p>
+<p>パスワードの保存は,</p>
+<p>「saltを付けてハッシュしろ」</p>
 <p>とよく言われている.</p>
 <dl class="docutils">
 <dt>保存</dt>
@@ -428,11 +432,14 @@ ul.auto-toc {
 </ul>
 </dd>
 </dl>
+<p>TODO?: 図</p>
 </div>
 <div class="slide" id="unix">
 <h1>Unix的パスワード保存</h1>
 <p>GNU/Linuxの場合</p>
-<p>TODO: 色付けたり(?)</p>
+<ul class="simple">
+<li>/etc/shadow にパスワード情報を保存</li>
+</ul>
 <dl class="docutils">
 <dt>形式</dt>
 <dd>$id$salt$hashed</dd>
@@ -450,15 +457,14 @@ ul.auto-toc {
 </div>
 <div class="slide" id="id9">
 <h1>ハッシュとは?</h1>
-<p>TODO: 書き直す</p>
 <p><a class="reference external" href="http://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%AD%A6%E7%9A%84%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E9%96%A2%E6%95%B0">暗号学的ハッシュ関数 - Wikipedia</a> より(一部変更)</p>
 <ul class="simple">
 <li>与えられたメッセージに対してハッシュ値を 容易に計算できる。</li>
 <li>ハッシュ値から元のメッセージを得ることが 事実上不可能であること。<ul>
-<li>一方向性</li>
+<li><em>一方向性</em></li>
 </ul>
 </li>
-<li>衝突耐性を持つこと</li>
+<li><em>衝突耐性</em> を持つこと</li>
 <li>例: MD5, SHA1, SHA-256,512</li>
 </ul>
 </div>
@@ -468,20 +474,27 @@ ul.auto-toc {
 </div>
 <div class="slide" id="id10">
 <h1>なぜ salt は必要なのか</h1>
-<p>TODO: 資料をみてちゃんと書く</p>
+<p>TODO: 説明追加</p>
 <ul class="simple">
 <li><a class="reference external" href="http://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%A4%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB">レインボーテーブル</a><ul>
 <li>ハッシュ値から平文が得られるテーブル</li>
 </ul>
 </li>
+<li>例<ul>
 <li><a class="reference external" href="http://www.freerainbowtables.com/">Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE</a></li>
+<li><a class="reference external" href="http://ophcrack.sourceforge.net/">Ophcrack</a><ul>
+<li>レインボーテーブルを利用した Windowsのパスワードクラックツール</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
-<div class="slide" id="id11">
+<div class="slide" id="id12">
 <h1>なぜ salt はユーザ毎に違う必要があるか</h1>
 <ul class="simple">
-<li>同じsaltを利用すると
-同じパスワードを利用する人が複数いるとき
+<li>ユーザに共通のsaltを用いると
+同じパスワードを利用する人に対して
 同じパスワード情報が生成されてしまう</li>
 <li>ユーザごとに異なる必要がある<ul>
 <li>ランダムでなくてもよい</li>
@@ -489,7 +502,7 @@ ul.auto-toc {
 </li>
 </ul>
 </div>
-<div class="slide" id="id12">
+<div class="slide" id="id13">
 <h1>saltのサイズ</h1>
 <ul class="simple">
 <li>伝統的なunix: 12bit</li>
@@ -497,7 +510,7 @@ ul.auto-toc {
 <li>CRYPTOGRAPHY ENGINEERING: ハッシュのサイズ</li>
 </ul>
 </div>
-<div class="slide" id="id13">
+<div class="slide" id="id14">
 <h1>実際の処理</h1>
 <ul class="simple">
 <li>CRYPTOGRAPHY ENGINEERING p304 の方式</li>
@@ -528,7 +541,7 @@ ul.auto-toc {
 </li>
 </ul>
 </li>
-<li>どれくらいやるのか<ul>
+<li>どれくらい繰り返されているか<ul>
 <li>crypt() MD5の場合: 1000回</li>
 <li>crypt() SHA-256,512の場合: (デフォルト)5000回</li>
 <li>CRYPTOGRAPHY ENGINEERING での例:
@@ -547,12 +560,12 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 <li>salt 32byte</li>
 <li>CPU 1コアのみ利用</li>
 </ul>
-<p>Intel(R) Core(TM) i7 CPU 920  &#64; 2.67GHz で 1秒に 約50万回計算できた.</p>
+<p>Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に SHA-256を約50万回計算できた.</p>
 </div>
 <div class="slide" id="stretch-2">
 <h1>stretchの効果(2)</h1>
 <ul class="simple">
-<li>パスワードの文字種を64bitとすると</li>
+<li>パスワードの文字種を64種とすると</li>
 </ul>
 <table border="1" class="docutils">
 <colgroup>
@@ -609,10 +622,17 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </div>
 <div class="slide" id="stretch-4">
 <h1>stretchの効果(4)</h1>
-<p>MD5だと..(TODO)</p>
-<p>stretchの強度は, (回数) x (1回あたりの実行時間)で比較</p>
+<p>MD5だと...
+Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算できた.</p>
+<ul class="simple">
+<li>SHA-256の約3倍速い<ul>
+<li>(私のPCでは)同じ回数stretchしても3倍弱い</li>
+</ul>
+</li>
+<li>stretchの強度は, (回数) x (1回あたりの実行時間) で考えなければならない</li>
+</ul>
 </div>
-<div class="slide" id="id14">
+<div class="slide" id="id15">
 <h1>方式の保存</h1>
 <p>現在は問題なくても, 将来問題になるかもしれない</p>
 <ul class="simple">
@@ -620,11 +640,10 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 <li>ハッシュ化の方法</li>
 <li>stretch回数</li>
 </ul>
-<p>長く運用するシステムでは, パスワード保存方式(のID)をパスワード情報と共に保存する必要がある.</p>
+<p>長く運用するシステムでは, パスワード保存方式を パスワード情報と共に保存する必要がある.</p>
 </div>
-<div class="slide" id="id15">
+<div class="slide" id="id16">
 <h1>なぜUnixはこの方式なのか?</h1>
-<p>先に歴史で説明する?(TODO)</p>
 <ul class="simple">
 <li>なぜ可逆な暗号化ではないのか?<ul>
 <li>鍵を管理するのが難しい.<ul>
@@ -641,7 +660,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id16">
+<div class="slide" id="id17">
 <h1>Unix的パスワード保存まとめ</h1>
 <ul>
 <li><p class="first">パスワードはハッシュ化して保存</p>
@@ -669,26 +688,41 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 <div class="slide" id="web">
 <h1>Webシステムでは?</h1>
 <ul class="simple">
-<li>通常WebサーバとDBサーバは物理的に分離されている (されていない場合もあるが).<ul>
+<li>通常WebサーバとDBサーバは物理的に分離されている<ul>
 <li>Unixよりもパスワード情報と鍵が 共に漏洩するリスクは低いだろう.</li>
+<li>ちゃんとした暗号方式と鍵を利用すれば, 攻撃者が鍵を入手できない場合 鍵の強度 == パスワード情報の強度となる<ul>
+<li>パスワードの長さに関係ない</li>
+</ul>
+</li>
 <li>もちろん, 鍵管理のコストは無視できない<ul>
-<li>漏洩, 改竄, 紛失</li>
+<li>漏洩, 改竄, 紛失....</li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<p>TODO: 図</p>
+</div>
+<div class="slide" id="id18">
+<h1>Webシステムでのリスク</h1>
+<p>パスワード情報の保存に関するリスクのみ挙げる</p>
+<ul class="simple">
+<li>SQLインジェクションなどによる パスワード情報の漏洩</li>
+<li>バックアップファイル, 実サーバ, 廃棄サーバなどからのパスワード情報の漏洩</li>
+<li>開発者/運用者によるパスワード情報の漏洩/悪用</li>
 </ul>
 </div>
-<div class="slide" id="id17">
+<div class="slide" id="id19">
 <h1>鍵を用いる場合の手法案</h1>
 <ul class="simple">
-<li>(共通鍵)暗号</li>
+<li>共通鍵暗号</li>
 <li>ハッシュ+暗号</li>
 <li>鍵付きハッシュ</li>
 </ul>
 </div>
-<div class="slide" id="id18">
-<h1>(共通鍵)暗号</h1>
+<div class="slide" id="id20">
+<h1>共通鍵暗号</h1>
+<p>共通鍵暗号をハッシュとして用いる パスワード保存法もあるが, ここではパスワード情報を暗号化する場合を考察</p>
 <ul class="simple">
 <li>メリット<ul>
 <li>ちゃんと暗号化し鍵が安全ならば, 弱いパスワードもパスワード情報だけでは破れない</li>
@@ -701,9 +735,9 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id19">
+<div class="slide" id="id21">
 <h1>ハッシュ+暗号</h1>
-<p>常識(?)通りにハッシュ化したあとで暗号化</p>
+<p>Unix的にハッシュ化したあとで暗号化</p>
 <ul class="simple">
 <li>メリット<ul>
 <li>ちゃんと暗号化し鍵が安全ならば, 弱いパスワードもパスワード情報だけでは破れない</li>
@@ -716,21 +750,25 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id20">
+<div class="slide" id="id22">
 <h1>鍵付きハッシュ(1)</h1>
+<p>鍵情報とパスワードを組合せてハッシュ</p>
 <ul>
-<li><p class="first">saltの一部を固定の鍵に?</p>
+<li><p class="first">saltの一部を鍵に?</p>
 <ul>
-<li><p class="first">単純に鍵と平文を文字列連結をしたものをハッシュ するMACは期待通りの強度がないという論文</p>
+<li><p class="first">単純に鍵と平文を文字列連結をしたものをハッシュ するMAC(メッセージ認証コード)は 期待通りの強度がないという論文</p>
 <p><a class="reference external" href="http://www.cix.co.uk/~klockstone/twomacs.pdf">On the Security of Two MAC Algorithms</a></p>
 </li>
 </ul>
 </li>
-<li><p class="first">hash($key . $salt . $password) などは避けよう</p>
+<li><p class="first">hash($key . $salt . $password) などはMACとして用いないほうがよい.</p>
+<ul class="simple">
+<li>パスワード保存の場合では関係ないと思われるが, あえて利用する理由はない</li>
+</ul>
 </li>
 </ul>
 </div>
-<div class="slide" id="id21">
+<div class="slide" id="id23">
 <h1>鍵付きハッシュ(2)</h1>
 <ul class="simple">
 <li>HMACには前述の問題はない<ul>
@@ -743,7 +781,7 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id22">
+<div class="slide" id="id24">
 <h1>鍵付きハッシュ(3)</h1>
 <ul class="simple">
 <li>メリット<ul>
@@ -760,12 +798,11 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="id23">
-<h1>まとめ</h1>
-<p>TODO: 平文も追加</p>
+<div class="slide" id="id25">
+<h1>パスワード保存方式の比較</h1>
 <table border="1" class="docutils">
 <colgroup>
-<col width="27%" />
+<col width="26%" />
 <col width="30%" />
 <col width="25%" />
 <col width="19%" />
@@ -778,7 +815,12 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td>ハッシュ</td>
+<tr><td>そのまま保存</td>
+<td>不可能</td>
+<td>そのまま</td>
+<td>不必要</td>
+</tr>
+<tr><td>Unix的</td>
 <td>stretchで対応</td>
 <td>復元不可能</td>
 <td>不必要</td>
@@ -800,8 +842,16 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </tr>
 </tbody>
 </table>
+<p>個人的には, 鍵の管理が面倒なのでUnix的でよいと考えています.</p>
 </div>
-<div class="slide" id="id24">
+<div class="slide" id="id26">
+<h1>パスワードの保存 まとめ</h1>
+<ul class="simple">
+<li>Unix的パスワード保存を解説</li>
+<li>Webシステムでのパスワード保存を考察</li>
+</ul>
+</div>
+<div class="slide" id="id27">
 <h1>参考文献</h1>
 <p>man 3 crypt</p>
 <blockquote>
