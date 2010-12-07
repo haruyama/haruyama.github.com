@@ -346,14 +346,7 @@ ul.auto-toc {
 <ul class="simple">
 <li>自己紹介</li>
 <li>パスワードの保存</li>
-<li>パスワードの話題いろいろ(TODO)<ul>
-<li>攻撃</li>
-<li>定期更新</li>
-<li>ユーザ側での管理</li>
-<li>強度</li>
-<li>マスキング</li>
-</ul>
-</li>
+<li>パスワードの話題いろいろ</li>
 <li>まとめ</li>
 </ul>
 <p>TODO: s5での体裁</p>
@@ -852,6 +845,142 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 </ul>
 </div>
 <div class="slide" id="id27">
+<h1>パスワードの話題いろいろ</h1>
+<ul class="simple">
+<li>攻撃</li>
+<li>秘密の質問</li>
+<li>強度</li>
+<li>定期更新</li>
+<li>マスキング</li>
+<li>私のパスワード管理法(TODO)</li>
+</ul>
+</div>
+<div class="slide" id="id28">
+<h1>パスワードに対する攻撃</h1>
+<ul class="simple">
+<li>総当たり攻撃</li>
+<li>辞書攻撃</li>
+<li>ショルダークラック</li>
+<li>キーロガー</li>
+</ul>
+<p>弊社のポイント交換サイトで一番問題になっていたのは</p>
+<ul class="simple">
+<li>別のサイトと共通のパスワードを利用しているユーザ<ul>
+<li>他のサイトでパスワードが漏れて, ログインされる<ul>
+<li>現在は重要な機能(ポイント交換)を行なう前に 秘密の質問を入力させている</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id29">
+<h1>秘密の質問</h1>
+<ul class="simple">
+<li>ユーザがサイトごとに別々のパスワードを
+付けてくれれば, 必要ないのだが...</li>
+<li>よくあるのは小学校の名前とか親の旧姓とか<ul>
+<li>他者が推測可能なものがある...</li>
+</ul>
+</li>
+<li>個人的には第2パスワードとか
+交換用パスワードなどと呼んで,
+普通のパスワードと同じように管理してもらうほうが
+いのではと考えている</li>
+</ul>
+</div>
+<div class="slide" id="id30">
+<h1>パスワードの強度(1)</h1>
+<p>文字種を増やすのがよいか, 長さを増やすのがよいか?</p>
+</div>
+<div class="slide" id="id31">
+<h1>パスワードの強度(2)</h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="14%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">文字種</th>
+<th class="head">文字数</th>
+<th class="head">総パスワード数</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>62(英数)</td>
+<td>8</td>
+<td>218兆</td>
+</tr>
+<tr><td>96(英数記号)</td>
+<td>8</td>
+<td>7213兆</td>
+</tr>
+<tr><td>62(英数)</td>
+<td>9</td>
+<td>13537兆</td>
+</tr>
+<tr><td>62(英数)</td>
+<td>10</td>
+<td>839299兆</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>文字長を伸ばしたほうがいい.<ul>
+<li>記号を入れることを強制するよりも 最小の文字長を大きくしたほうがよい.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id32">
+<h1>パスワードの定期更新(1)</h1>
+<p>パスワードを定期的に更新する意味はあるのか?</p>
+</div>
+<div class="slide" id="id33">
+<h1>パスワードの定期更新(2)</h1>
+<ul class="simple">
+<li>通常は意味がない. むしろ有害<ul>
+<li>攻撃に対する強度はパスワードの強度<ul>
+<li>定期的に変えても強度は増えない. 変えなくても強度は減らない.</li>
+<li>パスワードの変更により打ち間違えが増え
+利便性が下がる</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id34">
+<h1>パスワードの定期更新(3)</h1>
+<ul class="simple">
+<li>意味がある場合<ul>
+<li>共有アカウントで, 人員の入れ替えが頻繁にある場合<ul>
+<li>定期更新によって権限がない人のアクセスを
+止めれる</li>
+<li>セキュリティ的には共有アカウント でないほうがよい</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id35">
+<h1>パスワードのマスキング</h1>
+<ul class="simple">
+<li>ショルダークラック
+vs
+利便性<ul>
+<li>要件に依存する</li>
+</ul>
+</li>
+<li>個人的にはユーザが切り替えられるのがいいと思う<ul>
+<li>より個人的には, パスワード管理ツールを適当に使うので, Webサイトでパスワードを手で入力することがない. のでどうでもよい</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id36">
 <h1>参考文献</h1>
 <p>man 3 crypt</p>
 <blockquote>
