@@ -65,6 +65,25 @@ TODO: s5での体裁
 
     PageBreak
 
+参考文献
+==========================
+
+man 3 crypt 
+
+  `Manpage of CRYPT <http://www.linux.or.jp/JM/html/LDP_man-pages/man3/crypt.3.html>`_
+  
+CRYPTOGRAPHY ENGINEERING
+
+  ISBN-13: 978-0470474242
+
+認証技術 パスワードから公開鍵まで
+
+  ISBN-13: 978-4274065163
+
+.. raw:: pdf
+
+    PageBreak
+
 パスワードの保存
 ======================================
 
@@ -86,14 +105,14 @@ TODO: s5での体裁
 最初に
 ======================================
 
-これからパスワード情報が漏れたときに, 
-パスワード(特に *弱い* パスワード)が破られにくくするの方法を話します.
+パスワード情報が漏れたときに, 
+パスワード(特に *弱いパスワード* )を破られにくくする方法を話します.
 
 
-以下が望ましいのは当然です.
+もちろん, 以下が望ましいです.
 
-* ユーザが強いパスワードを付けること 
 * パスワード情報が漏れないこと
+* ユーザが強いパスワードを付けること 
   
 .. raw:: pdf
 
@@ -104,18 +123,9 @@ TODO: s5での体裁
 
 パスワードの保存は, 
 
-「salt(ソルト)を付けてハッシュしろ」
+「salt(ソルト)を付けてハッシュ」
 
 とよく言われている.
-
-保存 
-
-  * salt(ソルト)を付けてハッシュ化
-
-    * 保存された情報からはパスワードは復元困難
-
-照合 
-  * 入力値にsalt(ソルト)を付けてハッシュ化. 保存情報と照合
 
 .. raw:: pdf
 
@@ -126,6 +136,13 @@ TODO: s5での体裁
 
 .. image:: image/fig1.png
     :width: 10in
+
+* パスワード情報からはパスワードは復元困難
+* ログイン時の照合は, 
+  パスワードと同様に入力を処理して パスワード情報を照合
+
+
+常識(?)の元になったのは Unixのパスワード保存法だと思われる
 
 .. raw:: pdf
 
@@ -138,10 +155,7 @@ GNU/Linuxの場合
 
 * /etc/shadow にパスワード情報を保存
 
-形式
-  $id$salt$hashed
-例
-  $6$3d1ahuOb$KiH....(略)
+形式: $id$salt$hashed
 
 * id: ハッシュ(後述)の識別子
 
@@ -195,7 +209,7 @@ salt(ソルト, お塩)とは?
 
   * ハッシュ値から平文が得られるテーブル
 
-    * ある文字以下の英数文字列に対するテーブル
+    * ある文字数(以下)の英数文字列に対するテーブル
     * ありがちなパスワードの辞書に対するテーブル
     * ...
 
@@ -270,7 +284,7 @@ saltのサイズ
 
 * `[ crypt() アルゴリズム解析 (MD5バージョン) ] <http://ruffnex.oc.to/kenji/xrea/md5crypt.txt>`_
 
-* `Portable PHP password hashing ("password encryption") framework <http://www.openwall.com/phpass/>`_
+* `phpass - Portable PHP password hashing ("password encryption") framework <http://www.openwall.com/phpass/>`_
 
 .. raw:: pdf
 
@@ -311,8 +325,7 @@ stretching とは?
 stretching の効果(1)
 ======================================================
 
-stretching の効果をはかるために, PHPの hash 拡張で
-SHA-256を繰り返し呼ぶコードを用いた計測をした
+PHPの hash 拡張で SHA-256を繰り返し呼ぶコードを用いた計測をした
 
 * 方式は CRYPTOGRAPHY ENGINEERING のもの
 * パスワード 10byte
@@ -373,7 +386,7 @@ stretching の効果(4)
 ======================================================
 
 MD5だと...
-Intel(R) Core(TM) i7 CPU 860  @ 2.80GHz で 1秒に 約140万回計算できた.
+Intel(R) Core(TM) i7 CPU 860  @ 2.80GHz (1コアのみ利用)で 1秒に 約140万回計算できた.
 
 * (私のPCでは)SHA-256の約3倍速い
 
@@ -840,7 +853,7 @@ Unix的                           stretchingで対応                           
 * 弊社の例: 
   重要な機能(ポイント交換)を行なう前に 秘密の質問を入力させている
 
-  * ユーザがサイトごとに別々のパスワードを
+  * ユーザがサイトごとに別々の強いパスワードを
     付けてくれれば, 必要ないのだが...
 
 * よくあるのは小学校の名前とか親の旧姓とか
@@ -856,19 +869,17 @@ Unix的                           stretchingで対応                           
 
     PageBreak
 
+まとめ
+===========================
+* パスワードの保存について考察
 
-参考文献
-==========================
+* パスワードの話題をいろいろ
 
-man 3 crypt 
 
-  `Manpage of CRYPT <http://www.linux.or.jp/JM/html/LDP_man-pages/man3/crypt.3.html>`_
-  
-CRYPTOGRAPHY ENGINEERING
+なにかご質問は?
 
-  ISBN-13: 978-0470474242
+.. raw:: pdf
 
-認証技術 パスワードから公開鍵まで
+    PageBreak
 
-  ISBN-13: 978-4274065163
 
