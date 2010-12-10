@@ -388,7 +388,7 @@ ul.auto-toc {
 <h1>本講演の経緯</h1>
 <ul class="simple">
 <li><a class="reference external" href="http://atnd.org/events/8398">第1回神泉セキュリティ勉強会</a> にて, パスワードの保存(10分)の話を講演</li>
-<li><a class="reference external" href="http://twitter.com/ikepyon">&#64;ikepyon</a> さんから講演依頼<ul>
+<li><a class="reference external" href="http://twitter.com/ikepyon">&#64;ikepyon</a> さんから講演の依頼<ul>
 <li>時間は1時間</li>
 </ul>
 </li>
@@ -398,38 +398,53 @@ ul.auto-toc {
 <div class="slide" id="id7">
 <h1>パスワードの保存</h1>
 <ul class="simple">
+<li>最初に</li>
 <li>パスワード保存の常識(?)</li>
 <li>Unix的パスワード保存<ul>
 <li>概要</li>
 <li>ハッシュ</li>
-<li>Salt</li>
-<li>Stretch</li>
+<li>salt(ソルト)</li>
+<li>stretching</li>
 </ul>
 </li>
 <li>Webシステムでのパスワード保存</li>
 </ul>
 </div>
 <div class="slide" id="id8">
+<h1>最初に</h1>
+<p>これからパスワード情報が漏れたときに,
+パスワード(特に <em>弱い</em> パスワード)が破られにくくするの方法を話します.</p>
+<p>以下が望ましいのは当然です.</p>
+<ul class="simple">
+<li>ユーザが強いパスワードを付けること</li>
+<li>パスワード情報が漏れないこと</li>
+</ul>
+</div>
+<div class="slide" id="id9">
 <h1>パスワード保存の常識(?)</h1>
 <p>パスワードの保存は,</p>
-<p>「saltを付けてハッシュしろ」</p>
+<p>「salt(ソルト)を付けてハッシュしろ」</p>
 <p>とよく言われている.</p>
-<dl class="docutils">
-<dt>保存</dt>
-<dd><ul class="first last simple">
-<li>saltを付けてハッシュ化<ul>
+<p>保存</p>
+<blockquote>
+<ul class="simple">
+<li>salt(ソルト)を付けてハッシュ化<ul>
 <li>保存された情報からはパスワードは復元困難</li>
 </ul>
 </li>
 </ul>
-</dd>
+</blockquote>
+<dl class="docutils">
 <dt>照合</dt>
 <dd><ul class="first last simple">
-<li>入力値にsaltを付けてハッシュ化. 保存情報と照合</li>
+<li>入力値にsalt(ソルト)を付けてハッシュ化. 保存情報と照合</li>
 </ul>
 </dd>
 </dl>
-<p>TODO?: 図</p>
+</div>
+<div class="slide" id="id10">
+<h1>パスワード保存の常識(?)</h1>
+<img alt="image/fig1.png" src="image/fig1.png" style="width: 10in;" />
 </div>
 <div class="slide" id="unix">
 <h1>Unix的パスワード保存</h1>
@@ -452,7 +467,7 @@ ul.auto-toc {
 <li>hashed: ハッシュ化されたパスワード情報</li>
 </ul>
 </div>
-<div class="slide" id="id9">
+<div class="slide" id="id11">
 <h1>ハッシュとは?</h1>
 <p><a class="reference external" href="http://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%AD%A6%E7%9A%84%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E9%96%A2%E6%95%B0">暗号学的ハッシュ関数 - Wikipedia</a> より(一部変更)</p>
 <ul class="simple">
@@ -467,32 +482,54 @@ ul.auto-toc {
 </div>
 <div class="slide" id="salt">
 <h1>salt(ソルト, お塩)とは?</h1>
-<p>ハッシュの値をかきまぜる「お塩」.</p>
+<ul>
+<li><p class="first">ハッシュ化のときに, パスワードと共に入力される文字列</p>
+<blockquote>
+<ul class="simple">
+<li>ハッシュの値をかきまぜる「お塩」(調味料).</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">ユーザごとに異なるsalt(ソルト)が必要</p>
+</li>
+</ul>
 </div>
-<div class="slide" id="id10">
+<div class="slide" id="id12">
 <h1>なぜ salt は必要なのか</h1>
-<p>TODO: 説明追加</p>
+<p>レインボーテーブルを利用した攻撃が可能になる</p>
 <ul class="simple">
 <li><a class="reference external" href="http://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%A4%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB">レインボーテーブル</a><ul>
-<li>ハッシュ値から平文が得られるテーブル</li>
+<li>ハッシュ値から平文が得られるテーブル<ul>
+<li>ある文字以下の英数文字列に対するテーブル</li>
+<li>ありがちなパスワードの辞書に対するテーブル</li>
+<li>...</li>
 </ul>
 </li>
-<li>例<ul>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id14">
+<h1>レインボーテーブルやその利用例</h1>
+<blockquote>
+<ul class="simple">
 <li><a class="reference external" href="http://www.freerainbowtables.com/">Free Rainbow Tables » Distributed Rainbow Table Generation » LM, NTLM, MD5, SHA1, HALFLMCHALL, MSCACHE</a></li>
 <li><a class="reference external" href="http://ophcrack.sourceforge.net/">Ophcrack</a><ul>
 <li>レインボーテーブルを利用した Windowsのパスワードクラックツール</li>
 </ul>
 </li>
 </ul>
-</li>
+</blockquote>
+</div>
+<div class="slide" id="id15">
+<h1>レインボーテーブルのデモ</h1>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="http://www.freerainbowtables.com/">Free Rainbow Tables</a> のテーブルを利用</li>
 </ul>
+</blockquote>
 </div>
-<div class="slide" id="md5">
-<h1>レインボーテーブルを利用したMD5のクラック</h1>
-<p>(デモ)</p>
-<p>TODO: 説明追加</p>
-</div>
-<div class="slide" id="id12">
+<div class="slide" id="id16">
 <h1>なぜ salt はユーザ毎に違う必要があるか</h1>
 <ul class="simple">
 <li>ユーザに共通のsaltを用いると
@@ -504,15 +541,21 @@ ul.auto-toc {
 </li>
 </ul>
 </div>
-<div class="slide" id="id13">
+<div class="slide" id="id17">
 <h1>saltのサイズ</h1>
 <ul class="simple">
-<li>伝統的なunix: 12bit</li>
+<li>伝統的なunix: 12bit(4096通り)<ul>
+<li>12bitでは小さすぎて, レインボーテーブルが存在</li>
+</ul>
+</li>
 <li>現在のGNU/Linux: 96bit</li>
-<li>CRYPTOGRAPHY ENGINEERING: ハッシュのサイズ</li>
+<li>CRYPTOGRAPHY ENGINEERING: ハッシュのサイズ<ul>
+<li>SHA-256なら256bit</li>
+</ul>
+</li>
 </ul>
 </div>
-<div class="slide" id="id14">
+<div class="slide" id="id18">
 <h1>実際の処理</h1>
 <ul class="simple">
 <li>CRYPTOGRAPHY ENGINEERING p304 の方式</li>
@@ -530,11 +573,18 @@ ul.auto-toc {
 </div>
 <ul class="simple">
 <li><a class="reference external" href="http://ruffnex.oc.to/kenji/xrea/md5crypt.txt">[ crypt() アルゴリズム解析 (MD5バージョン) ]</a></li>
+<li><a class="reference external" href="http://www.openwall.com/phpass/">Portable PHP password hashing (&quot;password encryption&quot;) framework</a></li>
 </ul>
-<p>どちらも ハッシュを繰り返し利用している(<em>stretch</em>)</p>
 </div>
-<div class="slide" id="stretch">
-<h1>stretchとは?</h1>
+<div class="slide" id="id19">
+<h1>実際の処理(2)</h1>
+<p>どれも, ハッシュを繰り返し利用している</p>
+<ul class="simple">
+<li><em>stretching</em></li>
+</ul>
+</div>
+<div class="slide" id="stretching">
+<h1>stretching とは?</h1>
 <ul class="simple">
 <li>ハッシュを繰り返し利用することで, ハッシュ値を求めるのに必要な時間を増大させる<ul>
 <li>攻撃に時間がかかるようになる<ul>
@@ -552,9 +602,9 @@ ul.auto-toc {
 </li>
 </ul>
 </div>
-<div class="slide" id="stretch-1">
-<h1>stretchの効果(1)</h1>
-<p>stretchの効果をはかるために, PHPの hash 拡張で
+<div class="slide" id="stretching-1">
+<h1>stretching の効果(1)</h1>
+<p>stretching の効果をはかるために, PHPの hash 拡張で
 SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 <ul class="simple">
 <li>方式は CRYPTOGRAPHY ENGINEERING のもの</li>
@@ -564,8 +614,8 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </ul>
 <p>Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に SHA-256を約50万回計算できた.</p>
 </div>
-<div class="slide" id="stretch-2">
-<h1>stretchの効果(2)</h1>
+<div class="slide" id="stretching-2">
+<h1>stretching の効果(2)</h1>
 <ul class="simple">
 <li>パスワードの文字種を64種とすると</li>
 </ul>
@@ -604,16 +654,16 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </tbody>
 </table>
 </div>
-<div class="slide" id="stretch-3">
-<h1>stretchの効果(3)</h1>
+<div class="slide" id="stretching-3">
+<h1>stretching の効果(3)</h1>
 <p>1CPU(8コア)のPCでパスワード解析する場合を考察</p>
 <ul class="simple">
 <li>1日3456億回 計算可能<ul>
-<li>stretch がないと...<ul>
+<li>stretching がないと...<ul>
 <li>6文字が 0.2日,  7文字が 13日</li>
 </ul>
 </li>
-<li>1000回 stretch すると<ul>
+<li>1000回 stretching すると<ul>
 <li>1日3.5億回パスワードを計算可能</li>
 <li>5文字が 3日, 6文字だと 199日</li>
 </ul>
@@ -622,38 +672,41 @@ SHA-256を繰り返し呼ぶコードを用いた計測をした</p>
 </li>
 </ul>
 </div>
-<div class="slide" id="stretch-4">
-<h1>stretchの効果(4)</h1>
+<div class="slide" id="stretching-4">
+<h1>stretching の効果(4)</h1>
 <p>MD5だと...
 Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算できた.</p>
 <ul class="simple">
-<li>SHA-256の約3倍速い<ul>
-<li>(私のPCでは)同じ回数stretchしても3倍弱い</li>
+<li>(私のPCでは)SHA-256の約3倍速い<ul>
+<li>同じ回数 stretching しても3倍弱い</li>
 </ul>
 </li>
-<li>stretchの強度は, (回数) x (1回あたりの実行時間) で考えなければならない</li>
+<li>stretching の強度は, (回数) x (1回あたりの実行時間) で考えなければならない</li>
 </ul>
 </div>
-<div class="slide" id="id15">
+<div class="slide" id="id20">
 <h1>方式の保存</h1>
 <p>現在は問題なくても, 将来問題になるかもしれない</p>
 <ul class="simple">
 <li>ハッシュ関数自体</li>
 <li>ハッシュ化の方法</li>
-<li>stretch回数</li>
+<li>stretching 回数</li>
 </ul>
 <p>長く運用するシステムでは, パスワード保存方式を パスワード情報と共に保存する必要がある.</p>
 </div>
-<div class="slide" id="id16">
+<div class="slide" id="id21">
 <h1>なぜUnixはこの方式なのか?</h1>
 <ul class="simple">
 <li>なぜ可逆な暗号化ではないのか?<ul>
 <li>鍵を管理するのが難しい.<ul>
+<li>1つの物理的マシンで完結させるためには
+パスワード情報と鍵を同じマシンで管理
+しなければならない</li>
 <li>以下からパスワード情報と鍵が漏れるかもしれない<ul>
 <li>バックアップファイル</li>
 <li>システムの脆弱性</li>
 <li>別のOSでブート</li>
-<li>物理的な攻撃</li>
+<li>...</li>
 </ul>
 </li>
 </ul>
@@ -662,7 +715,7 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 </li>
 </ul>
 </div>
-<div class="slide" id="id17">
+<div class="slide" id="id22">
 <h1>Unix的パスワード保存まとめ</h1>
 <ul>
 <li><p class="first">パスワードはハッシュ化して保存</p>
@@ -681,7 +734,10 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 <li><p class="first">デメリット</p>
 <blockquote>
 <ul class="simple">
-<li>弱いパスワードが記録された情報だけで破れる</li>
+<li>弱いパスワードが記録された情報だけで破れる<ul>
+<li>stretching である程度対処できる</li>
+</ul>
+</li>
 </ul>
 </blockquote>
 </li>
@@ -689,32 +745,42 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 </div>
 <div class="slide" id="web">
 <h1>Webシステムでは?</h1>
+<ul>
+<li><p class="first">パスワード情報と鍵を別に管理可能</p>
 <ul class="simple">
-<li>通常WebサーバとDBサーバは物理的に分離されている<ul>
-<li>Unixよりもパスワード情報と鍵が 共に漏洩するリスクは低いだろう.</li>
-<li>ちゃんとした暗号方式と鍵を利用すれば, 攻撃者が鍵を入手できない場合 鍵の強度 == パスワード情報の強度となる<ul>
-<li>パスワードの長さに関係ない</li>
+<li>例: 鍵がWebサーバ, 情報がDBサーバ</li>
+<li>Unixよりもパスワード情報と鍵が 共に漏洩するリスクは小さくできる</li>
 </ul>
 </li>
-<li>もちろん, 鍵管理のコストは無視できない<ul>
+<li><p class="first">鍵を適切に利用すれば 攻撃者が鍵を入手できない場合 鍵の強度 == パスワード情報の強度となる</p>
+<blockquote>
+<ul class="simple">
+<li>パスワードの強さに関係ない</li>
+</ul>
+</blockquote>
+<ul class="simple">
+<li>ただし, 鍵管理のコストは無視できない<ul>
 <li>漏洩, 改竄, 紛失....</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<p>TODO: 図</p>
 </div>
-<div class="slide" id="id18">
+<div class="slide" id="id23">
 <h1>Webシステムでのリスク</h1>
-<p>パスワード情報の保存に関するリスクのみ挙げる</p>
+<p>パスワード情報の保存に関するリスクのみ</p>
 <ul class="simple">
-<li>SQLインジェクションなどによる パスワード情報の漏洩</li>
-<li>バックアップファイル, 実サーバ, 廃棄サーバなどからのパスワード情報の漏洩</li>
-<li>開発者/運用者によるパスワード情報の漏洩/悪用</li>
+<li>SQLインジェクションなどによる (表側からの)パスワード情報の漏洩</li>
+<li>バックアップファイル, 実サーバ, 廃棄サーバなどの (裏側からの)パスワード情報の漏洩</li>
+<li>開発者/運用者によるパスワード情報の漏洩/悪用<ul>
+<li>開発者はプログラムで処理する生パスワードを
+閲覧可能なことに注意</li>
+</ul>
+</li>
 </ul>
 </div>
-<div class="slide" id="id19">
+<div class="slide" id="id24">
 <h1>鍵を用いる場合の手法案</h1>
 <ul class="simple">
 <li>共通鍵暗号</li>
@@ -722,12 +788,12 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 <li>鍵付きハッシュ</li>
 </ul>
 </div>
-<div class="slide" id="id20">
+<div class="slide" id="id25">
 <h1>共通鍵暗号</h1>
-<p>共通鍵暗号をハッシュとして用いる パスワード保存法もあるが, ここではパスワード情報を暗号化する場合を考察</p>
+<p>共通鍵暗号をハッシュ的に用いる パスワード保存法もあるが, ここではパスワード情報を暗号化する場合を考察</p>
 <ul class="simple">
 <li>メリット<ul>
-<li>ちゃんと暗号化し鍵が安全ならば, 弱いパスワードもパスワード情報だけでは破れない</li>
+<li>鍵が漏れなければ, 弱いパスワードもパスワード情報だけでは破れない</li>
 </ul>
 </li>
 <li>デメリット<ul>
@@ -737,12 +803,12 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 </li>
 </ul>
 </div>
-<div class="slide" id="id21">
+<div class="slide" id="id26">
 <h1>ハッシュ+暗号</h1>
 <p>Unix的にハッシュ化したあとで暗号化</p>
 <ul class="simple">
 <li>メリット<ul>
-<li>ちゃんと暗号化し鍵が安全ならば, 弱いパスワードもパスワード情報だけでは破れない</li>
+<li>鍵が漏れなければ, 弱いパスワードもパスワード情報だけでは破れない</li>
 <li>鍵を保持するものでも生パスワードを復元できない</li>
 </ul>
 </li>
@@ -752,7 +818,7 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 </li>
 </ul>
 </div>
-<div class="slide" id="id22">
+<div class="slide" id="id27">
 <h1>鍵付きハッシュ(1)</h1>
 <p>鍵情報とパスワードを組合せてハッシュ</p>
 <ul>
@@ -770,7 +836,7 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 </li>
 </ul>
 </div>
-<div class="slide" id="id23">
+<div class="slide" id="id28">
 <h1>鍵付きハッシュ(2)</h1>
 <ul class="simple">
 <li>HMACには前述の問題はない<ul>
@@ -783,7 +849,7 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 </li>
 </ul>
 </div>
-<div class="slide" id="id24">
+<div class="slide" id="id29">
 <h1>鍵付きハッシュ(3)</h1>
 <ul class="simple">
 <li>メリット<ul>
@@ -800,18 +866,18 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 </li>
 </ul>
 </div>
-<div class="slide" id="id25">
+<div class="slide" id="id30">
 <h1>パスワード保存方式の比較</h1>
 <table border="1" class="docutils">
 <colgroup>
 <col width="26%" />
-<col width="30%" />
-<col width="25%" />
-<col width="19%" />
+<col width="29%" />
+<col width="24%" />
+<col width="21%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">方式</th>
-<th class="head">弱パスワードの保護</th>
+<th class="head">弱いパスワードの保護</th>
 <th class="head">生パスワード</th>
 <th class="head">鍵管理</th>
 </tr>
@@ -823,7 +889,7 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 <td>不必要</td>
 </tr>
 <tr><td>Unix的</td>
-<td>stretchで対応</td>
+<td>stretchingで対応</td>
 <td>復元不可能</td>
 <td>不必要</td>
 </tr>
@@ -844,62 +910,91 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 </tr>
 </tbody>
 </table>
-<p>個人的には, 鍵の管理が面倒なのでUnix的でよいと考えています.</p>
+<p>個人的には, Webシステムにおいても
+鍵の管理が面倒なのでUnix的でよいと考えています.</p>
 </div>
-<div class="slide" id="id26">
+<div class="slide" id="id31">
 <h1>パスワードの保存 まとめ</h1>
 <ul class="simple">
 <li>Unix的パスワード保存を解説</li>
 <li>Webシステムでのパスワード保存を考察</li>
 </ul>
 </div>
-<div class="slide" id="id27">
+<div class="slide" id="id32">
 <h1>パスワードの話題いろいろ</h1>
-<p>TODO: 以下まだ作りかけ</p>
 <ul class="simple">
-<li>私のパスワード管理法(TODO)</li>
-<li>攻撃</li>
-<li>秘密の質問</li>
+<li>私のパスワード管理法</li>
 <li>強度</li>
 <li>定期更新</li>
 <li>マスキング</li>
+<li>攻撃</li>
+<li>秘密の質問</li>
 </ul>
+<p>後のほうほど質が下がります...</p>
 </div>
-<div class="slide" id="id28">
-<h1>パスワードに対する攻撃</h1>
+<div class="slide" id="id33">
+<h1>私のパスワード管理法(1)</h1>
 <ul class="simple">
-<li>総当たり攻撃</li>
-<li>辞書攻撃</li>
-<li>ショルダークラック</li>
-<li>キーロガー</li>
-<li>別のサイトと共通のパスワードを利用しているユーザ
-* 他のサイトでパスワードが漏れて, ログインされる</li>
-</ul>
-</div>
-<div class="slide" id="id29">
-<h1>秘密の質問</h1>
-<ul class="simple">
-<li>弊社の例
-重要な機能(ポイント交換)を行なう前に 秘密の質問を入力させている<ul>
-<li>ユーザがサイトごとに別々のパスワードを
-付けてくれれば, 必要ないのだが...</li>
+<li>パスワード管理ソフトを利用<ul>
+<li><a class="reference external" href="http://keepass.info/">KeePass Password Safe</a></li>
 </ul>
 </li>
-<li>よくあるのは小学校の名前とか親の旧姓とか<ul>
-<li>他者が推測可能なものがある...</li>
+<li>パスワードを3つにレベル分け<ul>
+<li>手で入力しなければならないもの</li>
+<li>重要なもの</li>
+<li>重要でないもの</li>
 </ul>
 </li>
-<li>個人的には第2パスワードとか
-交換用パスワードなどと呼んで,
-普通のパスワードと同じように管理してもらうほうが
-いのではと考えている</li>
 </ul>
 </div>
-<div class="slide" id="id30">
+<div class="slide" id="id34">
+<h1>手で入力しなければならないもの</h1>
+<ul class="simple">
+<li>ローカルPCのパスワード</li>
+<li>SSH秘密鍵のパスフレーズ</li>
+<li>パスワード管理ソフトのパスワード</li>
+</ul>
+<p>10〜20文字のパスワードを作成して覚える</p>
+<ul class="simple">
+<li>頻繁には入力しないものについては
+パスワード管理ソフトにも記録</li>
+</ul>
+</div>
+<div class="slide" id="id35">
+<h1>重要なもの</h1>
+<ul class="simple">
+<li>お金のからむサービスのパスワード</li>
+<li>会社のサーバのパスワード
+(sudoに必要)</li>
+</ul>
+<p>10〜30文字のパスワードを
+パスワード管理ソフトで作成して
+<em>覚えない</em></p>
+<ul class="simple">
+<li>ブラウザなどには記録しない<ul>
+<li>パスワード管理ソフトからコピペ</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id36">
+<h1>重要でないもの</h1>
+<ul class="simple">
+<li>メールのパスワード</li>
+<li>お金のからまないサービスのパスワード</li>
+</ul>
+<p>10〜30文字のパスワードを
+パスワード管理ソフトで作成して
+<em>覚えない</em></p>
+<ul class="simple">
+<li>ブラウザなどに記録する</li>
+</ul>
+</div>
+<div class="slide" id="id37">
 <h1>パスワードの強度(1)</h1>
 <p>文字種を増やすのがよいか, 長さを増やすのがよいか?</p>
 </div>
-<div class="slide" id="id31">
+<div class="slide" id="id38">
 <h1>パスワードの強度(2)</h1>
 <table border="1" class="docutils">
 <colgroup>
@@ -939,34 +1034,27 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 </li>
 </ul>
 </div>
-<div class="slide" id="id32">
+<div class="slide" id="id39">
 <h1>パスワードの定期更新(1)</h1>
 <p>パスワードを定期的に更新する意味はあるのか?</p>
 </div>
-<div class="slide" id="id33">
+<div class="slide" id="id40">
 <h1>パスワードの定期更新(2)</h1>
-<ul>
-<li><p class="first">通常は意味がない. むしろ有害</p>
-<ul>
-<li><p class="first">攻撃に対する強度はパスワードの強度</p>
-<ul>
-<li><p class="first">定期的に変えても強度はあまり増えない.</p>
-<p><a href="#id34"><span class="problematic" id="id35">*</span></a><a class="reference external" href="http://d.hatena.ne.jp/ockeghem/20101209/p1">続パスワードの定期変更は神話なのか - ockeghem(徳丸浩)の日記</a></p>
-<div class="system-message" id="id34">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">index.rst</tt>, line 675); <em><a href="#id35">backlink</a></em></p>
-<p>Inline emphasis start-string without end-string.</p>
-</div>
-</li>
-<li><p class="first">パスワードの変更により打ち間違えが増え
-利便性が下がる</p>
-</li>
+<p><a class="reference external" href="http://www.yamdas.org/column/technique/passwordj.html">パスワードの変えどき - When to Change Passwords 日本語訳</a></p>
+<ul class="simple">
+<li>通常は意味がない. むしろ有害<ul>
+<li>定期的に変えても強度はあまり増えない.<ul>
+<li><a class="reference external" href="http://d.hatena.ne.jp/ockeghem/20101209/p1">続パスワードの定期変更は神話なのか - ockeghem(徳丸浩)の日記</a></li>
+<li><a class="reference external" href="http://d.hatena.ne.jp/pochi-p/20090830#p1">パスワード定期変更云々 - pochi-pの日記</a></li>
 </ul>
 </li>
+<li>パスワードの変更により打ち間違えが増え
+利便性が下がる</li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="slide" id="id36">
+<div class="slide" id="id41">
 <h1>パスワードの定期更新(3)</h1>
 <ul class="simple">
 <li>意味がある場合<ul>
@@ -976,11 +1064,15 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz で 1秒に 約140万回計算でき
 <li>セキュリティ的には共有アカウント でないほうがよい</li>
 </ul>
 </li>
+<li>パスワード情報がじっくりと解析される場合<ul>
+<li>shadow化される前のUnixのパスワード</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="slide" id="id37">
+<div class="slide" id="id42">
 <h1>パスワードのマスキング</h1>
 <ul class="simple">
 <li>ショルダークラック
@@ -989,13 +1081,49 @@ vs
 <li>要件に依存する</li>
 </ul>
 </li>
-<li>個人的にはユーザが切り替えられるのがいいと思う<ul>
-<li>より個人的には, パスワード管理ツールを適当に使うので, Webサイトでパスワードを手で入力することがない. のでどうでもよい</li>
+<li>個人的にはユーザが切り替えられるのがいいと思う</li>
+</ul>
+</div>
+<div class="slide" id="id43">
+<h1>パスワードに対する攻撃</h1>
+<ul class="simple">
+<li>総当たり攻撃</li>
+<li>辞書攻撃</li>
+<li>レインボーテーブル</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li>ショルダークラック</li>
+<li>キーロガー</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li>別のサイトと共通のパスワードを利用しているユーザ<ul>
+<li>他のサイトでパスワードが漏れて, ログインされる</li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="slide" id="id38">
+<div class="slide" id="id44">
+<h1>秘密の質問</h1>
+<ul class="simple">
+<li>弊社の例:
+重要な機能(ポイント交換)を行なう前に 秘密の質問を入力させている<ul>
+<li>ユーザがサイトごとに別々のパスワードを
+付けてくれれば, 必要ないのだが...</li>
+</ul>
+</li>
+<li>よくあるのは小学校の名前とか親の旧姓とか<ul>
+<li>他者が推測可能なものがある...</li>
+</ul>
+</li>
+<li>個人的には第2パスワードとか
+交換用パスワードなどと呼んで,
+普通のパスワードと同じように管理してもらうほうが
+いのではと考えている</li>
+</ul>
+</div>
+<div class="slide" id="id45">
 <h1>参考文献</h1>
 <p>man 3 crypt</p>
 <blockquote>
