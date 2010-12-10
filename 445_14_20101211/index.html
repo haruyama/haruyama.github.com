@@ -392,7 +392,7 @@ ul.auto-toc {
 <li>時間は1時間</li>
 </ul>
 </li>
-<li>まずご要望を満たすために 「パスワードの保存」の話をして, その後その他のテーマの話をします.</li>
+<li>ご要望を満たすために 「パスワードの保存」の話をして, その後その他のテーマの話をします.</li>
 </ul>
 </div>
 <div class="slide" id="id7">
@@ -568,13 +568,13 @@ ISBN-13: 978-4274065163</blockquote>
 <div class="line">}</div>
 </div>
 </div>
+</div>
+<div class="slide" id="id20">
+<h1>実際の処理(2)</h1>
 <ul class="simple">
 <li><a class="reference external" href="http://ruffnex.oc.to/kenji/xrea/md5crypt.txt">[ crypt() アルゴリズム解析 (MD5バージョン) ]</a></li>
 <li><a class="reference external" href="http://www.openwall.com/phpass/">phpass - Portable PHP password hashing (&quot;password encryption&quot;) framework</a></li>
 </ul>
-</div>
-<div class="slide" id="id20">
-<h1>実際の処理(2)</h1>
 <p>どれも, ハッシュを繰り返し利用している</p>
 <ul class="simple">
 <li><em>stretching</em></li>
@@ -716,7 +716,7 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz (1コアのみ利用)で 1秒に 約
 <ul>
 <li><p class="first">パスワードはハッシュ化して保存</p>
 <ul class="simple">
-<li>この時 salt と stretch を利用</li>
+<li>この時 salt と stretching を利用</li>
 </ul>
 </li>
 <li><p class="first">メリット</p>
@@ -780,7 +780,7 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz (1コアのみ利用)で 1秒に 約
 <h1>鍵を用いる場合の手法案</h1>
 <ul class="simple">
 <li>共通鍵暗号</li>
-<li>ハッシュ+暗号</li>
+<li>ハッシュ + 暗号</li>
 <li>鍵付きハッシュ</li>
 </ul>
 </div>
@@ -866,10 +866,10 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz (1コアのみ利用)で 1秒に 約
 <h1>パスワード保存方式の比較</h1>
 <table border="1" class="docutils">
 <colgroup>
-<col width="26%" />
+<col width="25%" />
 <col width="29%" />
 <col width="24%" />
-<col width="21%" />
+<col width="22%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">方式</th>
@@ -885,7 +885,7 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz (1コアのみ利用)で 1秒に 約
 <td>不必要</td>
 </tr>
 <tr><td>Unix的</td>
-<td>stretchingで対応</td>
+<td>stretching で対応</td>
 <td>復元不可能</td>
 <td>不必要</td>
 </tr>
@@ -923,22 +923,26 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz (1コアのみ利用)で 1秒に 約
 <li>強度</li>
 <li>定期更新</li>
 <li>マスキング</li>
-<li>攻撃</li>
 <li>秘密の質問</li>
+<li>リマインダ</li>
+<li>フレームワークのパスワード管理法</li>
+<li>攻撃</li>
 </ul>
 <p>後のほうほど質が下がります...</p>
 </div>
 <div class="slide" id="id34">
 <h1>私のパスワード管理法(1)</h1>
 <ul class="simple">
-<li>パスワード管理ソフトを利用<ul>
-<li><a class="reference external" href="http://keepass.info/">KeePass Password Safe</a></li>
-</ul>
-</li>
+<li>すべてのパスワードは違う</li>
+<li>求められなければ更新しない</li>
 <li>パスワードを3つにレベル分け<ul>
 <li>手で入力しなければならないもの</li>
 <li>重要なもの</li>
 <li>重要でないもの</li>
+</ul>
+</li>
+<li>パスワード管理ソフトを利用<ul>
+<li><a class="reference external" href="http://keepass.info/">KeePass Password Safe</a></li>
 </ul>
 </li>
 </ul>
@@ -983,7 +987,10 @@ Intel(R) Core(TM) i7 CPU 860  &#64; 2.80GHz (1コアのみ利用)で 1秒に 約
 パスワード管理ソフトで作成して
 <em>覚えない</em></p>
 <ul class="simple">
-<li>ブラウザなどに記録する</li>
+<li>ブラウザなどに記録する<ul>
+<li>ブラウザのマスターパスワードは利用していない</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="slide" id="id38">
@@ -1081,6 +1088,70 @@ vs
 </ul>
 </div>
 <div class="slide" id="id44">
+<h1>秘密の質問</h1>
+<ul class="simple">
+<li>弊社の例:
+重要な機能(ポイント交換)を行なう前に 秘密の質問を入力させている<ul>
+<li>ユーザがサイトごとに別々の強いパスワードを
+付けてくれれば, 必要ないのだが...</li>
+</ul>
+</li>
+<li>よくあるのは小学校の名前とか親の旧姓とか<ul>
+<li>他者が推測可能なものがある...</li>
+</ul>
+</li>
+<li>個人的には第2パスワードとか
+交換用パスワードなどと呼んで,
+普通のパスワードと同じように管理してもらうほうが
+いいのではと考えている</li>
+</ul>
+</div>
+<div class="slide" id="id45">
+<h1>パスワードリマインダ</h1>
+<ul class="simple">
+<li>見たことがある方式<ul>
+<li>メールで変更用一時URLを通知</li>
+<li>メールで新規パスワードを通知</li>
+<li>メールで既存パスワードを通知</li>
+<li>秘密の質問に答えられたら再発行</li>
+</ul>
+</li>
+<li>秘密の質問はやめたほうがよい</li>
+</ul>
+</div>
+<div class="slide" id="id46">
+<h1>パスワードリマインダ(2)</h1>
+<ul class="simple">
+<li>パスワード忘れちゃったユーザについては, メールの安全性は信用するしかないよね!<ul>
+<li>一般には一時URLが推奨されているが, ユーザが良いパスワードを付けてくれない可能性が 高いのなら新規パスワードがいいのかも</li>
+<li>一時URLの場合, 他のURLの推測を困難にしなければならない</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id47">
+<h1>フレームワークのパスワード管理法(1)</h1>
+<ul class="simple">
+<li><a class="reference external" href="http://en.yummy.stripper.jp/?eid=734747">[PHP]オープンソースのパスワードハッシュ化状況調査 | ブログが続かないわけ</a></li>
+<li><a class="reference external" href="http://d.hatena.ne.jp/uunfo/20090521/1242901642">オープンソースCMSでのパスワードの ハッシュ化方法を調べてみた - ”improve it!” (IT四重奏)</a></li>
+<li><a class="reference external" href="http://www.cpa-lab.com/tech/063">CakePHPの暗号化ハッシュデフォルトは、SAH1 - CPA-LABテクニカル</a></li>
+<li><a class="reference external" href="http://trac.symfony-project.org/browser/plugins/sfGuardPlugin/tags/RELEASE_3_0_0/lib/model/plugin/PluginsfGuardUser.php">sfGuardPlugin(3.0.0) PluginsfGuardUser.php - symfony</a><ul>
+<li>4.0.1でもこの部分は同様</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id48">
+<h1>フレームワークのパスワード管理法(2)</h1>
+<ul class="simple">
+<li>Rails<ul>
+<li><a class="reference external" href="https://github.com/technoweenie/restful-authentication/blob/master/lib/authentication/by_password.rb">lib/authentication/by_password.rb (restful-authentication)</a></li>
+<li><a class="reference external" href="https://github.com/thoughtbot/clearance/blob/master/lib/clearance/user.rb">lib/clearance/user.rb (clearance)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id49">
 <h1>パスワードに対する攻撃</h1>
 <ul class="simple">
 <li>総当たり攻撃</li>
@@ -1100,26 +1171,7 @@ vs
 </li>
 </ul>
 </div>
-<div class="slide" id="id45">
-<h1>秘密の質問</h1>
-<ul class="simple">
-<li>弊社の例:
-重要な機能(ポイント交換)を行なう前に 秘密の質問を入力させている<ul>
-<li>ユーザがサイトごとに別々のパスワードを
-付けてくれれば, 必要ないのだが...</li>
-</ul>
-</li>
-<li>よくあるのは小学校の名前とか親の旧姓とか<ul>
-<li>他者が推測可能なものがある...</li>
-</ul>
-</li>
-<li>個人的には第2パスワードとか
-交換用パスワードなどと呼んで,
-普通のパスワードと同じように管理してもらうほうが
-いのではと考えている</li>
-</ul>
-</div>
-<div class="slide" id="id46">
+<div class="slide" id="id50">
 <h1>まとめ</h1>
 <ul class="simple">
 <li>パスワードの保存について考察</li>

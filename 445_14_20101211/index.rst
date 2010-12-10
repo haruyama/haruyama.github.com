@@ -57,8 +57,7 @@ TODO: s5での体裁
 
   * 時間は1時間
 
-* まずご要望を満たすために 「パスワードの保存」の話をして, その後その他のテーマの話をします.
-
+* ご要望を満たすために 「パスワードの保存」の話をして, その後その他のテーマの話をします.
 
 
 .. raw:: pdf
@@ -107,7 +106,6 @@ CRYPTOGRAPHY ENGINEERING
 
 パスワード情報が漏れたときに, 
 パスワード(特に *弱いパスワード* )を破られにくくする方法を話します.
-
 
 もちろん, 以下が望ましいです.
 
@@ -282,16 +280,16 @@ saltのサイズ
  |   $x = hash($x . $password . $salt);
  | }
 
-* `[ crypt() アルゴリズム解析 (MD5バージョン) ] <http://ruffnex.oc.to/kenji/xrea/md5crypt.txt>`_
-
-* `phpass - Portable PHP password hashing ("password encryption") framework <http://www.openwall.com/phpass/>`_
-
 .. raw:: pdf
 
     PageBreak
 
 実際の処理(2)
 ==========================================
+
+* `[ crypt() アルゴリズム解析 (MD5バージョン) ] <http://ruffnex.oc.to/kenji/xrea/md5crypt.txt>`_
+
+* `phpass - Portable PHP password hashing ("password encryption") framework <http://www.openwall.com/phpass/>`_
 
 どれも, ハッシュを繰り返し利用している
 
@@ -442,7 +440,7 @@ Unix的パスワード保存まとめ
 
 * パスワードはハッシュ化して保存
 
-  * この時 salt と stretch を利用
+  * この時 salt と stretching を利用
 
 
 * メリット
@@ -503,7 +501,7 @@ Webシステムでのリスク
 ===========================================
 
 * 共通鍵暗号
-* ハッシュ+暗号
+* ハッシュ + 暗号
 * 鍵付きハッシュ
 
 .. raw:: pdf
@@ -610,7 +608,7 @@ Unix的にハッシュ化したあとで暗号化
 方式                              弱いパスワードの保護                         生パスワード                     鍵管理
 ==============================   ==================================   ============================  =================
 そのまま保存                      不可能                                   そのまま                                 不必要
-Unix的                           stretchingで対応                            復元不可能                               不必要
+Unix的                            stretching で対応                            復元不可能                               不必要
 暗号                                 可能                                 復元可能                                必要
 ハッシュ+暗号                     可能                                    復元不可能                             必要
 鍵+ハッシュ                       可能                                    復元不可能                             必要
@@ -642,8 +640,10 @@ Unix的                           stretchingで対応                           
 * 強度
 * 定期更新
 * マスキング
-* 攻撃
 * 秘密の質問
+* リマインダ
+* フレームワークのパスワード管理法
+* 攻撃
 
 後のほうほど質が下がります...
 
@@ -654,9 +654,8 @@ Unix的                           stretchingで対応                           
 私のパスワード管理法(1)
 ==========================
 
-* パスワード管理ソフトを利用
-
-  * `KeePass Password Safe <http://keepass.info/>`_
+* すべてのパスワードは違う
+* 求められなければ更新しない
 
 * パスワードを3つにレベル分け
 
@@ -664,6 +663,9 @@ Unix的                           stretchingで対応                           
   * 重要なもの
   * 重要でないもの
 
+* パスワード管理ソフトを利用
+
+  * `KeePass Password Safe <http://keepass.info/>`_
 
 .. raw:: pdf
 
@@ -693,7 +695,6 @@ Unix的                           stretchingで対応                           
 * 会社のサーバのパスワード
   (sudoに必要)
 
-
 10〜30文字のパスワードを
 パスワード管理ソフトで作成して
 *覚えない*
@@ -701,7 +702,6 @@ Unix的                           stretchingで対応                           
 * ブラウザなどには記録しない
 
   * パスワード管理ソフトからコピペ
-  
 
 
 .. raw:: pdf
@@ -720,7 +720,8 @@ Unix的                           stretchingで対応                           
 
 * ブラウザなどに記録する
 
-  
+  * ブラウザのマスターパスワードは利用していない
+
 
 .. raw:: pdf
 
@@ -825,6 +826,84 @@ Unix的                           stretchingで対応                           
 
     PageBreak
 
+秘密の質問
+==========================
+
+* 弊社の例: 
+  重要な機能(ポイント交換)を行なう前に 秘密の質問を入力させている
+
+  * ユーザがサイトごとに別々の強いパスワードを
+    付けてくれれば, 必要ないのだが...
+
+* よくあるのは小学校の名前とか親の旧姓とか
+
+  * 他者が推測可能なものがある...
+
+* 個人的には第2パスワードとか
+  交換用パスワードなどと呼んで, 
+  普通のパスワードと同じように管理してもらうほうが
+  いいのではと考えている
+
+.. raw:: pdf
+
+    PageBreak
+
+パスワードリマインダ
+===========================
+
+* 見たことがある方式
+
+  * メールで変更用一時URLを通知
+  * メールで新規パスワードを通知
+  * メールで既存パスワードを通知
+  * 秘密の質問に答えられたら再発行
+
+* 秘密の質問はやめたほうがよい
+
+.. raw:: pdf
+
+    PageBreak
+
+パスワードリマインダ(2)
+===========================
+
+* パスワード忘れちゃったユーザについては, メールの安全性は信用するしかないよね!
+
+  * 一般には一時URLが推奨されているが, ユーザが良いパスワードを付けてくれない可能性が 高いのなら新規パスワードがいいのかも
+  * 一時URLの場合, 他のURLの推測を困難にしなければならない
+
+.. raw:: pdf
+
+    PageBreak
+
+フレームワークのパスワード管理法(1)
+=================================================================================
+
+* `[PHP]オープンソースのパスワードハッシュ化状況調査 | ブログが続かないわけ <http://en.yummy.stripper.jp/?eid=734747>`_
+* `オープンソースCMSでのパスワードの ハッシュ化方法を調べてみた - ”improve it!” (IT四重奏) <http://d.hatena.ne.jp/uunfo/20090521/1242901642>`_
+* `CakePHPの暗号化ハッシュデフォルトは、SAH1 - CPA-LABテクニカル <http://www.cpa-lab.com/tech/063>`_
+* `sfGuardPlugin(3.0.0) PluginsfGuardUser.php - symfony <http://trac.symfony-project.org/browser/plugins/sfGuardPlugin/tags/RELEASE_3_0_0/lib/model/plugin/PluginsfGuardUser.php>`_
+
+  * 4.0.1でもこの部分は同様
+
+
+.. raw:: pdf
+
+    PageBreak
+
+フレームワークのパスワード管理法(2)
+=================================================================================
+
+* Rails
+
+  * `lib/authentication/by_password.rb (restful-authentication) <https://github.com/technoweenie/restful-authentication/blob/master/lib/authentication/by_password.rb>`_
+
+  * `lib/clearance/user.rb (clearance) <https://github.com/thoughtbot/clearance/blob/master/lib/clearance/user.rb>`_
+
+.. raw:: pdf
+
+    PageBreak
+
 パスワードに対する攻撃
 ==========================
 
@@ -847,27 +926,6 @@ Unix的                           stretchingで対応                           
 
     PageBreak
 
-秘密の質問
-==========================
-
-* 弊社の例: 
-  重要な機能(ポイント交換)を行なう前に 秘密の質問を入力させている
-
-  * ユーザがサイトごとに別々の強いパスワードを
-    付けてくれれば, 必要ないのだが...
-
-* よくあるのは小学校の名前とか親の旧姓とか
-
-  * 他者が推測可能なものがある...
-
-* 個人的には第2パスワードとか
-  交換用パスワードなどと呼んで, 
-  普通のパスワードと同じように管理してもらうほうが
-  いのではと考えている
-
-.. raw:: pdf
-
-    PageBreak
 
 まとめ
 ===========================
