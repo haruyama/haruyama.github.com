@@ -42,6 +42,15 @@
     * http://haruyama.github.com/445_14_20101211/index.pdf
 
 
+.. raw:: pdf
+
+    PageBreak
+
+最近パスワードの話が盛り上っている
+==================================================
+
+* `第6回　経営者が注意すべき「パスワードクラッキング」 <http://www.itmedia.co.jp/enterprise/articles/1012/07/news010.html>`_
+* `Togetter - 「平文パスワードの再送問題について」 <http://togetter.com/li/77080>`_
 
 .. raw:: pdf
 
