@@ -23,6 +23,8 @@
 
 * 全文検索システム Apache Solrの勉強会開催
 
+* `ECナビ　エンジニアブログ : Happy Scaning(2): 島本和彦漫画の「濃度」の研究 <http://tech.ecnavi.co.jp/archives/875343.html>`_
+
 .. raw:: pdf
 
     PageBreak
