@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.7: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.1" />
+<title>パスワード保存の常識(?)</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 6253 2010-03-02 00:24:53Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: left }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/small-black/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/small-black/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/small-black/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/small-black/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/small-black/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+
+</div>
+<div id="footer">
+<h1>パスワード保存の常識(?)</h1>
+
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">パスワード保存の常識(?)</h1>
+
+<ul class="simple">
+<li>自己紹介</li>
+<li>パスワード保存の常識(?)の復習</li>
+<li>鍵を利用したパスワード保存案</li>
+<li>まとめ</li>
+</ul>
+
+</div>
+<div class="slide" id="id2">
+<h1>自己紹介</h1>
+<ul>
+<li><p class="first">ECナビ システム本部 春山征吾 <a class="reference external" href="https://twitter.com/#!/haruyama">&#64;haruyama</a></p>
+</li>
+<li><p class="first">セキュリティ</p>
+<ul class="simple">
+<li>OpenSSH (本x2, <a class="reference external" href="http://www.unixuser.org/~haruyama/security/openssh/">OpenSSH情報</a>)</li>
+<li><a class="reference external" href="http://www.sbcr.jp/products/4797319119.html">暗号技術大全</a><ul>
+<li>18章(ハッシュ), 20章(電子署名)翻訳担当</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">全文検索システム Apache Solrの勉強会開催</p>
+<blockquote>
+<ul class="simple">
+<li>次回は11/19(金)予定</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="slide" id="id4">
+<h1>資料</h1>
+<ul class="simple">
+<li>本資料<ul>
+<li>TODO</li>
+</ul>
+</li>
+<li>本日用のネタページ</li>
+</ul>
+<blockquote>
+<ul class="simple">
+<li><a class="reference external" href="http://goo.gl/UIwW">http://goo.gl/UIwW</a> (ゆー あい だぶ だぶ)</li>
+</ul>
+</blockquote>
+</div>
+<div class="slide" id="id5">
+<h1>パスワード保存の常識(?)</h1>
+<dl class="docutils">
+<dt>保存</dt>
+<dd><ul class="first last simple">
+<li>saltを付けてハッシュ化<ul>
+<li>保存された情報からはパスワードは復元困難</li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt>照合</dt>
+<dd><ul class="first last simple">
+<li>入力値にsaltを付けてハッシュ化. 保存情報と照合</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="slide" id="gnu-linux">
+<h1>GNU/Linuxでのパスワード保存</h1>
+<p>他のUnixも同様</p>
+<dl class="docutils">
+<dt>形式</dt>
+<dd>$id$salt$hashed</dd>
+<dt>例</dt>
+<dd>$6$3d1ahuOb$KiH....(略)</dd>
+</dl>
+<ul class="simple">
+<li>id: ハッシュ(後述)の識別子<ul>
+<li>1 =&gt; MD5, 5 =&gt; SHA-256 6 =&gt; SHA-512</li>
+</ul>
+</li>
+<li>salt: ソルト, お塩</li>
+<li>hashed: ハッシュ化されたパスワード情報</li>
+</ul>
+</div>
+<div class="slide" id="id6">
+<h1>ハッシュとは?</h1>
+<p><a class="reference external" href="http://ja.wikipedia.org/wiki/%E6%9A%97%E5%8F%B7%E5%AD%A6%E7%9A%84%E3%83%8F%E3%83%83%E3%82%B7%E3%83%A5%E9%96%A2%E6%95%B0">暗号学的ハッシュ関数 - Wikipedia</a> より</p>
+<ul class="simple">
+<li>与えられたメッセージに対してハッシュ値を 容易に計算できる。</li>
+<li>ハッシュ値から元のメッセージを得ることが 事実上不可能であること。</li>
+<li>ハッシュ値を変えずにメッセージを改竄することが 事実上不可能であること。</li>
+<li>同じハッシュ値を持つ2つのメッセージを求めることが 事実上不可能であること。</li>
+<li>例: MD5, SHA1, SHA-256,512</li>
+</ul>
+</div>
+<div class="slide" id="salt">
+<h1>salt(ソルト, お塩)とは?</h1>
+<p>ハッシュの値をかきまぜる「お塩」.</p>
+<ul>
+<li><p class="first">ハッシュ化するだけでは, 同じパスワードを利用する人が複数いると 同じパスワード情報が生成される</p>
+<ul>
+<li><p class="first">ユーザごとに異なる必要がある</p>
+<blockquote>
+<ul class="simple">
+<li>ランダムである必要はない</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">同時に多数のパスワード情報の解析をできなくする</p>
+</li>
+</ul>
+</li>
+<li><p class="first">saltのサイズ</p>
+<blockquote>
+<ul class="simple">
+<li>伝統的なunix: 12bit</li>
+<li>現在のGNU/Linux: 96bit</li>
+<li>CRYPTOGRAPHY ENGINEERING の推奨: ハッシュ の出力サイズと同じ</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="slide" id="id7">
+<h1>実際の処理</h1>
+<ul class="simple">
+<li>CRYPTOGRAPHY ENGINEERING p304 の方式</li>
+</ul>
+<div class="admonition-php admonition">
+<p class="first admonition-title">PHP風の言語で記述</p>
+<div class="last line-block">
+<div class="line">$x = '';</div>
+<div class="line">for($i = 0; $i &lt; $iter; ++$i) {</div>
+<div class="line-block">
+<div class="line">$x = hash($x . $password . $salt);</div>
+</div>
+<div class="line">}</div>
+</div>
+</div>
+<ul class="simple">
+<li><a class="reference external" href="http://ruffnex.oc.to/kenji/xrea/md5crypt.txt">[ crypt() アルゴリズム解析 (MD5バージョン) ]</a></li>
+</ul>
+<p>どちらも ハッシュを何度も利用している(<em>stretch</em>)</p>
+</div>
+<div class="slide" id="stretch">
+<h1>stretchとは?</h1>
+<ul class="simple">
+<li>ハッシュを繰り返し利用することで, ハッシュ値を求めるのに必要な時間を増大させる<ul>
+<li>攻撃に時間がかかるようになる<ul>
+<li>= パスワードの文字数を伸ばす(stretch)のと同じ効果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>どれくらいやるのか<ul>
+<li>crypt() MD5の場合: 1000回</li>
+<li>crypt() SHA-256,512の場合: (デフォルト)5000回</li>
+<li>CRYPTOGRAPHY ENGINEERING での例: 2^20(約100万)回</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="stretch-1">
+<h1>stretchの効果(1)</h1>
+<p>stretchの効果をはかるために, PHPのmcrypt拡張でSHA-256を繰り返し呼ぶコードで計測</p>
+<ul class="simple">
+<li>方式は CRYPTOGRAPHY ENGINEERING のもの</li>
+<li>パスワード 10byte</li>
+<li>salt 32byte</li>
+<li>CPU 1コアのみ利用</li>
+</ul>
+<p>Intel(R) Core(TM) i7 CPU 920  &#64; 2.67GHz で 1秒に 約50万回計算できた.</p>
+</div>
+<div class="slide" id="stretch-2">
+<h1>stretchの効果(2)</h1>
+<ul class="simple">
+<li>パスワードの文字種を64bitとすると</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">文字数</th>
+<th class="head">総パスワード数</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>n</td>
+<td>64^n</td>
+</tr>
+<tr><td>3</td>
+<td>26万</td>
+</tr>
+<tr><td>4</td>
+<td>1677万</td>
+</tr>
+<tr><td>5</td>
+<td>10億</td>
+</tr>
+<tr><td>6</td>
+<td>687億</td>
+</tr>
+<tr><td>7</td>
+<td>4兆</td>
+</tr>
+<tr><td>8</td>
+<td>281兆</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="stretch-3">
+<h1>stretchの効果(3)</h1>
+<p>1CPU(8コア)のPCでパスワード解析する場合を考察</p>
+<ul class="simple">
+<li>1日3456億回 計算可能<ul>
+<li>stretch がないと...<ul>
+<li>6文字が 0.2日,  7文字が 13日</li>
+</ul>
+</li>
+<li>1000回 stretch すると<ul>
+<li>1日3.5億回パスワードを計算可能</li>
+<li>5文字が 3日, 6文字だと 199日</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="unix">
+<h1>なぜUnixはこの方式なのか?</h1>
+<ul class="simple">
+<li>なぜ可逆な暗号化ではないのか?<ul>
+<li>鍵を管理するのが難しい.<ul>
+<li>以下からパスワード情報と鍵が漏れるかもしれない<ul>
+<li>バックアップファイル</li>
+<li>システムの脆弱性</li>
+<li>別のOSでブート</li>
+<li>物理的な攻撃</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id8">
+<h1>常識(?)のまとめ</h1>
+<ul>
+<li><p class="first">パスワードはハッシュ化して保存</p>
+<ul class="simple">
+<li>この時 salt と stretch を利用</li>
+</ul>
+</li>
+<li><p class="first">メリット</p>
+<blockquote>
+<ul class="simple">
+<li>鍵管理が不要</li>
+<li>生パスワードを復元できない</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">デメリット</p>
+<blockquote>
+<ul class="simple">
+<li>弱いパスワードが記録された情報だけで破れる</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</div>
+<div class="slide" id="web">
+<h1>Webシステムでは?</h1>
+<ul class="simple">
+<li>通常WebサーバとDBサーバは物理的に分離されている (されていない場合もあるが).<ul>
+<li>Unixよりもパスワード情報と鍵が 共に漏洩するリスクは低いだろう.</li>
+<li>もちろん, 鍵管理のコストは無理できない<ul>
+<li>漏洩, 改竄, 紛失</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id9">
+<h1>鍵を用いる場合の手法案</h1>
+<ul class="simple">
+<li>(共通鍵)暗号</li>
+<li>ハッシュ+暗号</li>
+<li>鍵付きハッシュ</li>
+</ul>
+</div>
+<div class="slide" id="id10">
+<h1>(共通鍵)暗号</h1>
+<ul class="simple">
+<li>メリット<ul>
+<li>ちゃんと暗号化し鍵が安全ならば, 弱いパスワードもパスワード情報だけでは破れない</li>
+</ul>
+</li>
+<li>デメリット<ul>
+<li>鍵があればパスワードを復元できる</li>
+<li>鍵の管理の必要がある</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id11">
+<h1>ハッシュ+暗号</h1>
+<p>常識(?)通りにハッシュ化したあとで暗号化</p>
+<ul class="simple">
+<li>メリット<ul>
+<li>ちゃんと暗号化し鍵が安全ならば, 弱いパスワードもパスワード情報だけでは破れない</li>
+<li>鍵を保持するものでも生パスワードを復元できない</li>
+</ul>
+</li>
+<li>デメリット<ul>
+<li>鍵の管理の必要がある</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id12">
+<h1>鍵付きハッシュ(1)</h1>
+<ul>
+<li><p class="first">saltの一部を固定の鍵とする?</p>
+<ul>
+<li><p class="first">単純に鍵と平文を文字列連結をしたものをハッシュ するMACは期待通りの強度がないという論文</p>
+<p><a class="reference external" href="http://www.cix.co.uk/~klockstone/twomacs.pdf">On the Security of Two MAC Algorithms</a></p>
+</li>
+<li><p class="first">hash(key || salt || password) 的なものはやめたほうがよさそう</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id13">
+<h1>鍵付きハッシュ(2)</h1>
+<ul class="simple">
+<li>HMACには前述の問題はないHMAC<ul>
+<li>CRAM-MD5 はHMACを元にしたパスワード情報保持をしている.<ul>
+<li>チャレンジレスポンス認証用の情報保持なので, そのまま応用していいかはわからない</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id14">
+<h1>鍵付きハッシュ(3)</h1>
+<ul class="simple">
+<li>メリット<ul>
+<li>ちゃんとしたアルゴリズムを用いて鍵が安全ならば, 弱いパスワードも記録された情報だけでは破れない<ul>
+<li>「ちゃんと」しているかは「ちゃんと」した人に 確認してほしい</li>
+</ul>
+</li>
+<li>鍵を保持するものでも生パスワードを復元できない</li>
+</ul>
+</li>
+<li>デメリット<ul>
+<li>鍵の管理の必要がある</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="id15">
+<h1>まとめ</h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="32%" />
+<col width="30%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">方式</th>
+<th class="head">弱パスワードの保護</th>
+<th class="head">生パスワード復元</th>
+<th class="head">鍵管理</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>ハッシュ</td>
+<td>stretchで対応</td>
+<td>不可能</td>
+<td>不必要</td>
+</tr>
+<tr><td>暗号</td>
+<td>可能</td>
+<td>可能</td>
+<td>必要</td>
+</tr>
+<tr><td>ハッシュ+暗号</td>
+<td>可能</td>
+<td>不可能</td>
+<td>必要</td>
+</tr>
+<tr><td>鍵付きハッシュ</td>
+<td>可能</td>
+<td>不可能</td>
+<td>必要</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="id16">
+<h1>参考文献</h1>
+<p>man 3 crypt</p>
+<blockquote>
+<a class="reference external" href="http://www.linux.or.jp/JM/html/LDP_man-pages/man3/crypt.3.html">Manpage of CRYPT</a></blockquote>
+<p>CRYPTOGRAPHY ENGINEERING</p>
+<blockquote>
+ISBN-13: 978-0470474242</blockquote>
+<p>認証技術 パスワードから公開鍵まで</p>
+<blockquote>
+ISBN-13: 978-4274065163</blockquote>
+</div>
+</div>
+</body>
+</html>
