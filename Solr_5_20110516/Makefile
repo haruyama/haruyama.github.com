@@ -1,4 +1,4 @@
-hoge: pdf s5
+all: pdf s5
 pdf:
 	rst2pdf -s ja,nyo index.rst -o "index.pdf"
 

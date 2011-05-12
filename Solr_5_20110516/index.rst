@@ -7,7 +7,7 @@ Solr 3.1で利用できるTokenizerを比較しました.
 
     PageBreak
 
-この資料URL
+この資料のURL
 ============================================================
 
 * http://haruyama.github.com/Solr_5_20110516/
@@ -41,3 +41,14 @@ Tokenizerの比較
 * 日本のWikipediaのデータのTSV(4.7GB)をupdate&commitした際の時間とインデックスサイズを比較
 
 * `Solr/Tokenizer評価201105 - 春山征吾のWiki - livedoor Wiki（ウィキ） <http://wiki.livedoor.jp/haruyama_seigo/d/Solr/Tokenizer%c9%be%b2%c1201105>`_
+
+
+補足
+======================================
+
+* 1つの大きいTSVを突っ込んだ時の話
+
+  * リソースが許せば, 入力ファイルを分割して並列に更新すれば時間を短縮できる
+
+    * 私の経験では更新はCPUに束縛される. 
+      ストレージの影響はあるがそれほど多くはない.
