@@ -343,7 +343,9 @@ ul.auto-toc {
 <div class="slide" id="slide0">
 <h1 class="title">Tokenizer いろいろ比較</h1>
 
-<p>Solr 3.1で利用できるTokenizerを比較しました.</p>
+<ul class="simple">
+<li>Solr 3.1で利用できるTokenizerを比較しました.</li>
+</ul>
 
 </div>
 <div class="slide" id="url">
@@ -366,28 +368,147 @@ ul.auto-toc {
 <li>春山 征吾 <a class="reference external" href="https://twitter.com/haruyama">&#64;haruyama</a></li>
 <li>本日(2011/05/16) ECナビを退社.</li>
 <li>転職先募集中!<ul>
-<li><a class="reference external" href="http://wiki.livedoor.jp/haruyama_seigo/d/%c5%be%bf%a6%cd%d1%be%f0%ca%f3">転職用情報 - 春山征吾のWiki - livedoor Wiki（ウィキ）</a></li>
-<li>懇親会やTwitter, メールなどでご連絡お願い致します.</li>
+<li><a class="reference external" href="http://wiki.livedoor.jp/haruyama_seigo/d/%c5%be%bf%a6%cd%d1%be%f0%ca%f3">転職用情報 - 春山征吾のWiki</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="slide" id="id2">
-<h1>Tokenizerの比較</h1>
+<h1>発表の流れ</h1>
 <ul class="simple">
-<li>日本のWikipediaのデータのTSV(4.7GB)をupdate&amp;commitした際の時間とインデックスサイズを比較</li>
-<li><a class="reference external" href="http://wiki.livedoor.jp/haruyama_seigo/d/Solr/Tokenizer%c9%be%b2%c1201105">Solr/Tokenizer評価201105 - 春山征吾のWiki - livedoor Wiki（ウィキ）</a></li>
+<li>評価手法</li>
+<li>Tokenizer(&amp;Filter紹介)</li>
+<li>比較<ul>
+<li>NGram系 vs 形態素解析</li>
+<li>3.1.0 vs 1.4.1</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="slide" id="id3">
-<h1>補足</h1>
+<h1>評価手法</h1>
 <ul class="simple">
-<li>1つの大きいTSVを突っ込んだ時の話<ul>
-<li>リソースが許せば, 入力ファイルを分割して並列に更新すれば時間を短縮できる<ul>
-<li>私の経験では更新はCPUに束縛される.
-ストレージの影響はあるがそれほど多くはない.</li>
+<li>日本のWikipediaのデータをupdate&amp;commitした際の
+時間とインデックスサイズを比較<ul>
+<li>元データは, TSV(4.7GB, 1464241件)</li>
 </ul>
 </li>
+<li><a class="reference external" href="http://wiki.livedoor.jp/haruyama_seigo/d/Solr/Tokenizer%c9%be%b2%c1201105">Solr/Tokenizer評価201105 - 春山征吾のWiki</a></li>
+<li>1つの大きいTSVを突っ込んだ時の話<ul>
+<li>リソースが許せば, 入力ファイルを分割して並列に更新することで
+時間を短縮できる</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="ngram-vs">
+<h1>NGram系 vs 形態素解析</h1>
+<ul class="simple">
+<li>NGram系</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="16%" />
+<col width="44%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>&nbsp;</td>
+<td>CJK</td>
+<td>NGram(bi-gram)</td>
+</tr>
+<tr><td>時間(mm:ss)</td>
+<td>13:45</td>
+<td>9:05</td>
+</tr>
+<tr><td>サイズ(Gbyte)</td>
+<td>7.37</td>
+<td>6.75</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>形態素解析</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="36%" />
+<col width="36%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>&nbsp;</td>
+<td>Japanese(ipadic)</td>
+<td>Japanese(chasen)</td>
+</tr>
+<tr><td>時間(mm:ss)</td>
+<td>36:53</td>
+<td>51:45</td>
+</tr>
+<tr><td>サイズ(Gbyte)</td>
+<td>6.75</td>
+<td>7.12</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="vs-1-4-1">
+<h1>3.1.0 vs 1.4.1</h1>
+<ul class="simple">
+<li>3.1.0</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="16%" />
+<col width="44%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>&nbsp;</td>
+<td>CJK</td>
+<td>NGram(bi-gram)</td>
+</tr>
+<tr><td>時間(mm:ss)</td>
+<td>13:45</td>
+<td>9:05</td>
+</tr>
+<tr><td>サイズ(Gbyte)</td>
+<td>7.37</td>
+<td>6.75</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>1.4.1</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="16%" />
+<col width="44%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>&nbsp;</td>
+<td>CJK</td>
+<td>NGram(bi-gram)</td>
+</tr>
+<tr><td>時間(mm:ss)</td>
+<td>14:10</td>
+<td>9:15</td>
+</tr>
+<tr><td>サイズ(Gbyte)</td>
+<td>7.37</td>
+<td>6.75</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="id4">
+<h1>さいごに</h1>
+<ul class="simple">
+<li>転職先募集中!<ul>
+<li><a class="reference external" href="http://wiki.livedoor.jp/haruyama_seigo/d/%c5%be%bf%a6%cd%d1%be%f0%ca%f3">転職用情報 - 春山征吾のWiki</a></li>
+<li>懇親会やTwitter, メールなどでご連絡お願い致します.</li>
 </ul>
 </li>
 </ul>
