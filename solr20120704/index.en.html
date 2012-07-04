@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <!-- configuration parameters -->
+  <meta name="defaultView" content="slideshow" />
+  <meta name="controlVis" content="hidden" />
+  <!-- style sheet links -->
+  <link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+  <link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+  <link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+  <link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+  <!-- S5 JS -->
+  <script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header"></div>
+<div id="footer">
+  <h1></h1>
+  <h2></h2>
+</div>
+</div>
+<div class="presentation">
+<div class="section slide level1" id="using-solr-in-mixi.">
+<h1>Using Solr in mixi.</h1>
+<h2></h2>
+<h2><a href="http://atnd.org/events/29826">#SolrJP 8th.</a></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<p>mixi, Inc.</p>
+<p>System H.Q., Tech Div., R &amp; D Group.</p>
+<p>HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)</p>
+<p><a href="index.html">日本語</a> / <a href="index.en.html">English</a></p>
+</div>
+<div class="section slide level1" id="self-introduction">
+<h1>Self Introduction</h1>
+<ul>
+<li><a href="https://twitter.com/haruyama">@haruyama</a></li>
+<li>I have been using <a href="http://lucene.apache.org/solr/">Apache Solr</a> from 2008.</li>
+<li>I joined mixi Inc. on 2011/10.</li>
+</ul>
+</div>
+<div class="section slide level1" id="using-solr-in-mixi.-1">
+<h1>Using Solr in mixi.</h1>
+<ul>
+<li>Full-Text Search</li>
+<li>Text Mining</li>
+</ul>
+</div>
+<div class="section slide level1" id="full-text-search-in-mixi">
+<h1>Full-Text Search in mixi</h1>
+<p>We adopted following solutions before 2011 (and now use them).</p>
+<ul>
+<li><a href="http://fallabs.com/hyperestraier/index.html">Hyper Estraier</a></li>
+<li><a href="http://fallabs.com/tokyodystopia/">Tokyo Dystopia</a></li>
+<li><a href="http://qwik.jp/senna/FrontPageJ.html">Senna</a></li>
+</ul>
+<p>we have been constructing and renewing search systems using Solr, since 2011.</p>
+</div>
+<div class="section slide level1" id="anuenue">
+<h1>Anuenue</h1>
+<p>Our open-source product(Apache Licence 2.0).</p>
+<ul>
+<li><a href="https://code.google.com/p/anuenue-wrapper/">anuenue-wrapper - A Search Package with Apache Solr</a></li>
+</ul>
+<p>a Solr wrapper, which can build Master-Slave Full-Text Search System.</p>
+<ul>
+<li>(<a href="https://twitter.com/takahi_i?partner=mozilla&amp;source=mobile-bar">@takahi_i</a>)(Now in PFI) created and developed.</li>
+<li>Now HARUYAMA develops and maintains.</li>
+</ul>
+</div>
+<div class="section slide level1" id="anuenue-logical-composition">
+<h1>Anuenue : Logical composition</h1>
+<div class="figure">
+<img src="img/anuenue_cluster.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="anuenue-history">
+<h1>Anuenue: History</h1>
+<ul>
+<li>Anuenue 0.3.x
+<ul>
+<li>first release. Solr 1.4. Sen/Kuromoji.</li>
+</ul></li>
+<li>Anuenue 0.5.x
+<ul>
+<li>fully refactoring.</li>
+</ul></li>
+<li>Anuenue 0.6.x
+<ul>
+<li>Solr 3.x. lucene-gosen/Kuromoji.</li>
+</ul></li>
+<li>Anuenue 0.7.x
+<ul>
+<li>Optimizing and bug fixes.</li>
+</ul></li>
+</ul>
+<p>We use Anuenue 0.7.x in mixi.</p>
+</div>
+<div class="section slide level1" id="search-systems-using-anuenue-in-mixi">
+<h1>Search Systems using Anuenue in mixi</h1>
+<ul>
+<li>mixi page</li>
+<li>mixi application/game</li>
+<li>diary</li>
+<li>future release
+<ul>
+<li>community</li>
+<li>topics in communities</li>
+<li>(We are going to substitute Anuenue for all Hyper Estraier/Tokyo Dystopia.)</li>
+</ul></li>
+</ul>
+<p>We also use Anuenue for search systems in our office.</p>
+</div>
+<div class="section slide level1" id="anuenue-in-mixi-physical-composition">
+<h1>Anuenue in mixi : Physical composition</h1>
+<p>We use 1 Master and 2 Slave(and Merger) servers on our most systems.</p>
+<p>Features of our typical search system.</p>
+<ul>
+<li>Index size: around 10GB (on memory!)</li>
+<li>Query per second: under 100.</li>
+</ul>
+<p>And we share physical servers with 2 or 3 services.</p>
+</div>
+<div class="section slide level1" id="physical-composition-figure">
+<h1>Physical composition: Figure</h1>
+<div class="figure">
+<img src="img/anuenue.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="future-goal">
+<h1>Future goal</h1>
+<ul>
+<li>Log analysis(like <a href="http://soleami.com/">soleami</a>)</li>
+<li>Personalized search
+<ul>
+<li>for example: Ranking using user’s and friend’s ’like’s
+<ul>
+<li>Join (Solr 4)</li>
+<li>Custom Function Query which retrieves data from external storage(next page)</li>
+</ul></li>
+</ul></li>
+<li>Features of general search systems
+<ul>
+<li>for example: Suggestion.</li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="custom-function-query-which-retrieves-data-from-external-storage">
+<h1>Custom Function Query which retrieves data from external storage</h1>
+<ul>
+<li>Personalized Data, such as ‘like’, are real-time and big.
+<ul>
+<li>They are not suitable to index in Solr?</li>
+</ul></li>
+<li>Can we refer data on external storage(for example: memcached) using Function Query?
+<ul>
+<li><a href="https://wiki.apache.org/solr/FunctionQuery">FunctionQuery - Solr Wiki</a></li>
+<li><a href="https://github.com/haruyama/solr-function-query-sample">haruyama/solr-function-query-sample · GitHub</a>
+<ul>
+<li>We can do it! (functionally)</li>
+</ul></li>
+</ul></li>
+<li>We didn’t test its capability.
+<ul>
+<li>At an actual service, we would probably restrict numbers of retrieving per 1 Solr Query.</li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="custom-function-query-figure">
+<h1>Custom Function Query: Figure</h1>
+<div class="figure">
+<img src="img/external_storage.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="custom-function-query-demo">
+<h1>Custom Function Query: Demo</h1>
+<p>Demo on my machine.</p>
+<ul>
+<li>http://localhost:8983/solr/select/?q=<em>%3A</em>&amp;indent=on&amp;sort=dist_between_users%281,%20id%29%20desc&amp;fl=id</li>
+</ul>
+</div>
+<div class="section slide level1" id="text-mining-using-solr">
+<h1>Text mining using Solr</h1>
+<ul>
+<li>Our group were often consulted about mining data of mixi Voice.
+<ul>
+<li>We dumped data and analyzed them many times….</li>
+</ul></li>
+<li>Let’s index data to Solr!</li>
+</ul>
+</div>
+<div class="section slide level1" id="number-of-documents-and-index-size">
+<h1>Number of documents and Index size</h1>
+<ul>
+<li>posts(documents): over 10 million per day.</li>
+<li>Solr Index Size: over 4GB per day.</li>
+</ul>
+<p>We keep indexes for the last 102 days in 600GB SSD.</p>
+<ul>
+<li>over 11 billion documents.</li>
+<li>about 450GB</li>
+</ul>
+</div>
+<div class="section slide level1" id="softwares">
+<h1>Softwares</h1>
+<ul>
+<li>Solr 4.0 (at 2012/01/??)</li>
+<li>lucene-gosen 1.2.1</li>
+<li>Filters which I made (by Scala)
+<ul>
+<li><a href="https://github.com/haruyama/solr-filter">haruyama/solr-filter - GitHub</a></li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="fields-in-document">
+<h1>Fields in Document</h1>
+<ul>
+<li>body</li>
+<li>post time</li>
+<li>number of favorites</li>
+<li>number of comments</li>
+<li>age</li>
+<li>sex</li>
+<li>place of residence</li>
+<li>…</li>
+<li>Dynamic Fields ＊ temporary field for A/B Testing</li>
+</ul>
+</div>
+<div class="section slide level1" id="sample-number-of-posts-on-201205">
+<h1>Sample: number of posts on 2012/05</h1>
+<div class="figure">
+<img src="img/201205_all.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="number-of-womens-posts-on-201205">
+<h1>number of women’s posts on 2012/05</h1>
+<div class="figure">
+<img src="img/201205_f.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="number-of-mens-posts-on-201205">
+<h1>number of men’s posts on 2012/05</h1>
+<div class="figure">
+<img src="img/201205_m.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="facet-of-age-to-womens-posts-on-201205">
+<h1>facet of age to women’s posts on 2012/05</h1>
+<div class="figure">
+<img src="img/201205_f_age.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="facet-of-age-to-mens-posts-on-201205">
+<h1>facet of age to men’s posts on 2012/05</h1>
+<div class="figure">
+<img src="img/201205_m_age.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="facet-of-age-to-womens-posts-including-akb-on-201205">
+<h1>facet of age to women’s posts including ‘AKB’ on 2012/05</h1>
+<div class="figure">
+<img src="img/201205_f_age_akb.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="facet-of-age-to-mens-posts-including-akb-on-201205">
+<h1>facet of age to men’s posts including ‘AKB’ on 2012/05</h1>
+<div class="figure">
+<img src="img/201205_m_age_akb.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="composition">
+<h1>Composition</h1>
+<div class="figure">
+<img src="img/mining.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="why-is-index-for-last-1-day-separated">
+<h1>Why is index for last 1-day separated?</h1>
+<ul>
+<li>We can calculate summaries for 1 day quickly.</li>
+<li>mergeIndexes faster than updates full index.
+<ul>
+<li>mergeIndexes only moves files and rewrites segments.* .</li>
+<li>updating causes merging indexes.</li>
+</ul></li>
+<li>It takes about 1 minute to faceting to all documents.
+<ul>
+<li>If a query is specified (such as ‘body:AKB’), it takes a few seconds.</li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="expansion">
+<h1>Expansion</h1>
+<ul>
+<li>Positive/Negative analysis</li>
+<li>burst keyword</li>
+</ul>
+</div>
+<div class="section slide level1" id="positivenegative-analysis">
+<h1>Positive/Negative analysis</h1>
+<ul>
+<li>We can do Positive/Negative analysis.
+<ul>
+<li>We built a word-score dictionary.
+<ul>
+<li>Part of speech: adj., pictogram and face mark</li>
+</ul></li>
+</ul></li>
+<li>How to build a dictionary
+<ul>
+<li>iterate the following procedure
+<ul>
+<li>get documents from Solr randomly.</li>
+<li>extract words (adj., pictogram and face mark)</li>
+<li>score documents by existing dictionary</li>
+<li>adjust the scores of documents manually</li>
+<li>score words using classifier and make a word-score dictionary.</li>
+<li>adjust the dictionary manually</li>
+</ul></li>
+</ul></li>
+<li>How to classify a given word
+<ul>
+<li>get documents(A) from Solr randomly.</li>
+<li>get documents(B) from Solr using a given word</li>
+<li>score documents(A and B) by a dictionary</li>
+<li>chisq test between A and B</li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="positivenegative-analysis-score-ranking">
+<h1>Positive/Negative Analysis: Score Ranking</h1>
+<ul>
+<li>Positive
+<ul>
+<li>かわいい</li>
+<li>おもしろい</li>
+<li>懐かしい</li>
+<li>素晴らしい</li>
+<li>偉い</li>
+</ul></li>
+<li>Negative
+<ul>
+<li>おそい</li>
+<li>ダサい</li>
+<li>遠慮ない</li>
+<li>痒い</li>
+<li>あぶない</li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="burst-keyword">
+<h1>Burst Keyword</h1>
+<ul>
+<li>extract burst morphemes which have high chisq values (per day)</li>
+<li>concatenate morphemes around a burst morpheme</li>
+<li><p>concatenations which have high frequencies are burst keywords.</p></li>
+<li><p>At mixi Voice, most burst keywords come from mixi News.</p></li>
+</ul>
+</div>
+<div class="section slide level1" id="burst-keyword-323">
+<h1>Burst Keyword: 3/23</h1>
+<ul>
+<li>シンデレラ城で結婚式が可能に~TDL初の園内ウエディングプラン発表
+<ul>
+<li>from mixi News.</li>
+</ul></li>
+<li>ルパン VS コナン</li>
+</ul>
+</div>
+<div class="section slide level1" id="burst-keyword-521">
+<h1>burst keyword: 5/21</h1>
+<ul>
+<li>日食グラス</li>
+<li>金環日食</li>
+<li>300年後</li>
+<li>綺麗だった</li>
+<li>日食メガネ</li>
+</ul>
+</div>
+<div class="section slide level1" id="future-goal-1">
+<h1>Future goal</h1>
+<ul>
+<li>extend a period
+<ul>
+<li>We want analyze documents over 1 year.</li>
+</ul></li>
+<li>provide an usable GUI(Web Application)</li>
+</ul>
+</div>
+<div class="section slide level1" id="summary">
+<h1>Summary</h1>
+<ul>
+<li>mixi uses Solr for Full-Text Search and Text Mining.</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <!-- configuration parameters -->
+  <meta name="defaultView" content="slideshow" />
+  <meta name="controlVis" content="hidden" />
+  <!-- style sheet links -->
+  <link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+  <link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+  <link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+  <link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+  <!-- S5 JS -->
+  <script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header"></div>
+<div id="footer">
+  <h1></h1>
+  <h2></h2>
+</div>
+</div>
+<div class="presentation">
+<div class="section slide level1" id="mixi-での-solr-の利用">
+<h1>mixi での Solr の利用</h1>
+<h2></h2>
+<h2><a href="http://atnd.org/events/29826">第8回 Solr勉強会</a></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<h2></h2>
+<p>株式会社ミクシィ</p>
+<p>システム本部技術部研究開発グループ</p>
+<p>春山 征吾(<a href="https://twitter.com/haruyama">@haruyama</a>)</p>
+<p><a href="index.html">日本語</a> / <a href="index.en.html">English</a></p>
+</div>
+<div class="section slide level1" id="自己紹介">
+<h1>自己紹介</h1>
+<ul>
+<li><a href="https://twitter.com/haruyama">@haruyama</a></li>
+<li>2008年6月より <a href="http://lucene.apache.org/solr/">Apache Solr</a> を利用</li>
+<li>2011年10月に 株式会社ミクシィに入社</li>
+</ul>
+</div>
+<div class="section slide level1" id="mixi-での-solr-の利用シーン">
+<h1>mixi での Solr の利用シーン</h1>
+<ul>
+<li>全文検索</li>
+<li>テキストマイニング</li>
+</ul>
+</div>
+<div class="section slide level1" id="mixi-の全文検索">
+<h1>mixi の全文検索</h1>
+<p>2011年以前は以下のソリューションを採用していた.</p>
+<ul>
+<li><a href="http://fallabs.com/hyperestraier/index.html">Hyper Estraier</a></li>
+<li><a href="http://fallabs.com/tokyodystopia/">Tokyo Dystopia</a></li>
+<li><a href="http://qwik.jp/senna/FrontPageJ.html">Senna</a></li>
+</ul>
+<p>2011年以降はSolr を利用して, 新規案件の検索システムの構築や既存案件の検索システムの置換を行なっている.</p>
+</div>
+<div class="section slide level1" id="anuenue">
+<h1>Anuenue</h1>
+<p>ミクシィで作成したオープンソース製品(Apache Licence 2.0)</p>
+<ul>
+<li><a href="https://code.google.com/p/anuenue-wrapper/">anuenue-wrapper - A Search Package with Apache Solr</a></li>
+</ul>
+<p>Master-Slave構成の全文検索システムを構築できる Solr の ラッパー</p>
+<ul>
+<li>現PFI の 伊藤 (<a href="https://twitter.com/takahi_i?partner=mozilla&amp;source=mobile-bar">@takahi_i</a>)さんが作成.</li>
+<li>現在 春山が開発/保守</li>
+</ul>
+</div>
+<div class="section slide level1" id="anuenue-論理的な構成">
+<h1>Anuenue : 論理的な構成</h1>
+<div class="figure">
+<img src="img/anuenue_cluster.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="anuenue-の進化">
+<h1>Anuenue の進化</h1>
+<ul>
+<li>Anuenue 0.3 系
+<ul>
+<li>最初のリリース系統. Solr 1.4 ベース. Sen/Kuromoji を利用.</li>
+</ul></li>
+<li>Anuenue 0.5 系
+<ul>
+<li>リファクタリング.</li>
+</ul></li>
+<li>Anuenue 0.6 系
+<ul>
+<li>Solr 3.x に更新. lucene-gosen を採用.</li>
+</ul></li>
+<li>Anuenue 0.7 系
+<ul>
+<li>更新の高速化. バグ修正.</li>
+</ul></li>
+</ul>
+<p>現在 mixi 内で利用しているのは 0.7系.</p>
+</div>
+<div class="section slide level1" id="anuenue-を利用している-mixi-の検索">
+<h1>Anuenue を利用している mixi の検索</h1>
+<ul>
+<li>mixiページ検索</li>
+<li>mixiアプリ/ゲーム検索</li>
+<li>日記検索</li>
+<li>未リリース
+<ul>
+<li>コミュニティ検索</li>
+<li>トピック検索</li>
+<li>(すべての Hyper Estraier, Tokyo Distopia なシステムを置き換える予定)</li>
+</ul></li>
+</ul>
+<p>他に 内部用の全文検索システムでも採用している.</p>
+</div>
+<div class="section slide level1" id="anuenue-in-mixi-物理的な構成">
+<h1>Anuenue in mixi : 物理的な構成</h1>
+<p>たいがいのシステムでは, 1 Master, 2 Slave(兼Marger)構成.</p>
+<p>mixi の典型的なシステムは以下のような特徴.</p>
+<ul>
+<li>インデックスサイズが 〜10GB</li>
+<li>QPS が 100 以下</li>
+</ul>
+<p>さらに, 2〜3個の検索システムを 物理サーバに相乗りさせている</p>
+</div>
+<div class="section slide level1" id="物理的な構成-図">
+<h1>物理的な構成 : 図</h1>
+<div class="figure">
+<img src="img/anuenue.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="今後やりたいこと">
+<h1>今後やりたいこと</h1>
+<ul>
+<li>ログ分析(<a href="http://soleami.com/">soleami</a>的な)</li>
+<li>パーソナライズ
+<ul>
+<li>ユーザやユーザの友人のイイネ!などを元にしたランキング
+<ul>
+<li>Solr 4 以降の Join</li>
+<li>外部ストレージを参照するカスタム関数クエリ(次ページ)</li>
+</ul></li>
+</ul></li>
+<li>もしかして, など一般的な検索エンジンの機能</li>
+</ul>
+</div>
+<div class="section slide level1" id="外部ストレージを参照するカスタム関数クエリ">
+<h1>外部ストレージを参照するカスタム関数クエリ</h1>
+<ul>
+<li>イイネ! などのパーソナライズ用の情報はリアルタイムに更新されたりデータ量が多いなど Solr に持たせないほうがよいかも</li>
+<li>これらの情報は memcached などに持たせて, 関数クエリで参照させられないか
+<ul>
+<li><a href="https://wiki.apache.org/solr/FunctionQuery">FunctionQuery - Solr Wiki</a></li>
+<li><a href="https://github.com/haruyama/solr-function-query-sample">haruyama/solr-function-query-sample · GitHub</a>
+<ul>
+<li>機能としては問題なく動くことは確認した.</li>
+</ul></li>
+</ul></li>
+<li>どれくらい性能がでるかはまだ測定していない
+<ul>
+<li>検索結果が一定件数以下のクエリのみに適用するなど, 工夫が必要かも.</li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="カスタム関数クエリ-イメージ">
+<h1>カスタム関数クエリ: イメージ</h1>
+<div class="figure">
+<img src="img/external_storage.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="カスタム関数クエリ-デモ">
+<h1>カスタム関数クエリ: デモ</h1>
+<p>手元の環境でのデモ</p>
+<ul>
+<li>http://localhost:8983/solr/select/?q=<em>%3A</em>&amp;indent=on&amp;sort=dist_between_users%281,%20id%29%20desc&amp;fl=id</li>
+</ul>
+</div>
+<div class="section slide level1" id="テキストマイニング">
+<h1>テキストマイニング</h1>
+<ul>
+<li>mixiボイスのマイニングをしたいという話がちょくちょく来る
+<ul>
+<li>その度にダンプして解析…</li>
+</ul></li>
+<li>じゃあ, 全部 Solr にのっけちゃえばよくない?</li>
+</ul>
+</div>
+<div class="section slide level1" id="mixiボイスの投稿数">
+<h1>mixiボイスの投稿数</h1>
+<ul>
+<li>1日あたり 1000万強</li>
+<li>1日分の Solr のインデックスが 4GB強.</li>
+</ul>
+<p>600GB のSSD に 102日分保持するようにした.</p>
+<ul>
+<li>約 11億文書</li>
+<li>約 450GB</li>
+</ul>
+</div>
+<div class="section slide level1" id="利用ソフトウェア">
+<h1>利用ソフトウェア</h1>
+<ul>
+<li>Solr 4.0(2012/01ごろの)</li>
+<li>lucene-gosen 1.2.1</li>
+<li>自作のフィルタ(Scala製)
+<ul>
+<li><a href="https://github.com/haruyama/solr-filter">haruyama/solr-filter - GitHub</a>
+<ul>
+<li>特定の品詞を抽出するフィルタ</li>
+<li>lucene-gosen付属のものとほぼ同じ / 機能的な違いはサ変動詞も抽出可能にした</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="solrに入れているデータ">
+<h1>Solrに入れているデータ</h1>
+<ul>
+<li>ボイス/コメント本文</li>
+<li>投稿日時</li>
+<li>イイネ数</li>
+<li>ボイスに付いたコメント数</li>
+<li>年齢</li>
+<li>性別</li>
+<li>居住地</li>
+<li>…</li>
+<li>Solr の Dynamic Field を用いて一時的に要素を足すこともある
+<ul>
+<li>ABテスト用フラグ</li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="集計サンプル-5月の投稿数">
+<h1>集計サンプル: 5月の投稿数</h1>
+<div class="figure">
+<img src="img/201205_all.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="集計サンプル-5月の女性の投稿数">
+<h1>集計サンプル: 5月の女性の投稿数</h1>
+<div class="figure">
+<img src="img/201205_f.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="集計サンプル-5月の男性の投稿数">
+<h1>集計サンプル: 5月の男性の投稿数</h1>
+<div class="figure">
+<img src="img/201205_m.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="集計サンプル-5月の女性-年代別">
+<h1>集計サンプル: 5月の女性 年代別</h1>
+<div class="figure">
+<img src="img/201205_f_age.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="集計サンプル-5月の男性-年代別">
+<h1>集計サンプル: 5月の男性 年代別</h1>
+<div class="figure">
+<img src="img/201205_m_age.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="月の女性-年代別-akb">
+<h1>5月の女性 年代別 「AKB」</h1>
+<div class="figure">
+<img src="img/201205_f_age_akb.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="月の男性-年代別-akb">
+<h1>5月の男性 年代別 「AKB」</h1>
+<div class="figure">
+<img src="img/201205_m_age_akb.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="構成">
+<h1>構成</h1>
+<div class="figure">
+<img src="img/mining.png" /><p class="caption"></p>
+</div>
+</div>
+<div class="section slide level1" id="なぜ-1日分のインデックスを別にしているか">
+<h1>なぜ 1日分のインデックスを別にしているか</h1>
+<ul>
+<li>1日分だけの集計を高速にしたいことがある</li>
+<li>直接入れるより 1日分を mergeIndexes したほうが速い.
+<ul>
+<li>mergeIndexes は ファイルの移動と segments.* を書き換えるだけ.</li>
+<li>通常の update では merge が発生する</li>
+</ul></li>
+<li>この構成で, 全文書に対する Facet を行なうと1分くらいかかる.
+<ul>
+<li>検索クエリを指定するともっと短くなる</li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="拡張">
+<h1>拡張</h1>
+<ul>
+<li>ポジネガ分析</li>
+<li>バーストキーワード</li>
+</ul>
+</div>
+<div class="section slide level1" id="ポジネガ分析">
+<h1>ポジネガ分析</h1>
+<ul>
+<li>形容詞/絵文字/顔文字にスコアが付いた辞書を作成してポジネガ分析でできるようにした.
+<ul>
+<li>形容詞 &gt; 絵文字 &gt; 顔文字の順で効く</li>
+</ul></li>
+<li>辞書作成手法
+<ul>
+<li>次の作業を繰り返す
+<ul>
+<li>Solr から文書をランダムに取得</li>
+<li>特定の品詞のみ抽出</li>
+<li>既存のポジネガ辞書から文書にスコア付ける</li>
+<li>手で調整</li>
+<li>分類器で学習し辞書作成</li>
+<li>手で調整</li>
+</ul></li>
+</ul></li>
+<li>キーワードを指定していないときとした場合で, ポジ/ネガのカイ二乗検定</li>
+</ul>
+</div>
+<div class="section slide level1" id="ポジネガ分析-スコアランキング">
+<h1>ポジネガ分析: スコアランキング</h1>
+<ul>
+<li>ポジ
+<ul>
+<li>かわいい</li>
+<li>おもしろい</li>
+<li>懐かしい</li>
+<li>素晴らしい</li>
+<li>偉い</li>
+</ul></li>
+<li>ネガ
+<ul>
+<li>おそい</li>
+<li>ダサい</li>
+<li>遠慮ない</li>
+<li>痒い</li>
+<li>あぶない</li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="バーストキーワード">
+<h1>バーストキーワード</h1>
+<ul>
+<li>日別に, カイ二乗値の高いバースト形態素を抽出</li>
+<li>バースト形態素周辺の形態素をつなげる</li>
+<li><p>この繋げたものが高い頻度を持っていたらバーストキーワード.</p></li>
+<li><p>mixiボイスではmixiニュースに関するつぶやきが盛り上がることが多い.</p></li>
+</ul>
+</div>
+<div class="section slide level1" id="バーストキーワード-323">
+<h1>バーストキーワード: 3/23</h1>
+<ul>
+<li>シンデレラ城で結婚式が可能に~TDL初の園内ウエディングプラン発表
+<ul>
+<li>mixiニュース経由</li>
+</ul></li>
+<li>ルパン VS コナン</li>
+</ul>
+</div>
+<div class="section slide level1" id="バーストキーワード-521">
+<h1>バーストキーワード: 5/21</h1>
+<ul>
+<li>日食グラス</li>
+<li>金環日食</li>
+<li>300年後</li>
+<li>綺麗だった</li>
+<li>日食メガネ</li>
+</ul>
+</div>
+<div class="section slide level1" id="やりたいこと">
+<h1>やりたいこと</h1>
+<ul>
+<li>期間の延長
+<ul>
+<li>1年以上やりたい</li>
+</ul></li>
+<li>社内向けに使いやすいGUIの提供</li>
+</ul>
+</div>
+<div class="section slide level1" id="全体のまとめ">
+<h1>全体のまとめ</h1>
+<ul>
+<li>mixi は検索とテキストマイニングで Solr を利用しています.</li>
+</ul>
+</div>
+<div class="section slide level1" id="lucene-ソースコードリーディング会">
+<h1>Lucene ソースコードリーディング会</h1>
+<ul>
+<li>前回: 2012/01/14(土): <a href="http://partake.in/events/ed2a0a03-c8f2-4ffe-94f9-bb52a0cba4f1">Lucene ソースコードリーディング会</a>
+<ul>
+<li>株式会社ミクシィ 会議室で開催</li>
+</ul></li>
+<li>また土曜に開催したいと思ってます.</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
