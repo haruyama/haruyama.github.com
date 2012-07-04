@@ -98,6 +98,8 @@ Features of our typical search system.
 
 And we share physical servers with 2 or 3 services.
 
+We are going to build bigger systems (index size: over 100GB).
+
 # Physical composition: Figure
 
 ![](img/anuenue.png)
