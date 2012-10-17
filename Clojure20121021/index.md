@@ -41,6 +41,8 @@ Clojure についての勉強会です.
 
 # 資料
 
+* [Clojure - home](http://clojure.org/)
+* [ClojureDocs - Community-Powered Clojure Documentation and Examples](http://clojuredocs.org/)
 * [Programming Clojure Second Edition](http://pragprog.com/book/shcloj2/programming-clojure)
     * 物理的に1冊あります
 * [春山のソーシャルブックマークの clojure タグ](https://www.diigo.com/user/haruyamaseigo/clojure)
