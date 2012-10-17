@@ -79,7 +79,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <ul>
 <li>~/.vim/after/ftplugin/clojure.vim
 <ul>
-<li>VimShellSendStringAndMove と Rtrim(), Ref() は自作で, 含まれていません</li>
+<li>VimShellSendStringAndMove と Rtrim(), Ref() は別に定義しています.</li>
 </ul></li>
 </ul>
 <pre class="vimscript"><code>setl tabstop=2 expandtab shiftwidth=2 softtabstop=2 smarttab
@@ -97,7 +97,7 @@ if exists(&#39;*PareditInitBuffer&#39;)
   nmap &lt;Leader&gt;4 &lt;SID&gt;(toggle-paredit)
 endif
 
-setl includeexpr=substitute(substitute(v:fname,&#39;/.*$&#39;,&#39;&#39;,&#39;g&#39;),&#39;\\.&#39;,&#39;/&#39;,&#39;g&#39;)
+setl includeexpr=substitute(substitute(v:fname,&#39;/.*$&#39;,&#39;&#39;,&#39;&#39;),&#39;\\.&#39;,&#39;/&#39;,&#39;g&#39;)
 setl path+=src;/,test;/
 setl suffixesadd=.clj,cljs
 
@@ -111,9 +111,9 @@ nnoremap &lt;buffer&gt; &lt;silent&gt; ,r :call Ref(&#39;clojure&#39;)&lt;Enter&
 <div class="section slide level1" id="vim-plugins">
 <h1>Vim plugins</h1>
 <ul>
-<li><a href="https://github.com/thinca/vim-ft-clojure">thinca/vim-ft-clojure · GitHub</a></li>
-<li><a href="https://github.com/vim-scripts/paredit.vim">vim-scripts/paredit.vim · GitHub</a></li>
-<li><a href="https://github.com/haruyama/jump2clj.vim">haruyama/jump2clj.vim · GitHub</a>
+<li><a href="https://github.com/thinca/vim-ft-clojure">thinca/vim-ft-clojure</a></li>
+<li><a href="https://github.com/vim-scripts/paredit.vim">vim-scripts/paredit.vim</a></li>
+<li><a href="https://github.com/haruyama/jump2clj.vim">haruyama/jump2clj.vim</a>
 <ul>
 <li>作ったけど設定だけでほぼ代替できたのでたぶんもう使わない.</li>
 </ul></li>

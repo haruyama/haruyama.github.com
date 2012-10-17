@@ -69,7 +69,7 @@ nnoremap <buffer> <silent> ,r :call Ref('clojure')<Enter>
 
 # Vim plugins
 
-* [thinca/vim-ft-clojure · GitHub](https://github.com/thinca/vim-ft-clojure)
-* [vim-scripts/paredit.vim · GitHub](https://github.com/vim-scripts/paredit.vim)
-* [haruyama/jump2clj.vim · GitHub](https://github.com/haruyama/jump2clj.vim)
+* [thinca/vim-ft-clojure](https://github.com/thinca/vim-ft-clojure)
+* [vim-scripts/paredit.vim](https://github.com/vim-scripts/paredit.vim)
+* [haruyama/jump2clj.vim](https://github.com/haruyama/jump2clj.vim)
     * 作ったけど設定だけでほぼ代替できたのでたぶんもう使わない.

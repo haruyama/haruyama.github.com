@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="春山 征吾(@haruyama)" />
+  <title>mixi での Clojure の利用</title>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="slidy/styles/slidy.css" />
+  <script src="slidy/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">mixi での Clojure の利用</h1>
+  <p class="author">
+春山 征吾(<a href="https://twitter.com/haruyama">@haruyama</a>)
+  </p>
+</div>
+<div class="section slide level1" id="内容">
+<h1>内容</h1>
+<ul>
+<li>春山の Clojure 史</li>
+<li><a href="https://github.com/haruyama/mixi-cj-lib">haruyama/mixi-cj-lib</a> の紹介</li>
+</ul>
+</div>
+<div class="section slide level1" id="春山の-clojure-史---clojure-以前">
+<h1>春山の Clojure 史 - Clojure 以前</h1>
+<p>2007年ごろより関数型言語に興味を持ち本を読む.</p>
+<p>2008年, 当時所属していたECナビ(現 VOYAGE GROUP) で SICP読書会に参加.</p>
+<p>現在もミクシィにて毎週月曜19時過ぎより SICP読書会を開催しています(現在4章).</p>
+</div>
+<div class="section slide level1" id="春山の-clojure-史">
+<h1>春山の Clojure 史</h1>
+<ul>
+<li>2011/05 <a href="http://partake.in/events/7f78039f-5644-484d-af89-99251c06a7bf">Tokyo.clj#13 - [PARTAKE]</a> に参加
+<ul>
+<li>当時無職だったので積極的に勉強会に参加していた</li>
+<li>Clojure は1夜づけで参加</li>
+</ul></li>
+<li>2012/02 <a href="https://github.com/haruyama/ime-sample">haruyama/ime-sample</a> を作成
+<ul>
+<li><a href="https://gihyo.jp/book/2012/978-4-7741-4993-6">日本語入力を支える技術</a> のコードを Clojure で</li>
+</ul></li>
+<li>2012/03 ミクシィ内で利用する JVM 関係のコードを書く言語を以下のように定める
+<ul>
+<li>すでに全面的に Java で開発しているものは Java</li>
+<li>新規に開発するもので Java のクラスを継承したりするものは Scala</li>
+<li>Java のクラスを利用するだけのものは Clojure</li>
+</ul></li>
+<li>2012/04- 以下のプログラムを Clojure で作成
+<ul>
+<li>mixiボイスのバーストセンテンス抽出</li>
+<li><a href="https://github.com/haruyama/tiny-sbm">haruyama/tiny-sbm</a>: Solr の機能説明のための小さなソーシャルブックマーク</li>
+<li><a href="https://github.com/haruyama/mixi-cj-lib">haruyama/mixi-cj-lib</a></li>
+</ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="mixi-cj-lib">
+<h1>mixi-cj-lib</h1>
+<p>いままで書いたコードのうち再利用できそうなものを抽出した小さなライブラリ</p>
+<ul>
+<li>mixi.io</li>
+<li>mixi.lucene.kuromoji</li>
+<li>mixi.solr.solrj</li>
+</ul>
+</div>
+<div class="section slide level1" id="なぜ-mixi.ioslurp-file-などがあるのか">
+<h1>なぜ mixi.io/slurp-file などがあるのか</h1>
+<ul>
+<li>mixi.io/{slurp-file,spit-file} を用意.
+<ul>
+<li>clojure.core/{slurp,spit} と同機能</li>
+<li>しかし clojure.java.io には, リソースリークの可能性がある</li>
+<li>https://github.com/clojure/clojure/blob/master/src/clj/clojure/java/io.clj</li>
+<li>Java でいう new …Reader(new …Stream) のようなコードがある. Stream のインスタンス生成に成功して Reader の生成に失敗すると Stream.close() が呼ばれずリソースリークの可能性.</li>
+</ul></li>
+</ul>
+</div>
+</body>
+</html>
