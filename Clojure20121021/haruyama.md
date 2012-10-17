@@ -13,9 +13,9 @@
 
 ```clojure
 {:user  {:plugins {
-                   lein-difftest "1.3.8"
+                   lein-difftest "2.0.0"
                    lein-pprint   "1.1.1"
-                   lein-localrepo "0.4.0"
+                   lein-localrepo "0.4.1"
                    jonase/eastwood "0.0.2"
                    }
          :search-page-size 30
