@@ -21,7 +21,7 @@
     * Clojure は1夜づけで参加
 * 2012/02 [haruyama/ime-sample](https://github.com/haruyama/ime-sample) を作成
     * [日本語入力を支える技術](https://gihyo.jp/book/2012/978-4-7741-4993-6) のコードを Clojure で
-* 2012/03 ミクシィ内で利用する JVM 関係のコードを書く言語を以下のように定める
+* 2012/03 ミクシィ内で利用する Solr に関する JVM 関係のコードを書く言語を以下のように定める
     * すでに全面的に Java で開発しているものは Java
     * 新規に開発するもので Java のクラスを継承したりするものは Scala
     * Java のクラスを利用するだけのものは Clojure
