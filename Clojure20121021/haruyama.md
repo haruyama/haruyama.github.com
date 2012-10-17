@@ -37,6 +37,7 @@ while inotifywait -e CLOSE_WRITE **/*.clj || true; do lein test; done
 # Vim 
 
 * ~/.vim/after/ftplugin/clojure.vim
+    * VimShellSendStringAndMove と Rtrim(), Ref() は別に定義しています.
 
 ```vimscript
 setl tabstop=2 expandtab shiftwidth=2 softtabstop=2 smarttab
@@ -54,7 +55,7 @@ if exists('*PareditInitBuffer')
   nmap <Leader>4 <SID>(toggle-paredit)
 endif
 
-setl includeexpr=substitute(substitute(v:fname,'/.*$','','g'),'\\.','/','g')
+setl includeexpr=substitute(substitute(v:fname,'/.*$','',''),'\\.','/','g')
 setl path+=src;/,test;/
 setl suffixesadd=.clj,cljs
 
