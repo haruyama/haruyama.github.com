@@ -86,15 +86,15 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 call vimshell#set_dictionary_helper(g:vimshell_interactive_interpreter_commands, &#39;clojure&#39;, &#39;lein repl&#39;)
 
-vmap &lt;silent&gt; ,s :VimShellSendString&lt;CR&gt;
-vmap &lt;silent&gt; &lt;CR&gt; :VimShellSendStringAndMove&lt;CR&gt;
+vmap &lt;buffer&gt; &lt;silent&gt; ,s :VimShellSendString&lt;CR&gt;
+vmap &lt;buffer&gt; &lt;silent&gt; &lt;CR&gt; :VimShellSendStringAndMove&lt;CR&gt;
 
 autocmd BufWritePre *.{clj,cljs}  call RTrim()
 
 if exists(&#39;*PareditInitBuffer&#39;)
   call PareditInitBuffer()
   nnoremap &lt;SID&gt;(toggle-paredit) :&lt;C-u&gt;call PareditToggle()&lt;CR&gt;
-  nmap &lt;Leader&gt;4 &lt;SID&gt;(toggle-paredit)
+  nmap &lt;buffer&gt; &lt;Leader&gt;4 &lt;SID&gt;(toggle-paredit)
 endif
 
 setl includeexpr=substitute(substitute(v:fname,&#39;/.*$&#39;,&#39;&#39;,&#39;&#39;),&#39;\\.&#39;,&#39;/&#39;,&#39;g&#39;)

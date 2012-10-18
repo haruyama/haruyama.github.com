@@ -44,15 +44,15 @@ setl tabstop=2 expandtab shiftwidth=2 softtabstop=2 smarttab
 
 call vimshell#set_dictionary_helper(g:vimshell_interactive_interpreter_commands, 'clojure', 'lein repl')
 
-vmap <silent> ,s :VimShellSendString<CR>
-vmap <silent> <CR> :VimShellSendStringAndMove<CR>
+vmap <buffer> <silent> ,s :VimShellSendString<CR>
+vmap <buffer> <silent> <CR> :VimShellSendStringAndMove<CR>
 
 autocmd BufWritePre *.{clj,cljs}  call RTrim()
 
 if exists('*PareditInitBuffer')
   call PareditInitBuffer()
   nnoremap <SID>(toggle-paredit) :<C-u>call PareditToggle()<CR>
-  nmap <Leader>4 <SID>(toggle-paredit)
+  nmap <buffer> <Leader>4 <SID>(toggle-paredit)
 endif
 
 setl includeexpr=substitute(substitute(v:fname,'/.*$','',''),'\\.','/','g')
