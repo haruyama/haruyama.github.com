@@ -134,7 +134,7 @@ mixi の典型的なシステムは以下のような特徴.
 
 手元の環境でのデモ
 
-* http://localhost:8983/solr/select/?q=*%3A*&indent=on&sort=dist_between_users%281,%20id%29%20desc&fl=id
+* [Demo](http://localhost:8983/solr/select/?q=*%3A*&version=2.2&start=0&rows=10&indent=on&fl=id&sort=dist_between_users%281,id%29%20desc)
 
 # テキストマイニング
 

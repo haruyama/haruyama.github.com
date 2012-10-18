@@ -135,7 +135,7 @@ We are going to build bigger systems (index size: over 100GB).
 
 Demo on my machine.
 
-* http://localhost:8983/solr/select/?q=*%3A*&indent=on&sort=dist_between_users%281,%20id%29%20desc&fl=id
+* [Demo](http://localhost:8983/solr/select/?q=*%3A*&version=2.2&start=0&rows=10&indent=on&fl=id&sort=dist_between_users%281,id%29%20desc)
 
 # Text mining using Solr
 
