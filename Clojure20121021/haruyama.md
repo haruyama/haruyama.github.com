@@ -44,8 +44,8 @@ setl tabstop=2 expandtab shiftwidth=2 softtabstop=2 smarttab
 
 call vimshell#set_dictionary_helper(g:vimshell_interactive_interpreter_commands, 'clojure', 'lein repl')
 
-vmap <buffer> <silent> ,s :VimShellSendString<CR>
-vmap <buffer> <silent> <CR> :VimShellSendStringAndMove<CR>
+vnoremap <buffer> <silent> ,s :VimShellSendString<CR>
+vnoremap <buffer> <silent> <CR> :VimShellSendStringAndMove<CR>
 
 autocmd BufWritePre *.{clj,cljs}  call RTrim()
 
