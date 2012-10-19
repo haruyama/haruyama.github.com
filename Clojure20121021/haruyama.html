@@ -86,8 +86,8 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
 call vimshell#set_dictionary_helper(g:vimshell_interactive_interpreter_commands, &#39;clojure&#39;, &#39;lein repl&#39;)
 
-vmap &lt;buffer&gt; &lt;silent&gt; ,s :VimShellSendString&lt;CR&gt;
-vmap &lt;buffer&gt; &lt;silent&gt; &lt;CR&gt; :VimShellSendStringAndMove&lt;CR&gt;
+vnoremap &lt;buffer&gt; &lt;silent&gt; ,s :VimShellSendString&lt;CR&gt;
+vnoremap &lt;buffer&gt; &lt;silent&gt; &lt;CR&gt; :VimShellSendStringAndMove&lt;CR&gt;
 
 autocmd BufWritePre *.{clj,cljs}  call RTrim()
 
@@ -113,6 +113,7 @@ nnoremap &lt;buffer&gt; &lt;silent&gt; ,r :call Ref(&#39;clojure&#39;)&lt;Enter&
 <ul>
 <li><a href="https://github.com/thinca/vim-ft-clojure">thinca/vim-ft-clojure</a></li>
 <li><a href="https://github.com/vim-scripts/paredit.vim">vim-scripts/paredit.vim</a></li>
+<li><a href="https://github.com/liquidz/lein-vim">liquidz/lein-vim</a></li>
 <li><a href="https://github.com/haruyama/jump2clj.vim">haruyama/jump2clj.vim</a>
 <ul>
 <li>作ったけど設定だけでほぼ代替できたのでたぶんもう使わない.</li>

@@ -71,5 +71,6 @@ nnoremap <buffer> <silent> ,r :call Ref('clojure')<Enter>
 
 * [thinca/vim-ft-clojure](https://github.com/thinca/vim-ft-clojure)
 * [vim-scripts/paredit.vim](https://github.com/vim-scripts/paredit.vim)
+* [liquidz/lein-vim](https://github.com/liquidz/lein-vim)
 * [haruyama/jump2clj.vim](https://github.com/haruyama/jump2clj.vim)
     * 作ったけど設定だけでほぼ代替できたのでたぶんもう使わない.
