@@ -31,7 +31,7 @@
 * inotifywait を利用する
 
 ```sh
-while inotifywait -e CLOSE_WRITE **/*.clj || true; do lein test; done
+while inotifywait -e CLOSE_WRITE **/*/ || true; do lein test; done
 ```
 
 # Vim 

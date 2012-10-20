@@ -72,7 +72,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </ul></li>
 <li>inotifywait を利用する</li>
 </ul>
-<pre class="sh"><code>while inotifywait -e CLOSE_WRITE **/*.clj || true; do lein test; done</code></pre>
+<pre class="sh"><code>while inotifywait -e CLOSE_WRITE **/*/ || true; do lein test; done</code></pre>
 </div>
 <div class="section slide level1" id="vim">
 <h1>Vim</h1>
