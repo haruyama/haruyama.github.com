@@ -16,7 +16,7 @@
 * @halcat0x15a さん: きっとなんかしゃべってくれる
 * @rejasupotaro: なんかしゃべるっていってた.
 
-* @haruyama: 4月か5月からの新しい読書会
+* @haruyama: [弊社での次の読書会](mixi_next.html)
 
 * 他に希望者がいれば調整します.
 
