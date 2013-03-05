@@ -77,6 +77,15 @@ SICPよりも簡単そう. ちょっと簡単すぎるかも?
 
 SICPというよりはTaPLの前の読むといい本じゃないかと思います.
 
+# その他の候補
+
+* Purely Functional Data Structures(PFDS)
+* 関数型言語の入門書
+    * すごいH
+    * すごいE
+    * Land of Lisp
+    * ...
+
 # どれを読む?
 
 次回の読書会参加者と相談して決めます.
