@@ -80,6 +80,7 @@ SICPというよりはTaPLの前の読むといい本じゃないかと思いま
 # その他の候補
 
 * Purely Functional Data Structures(PFDS)
+* 素数夜曲
 * 関数型言語の入門書
     * すごいH
     * すごいE
