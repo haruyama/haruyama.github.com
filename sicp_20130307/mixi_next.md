@@ -17,7 +17,7 @@
 
 * 計算機プログラムの構造と解釈(SICP)
 * コンピュータプログラミングの概念・技法・モデル(CTMCP)
-* 関数プログラミング入門
+* 関数プログラミング入門(IFPH)
 * How to Design Programs(HtDP)
 * プログラミングの基礎(浅井先生)
 * プログラミング言語の基礎概念(五十嵐先生)
@@ -40,9 +40,9 @@ Web上での問題の解答の多さ(すくなくとも日本語での)は, 他�
 
 Mozart の実装が 32bit 環境前提なのが残念なところ(64bit環境でも動かせるが)
 
-# 関数プログラミング入門
+# 関数プログラミング入門(IFPH)
 
-[Oxford University Computing Laboratory: Research](http://www.cs.ox.ac.uk/publications/books/functional/)
+[Introduction to Functional Programming using Haskell](http://www.cs.ox.ac.uk/publications/books/functional/)
 
 言語: Haskell
 
