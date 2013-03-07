@@ -10,11 +10,11 @@
 * @haruyama: [弊社でのSICP読書会](mixi.html)
 
 * 他社での読書会事例紹介
-    * @ajiyoshi さん: VOYAGE GROUP での SICP読書会
-    * @hito\_asa さん ないし @ryshinoz さん: GMOメディア での SICP読書会
+    * @ajiyoshi さん: VOYAGE GROUP様 での SICP読書会
+    * @hito\_asa さん: [GMOメディア様でのSICP読書会 @SICP大反省会](http://hito-asa.github.com/slide/20130307_sicp_daihanseikai)
 
 * @halcat0x15a さん: きっとなんかしゃべってくれる
-* @rejasupotaro: なんかしゃべるっていってた.
+* @rejasupotaro: この前飲み会で話したS式の話
 
 * @haruyama: [弊社での次の読書会](mixi_next.html)
 
