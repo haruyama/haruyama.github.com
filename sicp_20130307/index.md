@@ -3,7 +3,13 @@
 
 # 式次第
 
-## LT的なもの
+* この説明
+* LT
+* 懇親会
+
+ハッシュタグは [#sicphansei](https://twitter.com/search/realtime?q=%23sicphansei)
+
+# LT
 
 長くても 20:15 まで.
 
@@ -20,7 +26,7 @@
 
 * 他に希望者がいれば調整します.
 
-## 懇親会
+# 懇親会
 
 LT的なもの終わり次第開始
 
