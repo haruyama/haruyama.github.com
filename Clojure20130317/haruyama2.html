@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="春山 征吾(@haruyama)" />
+  <title>@haruyama の Clojure 開発環境 その2</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="slidy/styles/slidy.css" />
+  <script src="slidy/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">@haruyama の Clojure 開発環境 その2</h1>
+  <p class="author">
+春山 征吾(<a href="https://twitter.com/haruyama">@haruyama</a>)
+  </p>
+</div>
+<div class="section slide level1" id="前回の資料">
+<h1>前回の資料</h1>
+<p><a href="http://haruyama.github.com/Clojure20121021/haruyama.html">@haruyama の Clojure 開発環境</a></p>
+</div>
+<div class="section slide level1" id="lein-vim">
+<h1>lein + Vim</h1>
+<ul>
+<li><a href="https://github.com/technomancy/leiningen">technomancy/leiningen · GitHub</a></li>
+<li>Vim</li>
+</ul>
+</div>
+<div class="section slide level1" id="lein">
+<h1>lein</h1>
+<ul>
+<li>lein 2.x と lein 1.x があるが, 2.x を利用.</li>
+<li>~/.lein/profiles.clj</li>
+</ul>
+<pre class="sourceCode clojure"><code class="sourceCode clojure">{<span class="kw">:user</span>  {<span class="kw">:plugins</span> [[lein-kibit <span class="st">&quot;0.0.8&quot;</span>]
+                   [lein-difftest <span class="st">&quot;2.0.0&quot;</span>]
+                   [lein-pprint   <span class="st">&quot;1.1.1&quot;</span>]
+                   [lein-localrepo <span class="st">&quot;0.4.1&quot;</span>]
+                   [jonase/eastwood <span class="st">&quot;0.0.2&quot;</span>]]
+         <span class="kw">:search-page-size</span> <span class="dv">30</span>
+         }}</code></pre>
+</div>
+<div class="section slide level1" id="静的解析">
+<h1>静的解析</h1>
+<ul>
+<li>kibit</li>
+<li>eastwood</li>
+</ul>
+</div>
+<div class="section slide level1" id="自動テスト">
+<h1>自動テスト</h1>
+<pre class="sh"><code>while inotifywait -e CLOSE_WRITE **/*/ || true; do lein test; done</code></pre>
+<ul>
+<li>でも起動が遅い…</li>
+<li>後述の vim-fireplace + nREPL で.</li>
+</ul>
+</div>
+<div class="section slide level1" id="vim">
+<h1>Vim</h1>
+<ul>
+<li>~/.vim/after/ftplugin/clojure.vim
+<ul>
+<li>VimShellSendStringAndMove と Rtrim(), Ref() は別に定義しています.</li>
+</ul></li>
+</ul>
+<pre class="vimscript"><code>setl tabstop=2 expandtab shiftwidth=2 softtabstop=2 smarttab
+
+call vimshell#set_dictionary_helper(g:vimshell_interactive_interpreter_commands, &#39;clojure&#39;, &#39;lein repl&#39;)
+
+vnoremap &lt;buffer&gt; &lt;silent&gt; ,s :VimShellSendString&lt;CR&gt;
+vnoremap &lt;buffer&gt; &lt;silent&gt; &lt;CR&gt; :VimShellSendStringAndMove&lt;CR&gt;
+
+autocmd BufWritePre *.{clj,cljs}  call RTrim()
+
+if exists(&#39;*PareditInitBuffer&#39;)
+  call PareditInitBuffer()
+  nnoremap &lt;SID&gt;(toggle-paredit) :&lt;C-u&gt;call PareditToggle()&lt;CR&gt;
+  nmap &lt;buffer&gt; &lt;Leader&gt;4 &lt;SID&gt;(toggle-paredit)
+endif
+
+setl includeexpr=substitute(substitute(v:fname,&#39;/.*$&#39;,&#39;&#39;,&#39;&#39;),&#39;\\.&#39;,&#39;/&#39;,&#39;g&#39;)
+setl path+=src;/,test;/
+setl suffixesadd=.clj,cljs
+
+nnoremap &lt;buffer&gt; &lt;silent&gt; ,r :call Ref(&#39;clojure&#39;)&lt;Enter&gt;</code></pre>
+</div>
+<div class="section slide level1" id="vim-plugins">
+<h1>Vim plugins</h1>
+<ul>
+<li><a href="https://github.com/thinca/vim-ft-clojure">thinca/vim-ft-clojure</a></li>
+<li><p><a href="https://github.com/vim-scripts/paredit.vim">vim-scripts/paredit.vim</a></p></li>
+<li><a href="https://github.com/tpope/vim-fireplace">tpope/vim-fireplace · GitHub</a>
+<ul>
+<li>デモ</li>
+</ul></li>
+<li><p><a href="https://github.com/liquidz/lein-vim">liquidz/lein-vim</a></p></li>
+</ul>
+</div>
+</body>
+</html>
