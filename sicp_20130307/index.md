@@ -3,24 +3,30 @@
 
 # 式次第
 
-## LT的なもの
+* この説明
+* LT
+* 懇親会
+
+ハッシュタグは [#sicphansei](https://twitter.com/search/realtime?q=%23sicphansei)
+
+# LT
 
 長くても 20:15 まで.
 
 * @haruyama: [弊社でのSICP読書会](mixi.html)
 
 * 他社での読書会事例紹介
-    * @ajiyoshi さん: VOYAGE GROUP での SICP読書会
-    * @hito\_asa さん ないし @ryshinoz さん: GMOメディア での SICP読書会
+    * @ajiyoshi さん: [VOYAGE GROUP での SICP読書会](https://docs.google.com/presentation/d/1fOh__iDbfFaReVJuprPIC5REQYZNReCdeEAc2njZgj0/edit?usp=sharing)
+    * @hito\_asa さん: [GMOメディア でのSICP読書会](http://hito-asa.github.com/slide/20130307_sicp_daihanseikai)
 
-* @halcat0x15a さん: きっとなんかしゃべってくれる
-* @rejasupotaro: なんかしゃべるっていってた.
+* @halcat0x15a さん: [anyware/src/anyware/core/lisp/evaluator.clj at master · halcat0x15a/anyware · GitHub](https://github.com/halcat0x15a/anyware/blob/master/src/anyware/core/lisp/evaluator.clj)
+* @rejasupotaro: この前飲み会で話したS式の話
 
 * @haruyama: [弊社での次の読書会](mixi_next.html)
 
 * 他に希望者がいれば調整します.
 
-## 懇親会
+# 懇親会
 
 LT的なもの終わり次第開始
 
