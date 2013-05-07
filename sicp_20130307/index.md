@@ -16,10 +16,10 @@
 * @haruyama: [弊社でのSICP読書会](mixi.html)
 
 * 他社での読書会事例紹介
-    * @ajiyoshi さん: VOYAGE GROUP様 での SICP読書会
-    * @hito\_asa さん: [GMOメディア様でのSICP読書会 @SICP大反省会](http://hito-asa.github.com/slide/20130307_sicp_daihanseikai)
+    * @ajiyoshi さん: [VOYAGE GROUP での SICP読書会](https://docs.google.com/presentation/d/1fOh__iDbfFaReVJuprPIC5REQYZNReCdeEAc2njZgj0/edit?usp=sharing)
+    * @hito\_asa さん: [GMOメディア でのSICP読書会](http://hito-asa.github.com/slide/20130307_sicp_daihanseikai)
 
-* @halcat0x15a さん: きっとなんかしゃべってくれる
+* @halcat0x15a さん: [anyware/src/anyware/core/lisp/evaluator.clj at master · halcat0x15a/anyware · GitHub](https://github.com/halcat0x15a/anyware/blob/master/src/anyware/core/lisp/evaluator.clj)
 * @rejasupotaro: この前飲み会で話したS式の話
 
 * @haruyama: [弊社での次の読書会](mixi_next.html)
