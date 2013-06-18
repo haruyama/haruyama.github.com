@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="HARUYAMA Seigo(@haruyama)" />
+  <title>My Clojure Development Environment (Vol. 3)</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="slidy/styles/slidy.css" />
+  <script src="slidy/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">My Clojure Development Environment (Vol. 3)</h1>
+  <p class="author">
+HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
+  </p>
+</div>
+<div class="section slide level1" id="lein-vim">
+<h1>lein + Vim</h1>
+<ul>
+<li><a href="https://github.com/technomancy/leiningen">technomancy/leiningen · GitHub</a>
+<ul>
+<li>version 2</li>
+</ul></li>
+<li>Vim</li>
+</ul>
+</div>
+<div class="section slide level1" id="lein">
+<h1>lein</h1>
+<ul>
+<li>~/.lein/profiles.clj</li>
+</ul>
+<pre class="sourceCode clojure"><code class="sourceCode clojure">{<span class="kw">:user</span>  {<span class="kw">:plugins</span> [[lein-kibit <span class="st">&quot;0.0.8&quot;</span>]
+                   [lein-difftest <span class="st">&quot;2.0.0&quot;</span>]
+                   [lein-pprint   <span class="st">&quot;1.1.1&quot;</span>]
+                   [lein-localrepo <span class="st">&quot;0.4.1&quot;</span>]
+                   [lein-licenses <span class="st">&quot;0.1.1&quot;</span>]
+                   [jonase/eastwood <span class="st">&quot;0.0.2&quot;</span>]
+                   [lein-clojars <span class="st">&quot;0.9.1&quot;</span>]]
+         <span class="kw">:search-page-size</span> <span class="dv">30</span>
+         <span class="kw">:jvm-opts</span> [<span class="st">&quot;-XX:+TieredCompilation&quot;</span>
+                    <span class="st">&quot;-XX:TieredStopAtLevel=1&quot;</span>]}}</code></pre>
+</div>
+<div class="section slide level1" id="jvm-opts">
+<h1>jvm-opts</h1>
+<p>for speeding up boot time.</p>
+<ul>
+<li><a href="http://tnoda-clojure.tumblr.com/post/51495039433/jvm-clojure-30">tnoda-clojure • JVM のオプション設定で Clojure の起動を 30% 高速化 → さらに高速化で起動時間半減へ</a></li>
+</ul>
+</div>
+<div class="section slide level1" id="static-analysis">
+<h1>Static Analysis</h1>
+<ul>
+<li>kibit</li>
+<li>eastwood</li>
+</ul>
+</div>
+<div class="section slide level1" id="vim-plugins">
+<h1>Vim plugins</h1>
+<ul>
+<li><a href="https://github.com/thinca/vim-ft-clojure">thinca/vim-ft-clojure</a></li>
+<li><a href="https://github.com/vim-scripts/paredit.vim">vim-scripts/paredit.vim</a></li>
+<li><p><a href="https://github.com/tpope/vim-fireplace">tpope/vim-fireplace · GitHub</a></p></li>
+<li><p><a href="https://github.com/liquidz/lein-vim">liquidz/lein-vim</a></p></li>
+</ul>
+</div>
+<div class="section slide level1" id="vim-setting">
+<h1>Vim setting</h1>
+<p>TODO</p>
+<ul>
+<li>$HOME/.vim/after/ftplugin/clojure.vim</li>
+<li>$HOME/.vim/bundle/syntastic/syntax_checkers/clojure/nrepl.vim</li>
+</ul>
+</div>
+<div class="section slide level1" id="demo-syntax-check-and-run-test">
+<h1>Demo: syntax check and run test</h1>
+</div>
+<div class="section slide level1" id="references.">
+<h1>References.</h1>
+<ul>
+<li><a href="http://haruyama.github.com/Clojure20121021/haruyama.html">@haruyama の Clojure 開発環境</a></li>
+<li><a href="http://haruyama.github.com/Clojure20130317/haruyama2.html">@haruyama の Clojure 開発環境 その2</a></li>
+</ul>
+</div>
+</body>
+</html>
