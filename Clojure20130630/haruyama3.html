@@ -68,6 +68,8 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
 </div>
 <div class="section slide level1" id="jvm-opts">
 <h1>jvm-opts</h1>
+<pre><code>         :jvm-opts [&quot;-XX:+TieredCompilation&quot;
+                    &quot;-XX:TieredStopAtLevel=1&quot;]</code></pre>
 <p>for speeding up boot time.</p>
 <ul>
 <li><a href="http://tnoda-clojure.tumblr.com/post/51495039433/jvm-clojure-30">tnoda-clojure • JVM のオプション設定で Clojure の起動を 30% 高速化 → さらに高速化で起動時間半減へ</a></li>
@@ -84,17 +86,19 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
 <h1>Vim plugins</h1>
 <ul>
 <li><a href="https://github.com/thinca/vim-ft-clojure">thinca/vim-ft-clojure</a></li>
-<li><a href="https://github.com/vim-scripts/paredit.vim">vim-scripts/paredit.vim</a></li>
 <li><p><a href="https://github.com/tpope/vim-fireplace">tpope/vim-fireplace · GitHub</a></p></li>
+<li><p><a href="https://github.com/vim-scripts/paredit.vim">vim-scripts/paredit.vim</a></p></li>
 <li><p><a href="https://github.com/liquidz/lein-vim">liquidz/lein-vim</a></p></li>
 </ul>
 </div>
 <div class="section slide level1" id="vim-setting">
 <h1>Vim setting</h1>
-<p>TODO</p>
 <ul>
-<li>$HOME/.vim/after/ftplugin/clojure.vim</li>
-<li>$HOME/.vim/bundle/syntastic/syntax_checkers/clojure/nrepl.vim</li>
+<li><a href="https://gist.github.com/haruyama/5820163">$HOME/.vim/after/ftplugin/clojure.vim</a></li>
+<li><a href="https://gist.github.com/haruyama/5791152">$HOME/.vim/syntax_checkers/clojure/nrepl.vim</a>
+<ul>
+<li>a syntax checker for <a href="https://github.com/scrooloose/syntastic">scrooloose/syntastic</a></li>
+</ul></li>
 </ul>
 </div>
 <div class="section slide level1" id="demo-syntax-check-and-run-test">
