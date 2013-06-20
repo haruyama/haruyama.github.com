@@ -53,6 +53,7 @@ for speeding up boot time.
 
 * [$HOME/.vim/after/ftplugin/clojure.vim](https://gist.github.com/haruyama/5820163)
 * [$HOME/.vim/syntax_checkers/clojure/nrepl.vim](https://gist.github.com/haruyama/5791152)
+    * a syntax checker for [scrooloose/syntastic](https://github.com/scrooloose/syntastic)
 
 # Demo: syntax check and run test
 
