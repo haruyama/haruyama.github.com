@@ -78,8 +78,8 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
 <div class="section slide level1" id="static-analysis">
 <h1>Static Analysis</h1>
 <ul>
-<li>kibit</li>
-<li>eastwood</li>
+<li><a href="https://github.com/jonase/kibit/">jonase/kibit</a></li>
+<li><a href="https://github.com/jonase/eastwood">jonase/eastwood</a></li>
 </ul>
 </div>
 <div class="section slide level1" id="vim-plugins">
@@ -97,8 +97,15 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
 <li><a href="https://gist.github.com/haruyama/5820163">$HOME/.vim/after/ftplugin/clojure.vim</a></li>
 <li><a href="https://gist.github.com/haruyama/5791152">$HOME/.vim/syntax_checkers/clojure/nrepl.vim</a>
 <ul>
-<li>a syntax checker using <a href="https://github.com/scrooloose/syntastic">scrooloose/syntastic</a></li>
+<li>a syntax checker and test runnner using <a href="https://github.com/scrooloose/syntastic">scrooloose/syntastic</a></li>
 </ul></li>
+</ul>
+</div>
+<div class="section slide level1" id="requirements-for-syntax-check">
+<h1>Requirements for syntax check</h1>
+<ul>
+<li>add org.clojure/tools.namespace to profiles.dev.dependencies.</li>
+<li>execute ‘lein repl’ in a project directory.</li>
 </ul>
 </div>
 <div class="section slide level1" id="demo-syntax-check-and-run-test">

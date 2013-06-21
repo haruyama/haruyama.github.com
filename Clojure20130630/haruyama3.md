@@ -37,8 +37,8 @@ for speeding up boot time.
 
 # Static Analysis
 
-* kibit
-* eastwood
+* [jonase/kibit](https://github.com/jonase/kibit/)
+* [jonase/eastwood](https://github.com/jonase/eastwood)
 
 # Vim plugins
 
@@ -53,7 +53,12 @@ for speeding up boot time.
 
 * [$HOME/.vim/after/ftplugin/clojure.vim](https://gist.github.com/haruyama/5820163)
 * [$HOME/.vim/syntax_checkers/clojure/nrepl.vim](https://gist.github.com/haruyama/5791152)
-    * a syntax checker using [scrooloose/syntastic](https://github.com/scrooloose/syntastic)
+    * a syntax checker and test runnner using [scrooloose/syntastic](https://github.com/scrooloose/syntastic)
+
+# Requirements for syntax check
+
+* add org.clojure/tools.namespace to profiles.dev.dependencies.
+* execute 'lein repl' in a project directory.
 
 # Demo: syntax check and run test
 
