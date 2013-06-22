@@ -21,14 +21,16 @@
                    [lein-clojars "0.9.1"]]
          :search-page-size 30
          :jvm-opts ["-XX:+TieredCompilation"
-                    "-XX:TieredStopAtLevel=1"]}}
+                    "-XX:TieredStopAtLevel=1"
+                    "-Xverify:none"]}}
 ```
 
 # jvm-opts
 
 ```
          :jvm-opts ["-XX:+TieredCompilation"
-                    "-XX:TieredStopAtLevel=1"]
+                    "-XX:TieredStopAtLevel=1"
+                    "-Xverify:none"]
 ```
 
 for speeding up boot time.
@@ -58,11 +60,12 @@ for speeding up boot time.
 # Requirements for syntax check
 
 * add org.clojure/tools.namespace to profiles.dev.dependencies.
+    * [mixi-cj-lib/project.clj at master](https://github.com/haruyama/mixi-cj-lib/blob/master/project.clj)
 * execute 'lein repl' in a project directory.
 
 # Demo: syntax check and run test
 
-# References.
+# References
 
 * [@haruyama の Clojure 開発環境](http://haruyama.github.com/Clojure20121021/haruyama.html)
 * [@haruyama の Clojure 開発環境 その2](http://haruyama.github.com/Clojure20130317/haruyama2.html)

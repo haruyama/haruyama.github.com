@@ -12,7 +12,7 @@
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; }
+table.sourceCode { width: 100%; line-height: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
 code > span.kw { color: #007020; font-weight: bold; }
@@ -40,7 +40,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
   </p>
 </div>
-<div class="section slide level1" id="lein-vim">
+<div id="lein-vim" class="slide section level1">
 <h1>lein + Vim</h1>
 <ul>
 <li><a href="https://github.com/technomancy/leiningen">technomancy/leiningen · GitHub</a>
@@ -50,7 +50,7 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
 <li>Vim</li>
 </ul>
 </div>
-<div class="section slide level1" id="lein">
+<div id="lein" class="slide section level1">
 <h1>lein</h1>
 <ul>
 <li>~/.lein/profiles.clj</li>
@@ -64,25 +64,27 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
                    [lein-clojars <span class="st">&quot;0.9.1&quot;</span>]]
          <span class="kw">:search-page-size</span> <span class="dv">30</span>
          <span class="kw">:jvm-opts</span> [<span class="st">&quot;-XX:+TieredCompilation&quot;</span>
-                    <span class="st">&quot;-XX:TieredStopAtLevel=1&quot;</span>]}}</code></pre>
+                    <span class="st">&quot;-XX:TieredStopAtLevel=1&quot;</span>
+                    <span class="st">&quot;-Xverify:none&quot;</span>]}}</code></pre>
 </div>
-<div class="section slide level1" id="jvm-opts">
+<div id="jvm-opts" class="slide section level1">
 <h1>jvm-opts</h1>
 <pre><code>         :jvm-opts [&quot;-XX:+TieredCompilation&quot;
-                    &quot;-XX:TieredStopAtLevel=1&quot;]</code></pre>
+                    &quot;-XX:TieredStopAtLevel=1&quot;
+                    &quot;-Xverify:none&quot;]</code></pre>
 <p>for speeding up boot time.</p>
 <ul>
 <li><a href="http://tnoda-clojure.tumblr.com/post/51495039433/jvm-clojure-30">tnoda-clojure • JVM のオプション設定で Clojure の起動を 30% 高速化 → さらに高速化で起動時間半減へ</a></li>
 </ul>
 </div>
-<div class="section slide level1" id="static-analysis">
+<div id="static-analysis" class="slide section level1">
 <h1>Static Analysis</h1>
 <ul>
 <li><a href="https://github.com/jonase/kibit/">jonase/kibit</a></li>
 <li><a href="https://github.com/jonase/eastwood">jonase/eastwood</a></li>
 </ul>
 </div>
-<div class="section slide level1" id="vim-plugins">
+<div id="vim-plugins" class="slide section level1">
 <h1>Vim plugins</h1>
 <ul>
 <li><a href="https://github.com/thinca/vim-ft-clojure">thinca/vim-ft-clojure</a></li>
@@ -91,7 +93,7 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
 <li><p><a href="https://github.com/liquidz/lein-vim">liquidz/lein-vim</a></p></li>
 </ul>
 </div>
-<div class="section slide level1" id="vim-setting">
+<div id="vim-setting" class="slide section level1">
 <h1>Vim setting</h1>
 <ul>
 <li><a href="https://gist.github.com/haruyama/5820163">$HOME/.vim/after/ftplugin/clojure.vim</a></li>
@@ -101,17 +103,20 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
 </ul></li>
 </ul>
 </div>
-<div class="section slide level1" id="requirements-for-syntax-check">
+<div id="requirements-for-syntax-check" class="slide section level1">
 <h1>Requirements for syntax check</h1>
 <ul>
-<li>add org.clojure/tools.namespace to profiles.dev.dependencies.</li>
+<li>add org.clojure/tools.namespace to profiles.dev.dependencies.
+<ul>
+<li><a href="https://github.com/haruyama/mixi-cj-lib/blob/master/project.clj">mixi-cj-lib/project.clj at master</a></li>
+</ul></li>
 <li>execute ‘lein repl’ in a project directory.</li>
 </ul>
 </div>
-<div class="section slide level1" id="demo-syntax-check-and-run-test">
+<div id="demo-syntax-check-and-run-test" class="slide section level1">
 <h1>Demo: syntax check and run test</h1>
 </div>
-<div class="section slide level1" id="references.">
+<div id="references." class="slide section level1">
 <h1>References.</h1>
 <ul>
 <li><a href="http://haruyama.github.com/Clojure20121021/haruyama.html">@haruyama の Clojure 開発環境</a></li>
