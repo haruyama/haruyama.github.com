@@ -21,16 +21,14 @@
                    [lein-clojars "0.9.1"]]
          :search-page-size 30
          :jvm-opts ["-XX:+TieredCompilation"
-                    "-XX:TieredStopAtLevel=1"
-                    "-Xverify:none"]}}
+                    "-XX:TieredStopAtLevel=1"]}}
 ```
 
 # jvm-opts
 
 ```
          :jvm-opts ["-XX:+TieredCompilation"
-                    "-XX:TieredStopAtLevel=1"
-                    "-Xverify:none"]
+                    "-XX:TieredStopAtLevel=1"]
 ```
 
 for speeding up boot time.
