@@ -51,8 +51,8 @@ for speeding up boot time.
 
 # Vim setting
 
-* [$HOME/.vim/after/ftplugin/clojure.vim](https://gist.github.com/haruyama/5820163)
-* [$HOME/.vim/syntax_checkers/clojure/nrepl.vim](https://gist.github.com/haruyama/5791152)
+* [$HOME/.vim/after/ftplugin/clojure.vim](https://github.com/haruyama/Settings/blob/30f57c9b82392007e45bec211b775be0e34fd7f8/.vim/after/ftplugin/clojure.vim)
+* [$HOME/.vim/syntax_checkers/clojure/nrepl.vim](https://github.com/haruyama/Settings/blob/30f57c9b82392007e45bec211b775be0e34fd7f8/.vim/syntax_checkers/clojure/nrepl.vim)
     * a syntax checker and test runnner using [scrooloose/syntastic](https://github.com/scrooloose/syntastic)
 
 # Requirements for syntax check
