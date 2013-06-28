@@ -1,10 +1,10 @@
 
-var w3c_slidy={ns_pos:(typeof window.pageYOffset!='undefined'),khtml:((navigator.userAgent).indexOf("KHTML")>=0?true:false),opera:((navigator.userAgent).indexOf("Opera")>=0?true:false),ipad:((navigator.userAgent).indexOf("iPad")>=0?true:false),iphone:((navigator.userAgent).indexOf("iPhone")>=0?true:false),android:((navigator.userAgent).indexOf("Android")>=0?true:false),ie:(typeof document.all!="undefined"&&!this.opera),ie6:(!this.ns_pos&&navigator.userAgent.indexOf("MSIE 6")!=-1),ie7:(!this.ns_pos&&navigator.userAgent.indexOf("MSIE 7")!=-1),ie8:(!this.ns_pos&&navigator.userAgent.indexOf("MSIE 8")!=-1),ie9:(!this.ns_pos&&navigator.userAgent.indexOf("MSIE 9")!=-1),last_tap:0,prev_tap:0,start_x:0,start_y:0,delta_x:0,delta_y:0,is_xhtml:/xml/.test(document.contentType),slide_number:0,slide_number_element:null,slides:[],notes:[],backgrounds:[],toolbar:null,title:null,last_shown:null,eos:null,toc:null,outline:null,selected_text_len:0,view_all:0,want_toolbar:true,mouse_click_enabled:true,scroll_hack:0,disable_slide_click:false,lang:"en",help_anchor:null,help_page:"http://www.w3.org/Talks/Tools/Slidy2/help/help.html",help_text:"Navigate with mouse click, space bar, Cursor Left/Right, "+"or Pg Up and Pg Dn. Use S and B to change font size.",size_index:0,size_adjustment:0,sizes:new Array("10pt","12pt","14pt","16pt","18pt","20pt","22pt","24pt","26pt","28pt","30pt","32pt"),last_width:0,last_height:0,objects:[],set_up:function(){var init=function(){w3c_slidy.init();};if(typeof window.addEventListener!="undefined")
+var w3c_slidy={ns_pos:(typeof window.pageYOffset!='undefined'),khtml:((navigator.userAgent).indexOf("KHTML")>=0?true:false),opera:((navigator.userAgent).indexOf("Opera")>=0?true:false),ipad:((navigator.userAgent).indexOf("iPad")>=0?true:false),iphone:((navigator.userAgent).indexOf("iPhone")>=0?true:false),android:((navigator.userAgent).indexOf("Android")>=0?true:false),ie:(typeof document.all!="undefined"&&!this.opera),ie6:(!this.ns_pos&&navigator.userAgent.indexOf("MSIE 6")!=-1),ie7:(!this.ns_pos&&navigator.userAgent.indexOf("MSIE 7")!=-1),ie8:(!this.ns_pos&&navigator.userAgent.indexOf("MSIE 8")!=-1),ie9:(!this.ns_pos&&navigator.userAgent.indexOf("MSIE 9")!=-1),last_tap:0,prev_tap:0,start_x:0,start_y:0,delta_x:0,delta_y:0,is_xhtml:/xml/.test(document.contentType),slide_number:0,slide_number_element:null,slides:[],notes:[],backgrounds:[],toolbar:null,title:null,last_shown:null,eos:null,toc:null,outline:null,selected_text_len:0,view_all:0,want_toolbar:true,mouse_click_enabled:true,scroll_hack:0,disable_slide_click:false,lang:"en",help_anchor:null,help_page:"http://www.w3.org/Talks/Tools/Slidy2/help/help.html",help_text:"Navigate with mouse click, space bar, Cursor Left/Right, "+"or Pg Up and Pg Dn. Use S and B to change font size.",size_index:0,size_adjustment:0,sizes:new Array("10pt","14pt","18pt","22pt","26pt","30pt","34pt","38pt","42pt","46pt","50pt","54pt"),last_width:0,last_height:0,objects:[],set_up:function(){var init=function(){w3c_slidy.init();};if(typeof window.addEventListener!="undefined")
 window.addEventListener("load",init,false);else
 window.attachEvent("onload",init);},hide_slides:function(){if(document.body&&!w3c_slidy.initialized)
 document.body.style.visibility="hidden";else
 setTimeout(w3c_slidy.hide_slides,50);},ie_hack:function(){window.resizeBy(0,-1);window.resizeBy(0,1);},init:function(){document.body.style.visibility="visible";this.init_localization();this.add_toolbar();this.wrap_implicit_slides();this.collect_slides();this.collect_notes();this.collect_backgrounds();this.objects=document.body.getElementsByTagName("object");this.patch_anchors();this.slide_number=this.find_slide_number(location.href);window.offscreenbuffering=true;this.size_adjustment=this.find_size_adjust();this.time_left=this.find_duration();this.hide_image_toolbar();this.init_outliner();this.title=document.title;this.keyboardless=(this.ipad||this.iphone||this.android);if(this.keyboardless)
-{w3c_slidy.remove_class(w3c_slidy.toolbar,"hidden")
+{w3c_slidy.remove_class(w3c_slidy.toolbar,"hidden");
 this.want_toolbar=0;}
 this.is_xhtml=(document.body.tagName=="BODY"?false:true);if(this.slides.length>0)
 {var slide=this.slides[this.slide_number];if(this.slide_number>0)
@@ -17,16 +17,16 @@ this.add_listener(document.body,"click",this.mouse_button_click);this.add_listen
 setTimeout(w3c_slidy.ie_hack,100);this.show_toolbar();setInterval(function(){w3c_slidy.check_location();},200);w3c_slidy.initialized=true;},table_of_contents:function(){var toc=this.create_element("div");this.add_class(toc,"slidy_toc hidden");var heading=this.create_element("div");this.add_class(heading,"toc-heading");heading.innerHTML=this.localize("Table of Contents");toc.appendChild(heading);var previous=null;for(var i=0;i<this.slides.length;++i)
 {var title=this.has_class(this.slides[i],"title");var num=document.createTextNode((i+1)+". ");toc.appendChild(num);var a=this.create_element("a");a.setAttribute("href","#("+(i+1)+")");if(title)
 this.add_class(a,"titleslide");var name=document.createTextNode(this.slide_name(i));a.appendChild(name);a.onclick=w3c_slidy.toc_click;a.onkeydown=w3c_slidy.toc_key_down;a.previous=previous;if(previous)
-previous.next=a;toc.appendChild(a);if(i==0)
+previous.next=a;toc.appendChild(a);if(i===0)
 toc.first=a;if(i<this.slides.length-1)
 {var br=this.create_element("br");toc.appendChild(br);}
 previous=a;}
 toc.focus=function(){if(this.first)
-this.first.focus();}
+this.first.focus();};
 toc.onmouseup=w3c_slidy.mouse_button_up;toc.onclick=function(e){e||(e=window.event);if(w3c_slidy.selected_text_len<=0)
-w3c_slidy.hide_table_of_contents(true);w3c_slidy.stop_propagation(e);if(e.cancel!=undefined)
-e.cancel=true;if(e.returnValue!=undefined)
-e.returnValue=false;return false;};document.body.insertBefore(toc,document.body.firstChild);return toc;},is_shown_toc:function(){return!w3c_slidy.has_class(w3c_slidy.toc,"hidden");},show_table_of_contents:function(){w3c_slidy.remove_class(w3c_slidy.toc,"hidden");var toc=w3c_slidy.toc;toc.focus();if(w3c_slidy.ie7&&w3c_slidy.slide_number==0)
+w3c_slidy.hide_table_of_contents(true);w3c_slidy.stop_propagation(e);if(e.cancel!==undefined)
+e.cancel=true;if(e.returnValue!==undefined)
+e.returnValue=false;return false;};document.body.insertBefore(toc,document.body.firstChild);return toc;},is_shown_toc:function(){return!w3c_slidy.has_class(w3c_slidy.toc,"hidden");},show_table_of_contents:function(){w3c_slidy.remove_class(w3c_slidy.toc,"hidden");var toc=w3c_slidy.toc;toc.focus();if(w3c_slidy.ie7&&w3c_slidy.slide_number===0)
 setTimeout(w3c_slidy.ie_hack,100);},hide_table_of_contents:function(focus){w3c_slidy.add_class(w3c_slidy.toc,"hidden");if(focus&&!w3c_slidy.opera)
 w3c_slidy.help_anchor.focus();},toggle_table_of_contents:function(){if(w3c_slidy.is_shown_toc())
 w3c_slidy.hide_table_of_contents(true);else
@@ -36,7 +36,7 @@ e=window.event;var target=w3c_slidy.get_target(e);if(target&&target.nodeType==1)
 {var slide=w3c_slidy.slides[w3c_slidy.slide_number];w3c_slidy.hide_slide(slide);w3c_slidy.slide_number=w3c_slidy.find_slide_number(uri);slide=w3c_slidy.slides[w3c_slidy.slide_number];w3c_slidy.last_shown=null;w3c_slidy.set_location();w3c_slidy.set_visibility_all_incremental("hidden");w3c_slidy.set_eos_status(!w3c_slidy.next_incremental_item(w3c_slidy.last_shown));w3c_slidy.show_slide(slide);try
 {if(!w3c_slidy.opera)
 w3c_slidy.help_anchor.focus();}
-catch(e)
+catch(ex)
 {}}}
 w3c_slidy.hide_table_of_contents(true);if(w3c_slidy.ie7)w3c_slidy.ie_hack();w3c_slidy.stop_propagation(e);return w3c_slidy.cancel(e);},toc_key_down:function(event){var key;if(!event)
 var event=window.event;if(window.event)
@@ -49,7 +49,7 @@ return true;if(key==13)
 {var slide=w3c_slidy.slides[w3c_slidy.slide_number];w3c_slidy.hide_slide(slide);w3c_slidy.slide_number=w3c_slidy.find_slide_number(uri);slide=w3c_slidy.slides[w3c_slidy.slide_number];w3c_slidy.last_shown=null;w3c_slidy.set_location();w3c_slidy.set_visibility_all_incremental("hidden");w3c_slidy.set_eos_status(!w3c_slidy.next_incremental_item(w3c_slidy.last_shown));w3c_slidy.show_slide(slide);try
 {if(!w3c_slidy.opera)
 w3c_slidy.help_anchor.focus();}
-catch(e)
+catch(ex)
 {}}
 w3c_slidy.hide_table_of_contents(true);if(self.ie7)
 w3c_slidy.ie_hack();return w3c_slidy.cancel(event);}
@@ -58,11 +58,11 @@ if(key==40&&this.next)
 if(key==38&&this.previous)
 {this.previous.focus();return w3c_slidy.cancel(event);}
 return true;},touchstart:function(e)
-{this.prev_tap=this.last_tap;this.last_tap=(new Date).getTime();var tap_delay=this.last_tap-this.prev_tap;if(tap_delay<=200)
+{this.prev_tap=this.last_tap;this.last_tap=(new Date()).getTime();var tap_delay=this.last_tap-this.prev_tap;if(tap_delay<=200)
 {}
 var touch=e.touches[0];this.start_x=touch.pageX;this.start_y=touch.pageY;this.delta_x=this.delta_y=0;},touchmove:function(e)
 {var touch=e.touches[0];this.delta_x=touch.pageX-this.start_x;this.delta_y=touch.pageY-this.start_y;},touchend:function(e)
-{var delay=(new Date).getTime()-this.last_tap;var dx=this.delta_x;var dy=this.delta_y;var abs_dx=Math.abs(dx);var abs_dy=Math.abs(dy);if(delay<500&&(abs_dx>100||abs_dy>100))
+{var delay=(new Date()).getTime()-this.last_tap;var dx=this.delta_x;var dy=this.delta_y;var abs_dx=Math.abs(dx);var abs_dy=Math.abs(dy);if(delay<500&&(abs_dx>100||abs_dy>100))
 {if(abs_dx>0.5*abs_dy)
 {if(dx<0)
 w3c_slidy.next_slide(true);else
@@ -123,11 +123,11 @@ var node=item?item.firstChild:null;while(node)
 {w3c_slidy.remove_class(node,"hidden");}
 node=node.nextSibling;}
 item.visible=true;},outline_click:function(e){if(!e)
-e=window.event;var rightclick=false;var target=w3c_slidy.get_target(e);while(target&&target.visible==undefined)
+e=window.event;var rightclick=false;var target=w3c_slidy.get_target(e);while(target&&target.visible===undefined)
 target=target.parentNode;if(!target)
 return true;if(e.which)
 rightclick=(e.which==3);else if(e.button)
-rightclick=(e.button==2);if(!rightclick&&target.visible!=undefined)
+rightclick=(e.button==2);if(!rightclick&&target.visible!==undefined)
 {if(target.foldable)
 {if(target.visible)
 w3c_slidy.fold(target);else
@@ -135,17 +135,17 @@ w3c_slidy.unfold(target);}
 w3c_slidy.stop_propagation(e);e.cancel=true;e.returnValue=false;}
 return false;},add_initial_prompt:function(){var prompt=this.create_element("div");prompt.setAttribute("class","initial_prompt");var p1=this.create_element("p");prompt.appendChild(p1);p1.setAttribute("class","help");if(this.keyboardless)
 p1.innerHTML="swipe left to move to next slide";else
-p1.innerHTML="Space, Right Arrow or swipe left to move to "+"next slide, click help below for more details";this.add_listener(prompt,"click",function(e){document.body.removeChild(prompt);w3c_slidy.stop_propagation(e);if(e.cancel!=undefined)
-e.cancel=true;if(e.returnValue!=undefined)
+p1.innerHTML="Space, Right Arrow or swipe left to move to "+"next slide, click help below for more details";this.add_listener(prompt,"click",function(e){document.body.removeChild(prompt);w3c_slidy.stop_propagation(e);if(e.cancel!==undefined)
+e.cancel=true;if(e.returnValue!==undefined)
 e.returnValue=false;return false;});document.body.appendChild(prompt);this.initial_prompt=prompt;setTimeout(function(){document.body.removeChild(prompt);},5000);},add_toolbar:function(){var counter,page;this.toolbar=this.create_element("div");this.toolbar.setAttribute("class","toolbar");if(this.ns_pos||!this.ie6)
-{var right=this.create_element("div");right.setAttribute("style","float: right; text-align: right");counter=this.create_element("span")
+{var right=this.create_element("div");right.setAttribute("style","float: right; text-align: right");counter=this.create_element("span");
 counter.innerHTML=this.localize("slide")+" n/m";right.appendChild(counter);this.toolbar.appendChild(right);var left=this.create_element("div");left.setAttribute("style","text-align: left");this.eos=this.create_element("span");this.eos.innerHTML="* ";left.appendChild(this.eos);var help=this.create_element("a");help.setAttribute("href",this.help_page);help.setAttribute("title",this.localize(this.help_text));help.innerHTML=this.localize("help?");left.appendChild(help);this.help_anchor=help;var gap1=document.createTextNode(" ");left.appendChild(gap1);var contents=this.create_element("a");contents.setAttribute("href","javascript:w3c_slidy.toggle_table_of_contents()");contents.setAttribute("title",this.localize("table of contents"));contents.innerHTML=this.localize("contents?");left.appendChild(contents);var gap2=document.createTextNode(" ");left.appendChild(gap2);var copyright=this.find_copyright();if(copyright)
 {var span=this.create_element("span");span.className="copyright";span.innerHTML=copyright;left.appendChild(span);}
 this.toolbar.setAttribute("tabindex","0");this.toolbar.appendChild(left);}
 else
 {this.toolbar.style.position=(this.ie7?"fixed":"absolute");this.toolbar.style.zIndex="200";this.toolbar.style.width="99.9%";this.toolbar.style.height="1.2em";this.toolbar.style.top="auto";this.toolbar.style.bottom="0";this.toolbar.style.left="0";this.toolbar.style.right="0";this.toolbar.style.textAlign="left";this.toolbar.style.fontSize="60%";this.toolbar.style.color="red";this.toolbar.borderWidth=0;this.toolbar.className="toolbar";this.toolbar.style.background="rgb(240,240,240)";var sp=this.create_element("span");sp.innerHTML="&nbsp;&nbsp;*&nbsp;";this.toolbar.appendChild(sp);this.eos=sp;var help=this.create_element("a");help.setAttribute("href",this.help_page);help.setAttribute("title",this.localize(this.help_text));help.innerHTML=this.localize("help?");this.toolbar.appendChild(help);this.help_anchor=help;var gap1=document.createTextNode(" ");this.toolbar.appendChild(gap1);var contents=this.create_element("a");contents.setAttribute("href","javascript:toggleTableOfContents()");contents.setAttribute("title",this.localize("table of contents".localize));contents.innerHTML=this.localize("contents?");this.toolbar.appendChild(contents);var gap2=document.createTextNode(" ");this.toolbar.appendChild(gap2);var copyright=this.find_copyright();if(copyright)
 {var span=this.create_element("span");span.innerHTML=copyright;span.style.color="black";span.style.marginLeft="0.5em";this.toolbar.appendChild(span);}
-counter=this.create_element("div")
+counter=this.create_element("div");
 counter.style.position="absolute";counter.style.width="auto";counter.style.height="1.2em";counter.style.top="auto";counter.style.bottom=0;counter.style.right="0";counter.style.textAlign="right";counter.style.color="red";counter.style.background="rgb(240,240,240)";counter.innerHTML=this.localize("slide")+" n/m";this.toolbar.appendChild(counter);}
 this.toolbar.onclick=function(e){if(!e)
 e=window.event;var target=e.target;if(!target&&e.srcElement)
@@ -156,15 +156,15 @@ return;for(i=0;i<headings.length;++i)
 {heading=headings[i];if(heading.parentNode!=document.body)
 continue;node=heading.nextSibling;div=document.createElement("div");this.add_class(div,"slide");document.body.replaceChild(div,heading);div.appendChild(heading);while(node)
 {if(node.nodeType==1&&(node.nodeName=="H1"||node.nodeName=="h1"||node.nodeName=="DIV"||node.nodeName=="div"))
-break;next=node.nextSibling;node=document.body.removeChild(node);div.appendChild(node);node=next;}}},collect_slides:function(){var slides=new Array();var divs=document.body.getElementsByTagName("div");for(var i=0;i<divs.length;++i)
+break;next=node.nextSibling;node=document.body.removeChild(node);div.appendChild(node);node=next;}}},collect_slides:function(){var slides=[];var divs=document.body.getElementsByTagName("div");for(var i=0;i<divs.length;++i)
 {div=divs.item(i);if(this.has_class(div,"slide"))
 {slides[slides.length]=div;this.add_class(div,"hidden");var node1=document.createElement("br");div.appendChild(node1);var node2=document.createElement("br");div.appendChild(node2);}
 else if(this.has_class(div,"background"))
 {div.style.display="block";}}
-this.slides=slides;},collect_notes:function(){var notes=new Array();var divs=document.body.getElementsByTagName("div");for(var i=0;i<divs.length;++i)
+this.slides=slides;},collect_notes:function(){var notes=[];var divs=document.body.getElementsByTagName("div");for(var i=0;i<divs.length;++i)
 {div=divs.item(i);if(this.has_class(div,"handout"))
 {notes[notes.length]=div;this.add_class(div,"hidden");}}
-this.notes=notes;},collect_backgrounds:function(){var backgrounds=new Array();var divs=document.body.getElementsByTagName("div");for(var i=0;i<divs.length;++i)
+this.notes=notes;},collect_backgrounds:function(){var backgrounds=[];var divs=document.body.getElementsByTagName("div");for(var i=0;i<divs.length;++i)
 {div=divs.item(i);if(this.has_class(div,"background"))
 {backgrounds[backgrounds.length]=div;this.add_class(div,"hidden");}}
 this.backgrounds=backgrounds;},patch_anchors:function(){var self=w3c_slidy;var handler=function(event){if(self.page_address(this.href)==self.page_address(location.href))
@@ -187,18 +187,18 @@ return timer;},set_location:function(){var uri=w3c_slidy.page_address(location.h
 uri=uri+hash;if(w3c_slidy.ie&&(w3c_slidy.ie6||w3c_slidy.ie7))
 w3c_slidy.push_hash(hash);if(uri!=location.href)
 location.href=uri;if(this.khtml)
-hash="("+(w3c_slidy.slide_number+1)+")";if(!this.ie&&location.hash!=hash&&location.hash!="")
+hash="("+(w3c_slidy.slide_number+1)+")";if(!this.ie&&location.hash!=hash&&location.hash!=="")
 location.hash=hash;document.title=w3c_slidy.title+" ("+(w3c_slidy.slide_number+1)+")";w3c_slidy.show_slide_number();},page_address:function(uri){var i=uri.indexOf("#");if(i<0)
 i=uri.indexOf("%23");if(i<0)
-return uri;return uri.substr(0,i);},on_frame_loaded:function(hash){location.hash=hash;var uri=w3c_slidy.page_address(location.href);location.href=uri+hash;},push_hash:function(hash){if(hash=="")hash="#(1)";window.location.hash=hash;var doc=document.getElementById("historyFrame").contentWindow.document;doc.open("javascript:'<html></html>'");doc.write("<html><head><script type=\"text/javascript\">window.parent.w3c_slidy.on_frame_loaded('"+
+return uri;return uri.substr(0,i);},on_frame_loaded:function(hash){location.hash=hash;var uri=w3c_slidy.page_address(location.href);location.href=uri+hash;},push_hash:function(hash){if(hash==="")hash="#(1)";window.location.hash=hash;var doc=document.getElementById("historyFrame").contentWindow.document;doc.open("javascript:'<html></html>'");doc.write("<html><head><script type=\"text/javascript\">window.parent.w3c_slidy.on_frame_loaded('"+
 (hash)+"');</script></head><body>hello mum</body></html>");doc.close();},find_slide_number:function(uri){var i=uri.indexOf("#");if(i<0)
 return 0;var anchor=unescape(uri.substr(i+1));var target=document.getElementById(anchor);if(!target)
 {var re=/\((\d)+\)/;if(anchor.match(re))
-{var num=parseInt(anchor.substring(1,anchor.length-1));if(num>this.slides.length)
+{var num=parseInt(anchor.substring(1,anchor.length-1), 10);if(num>this.slides.length)
 num=1;if(--num<0)
 num=0;return num;}
 re=/\[(\d)+\]/;if(anchor.match(re))
-{var num=parseInt(anchor.substring(1,anchor.length-1));if(num>this.slides.length)
+{var num=parseInt(anchor.substring(1,anchor.length-1), 10);if(num>this.slides.length)
 num=1;if(--num<0)
 num=0;return num;}
 return 0;}
@@ -206,25 +206,25 @@ while(true)
 {if(target.nodeName.toLowerCase()=="div"&&this.has_class(target,"slide"))
 {break;}
 target=target.parentNode;if(!target)
-{return 0;}};for(i=0;i<slides.length;++i)
+{return 0;}}for(i=0;i<slides.length;++i)
 {if(slides[i]==target)
 return i;}
 return 0;},previous_slide:function(incremental){if(!w3c_slidy.view_all)
-{var slide;if((incremental||w3c_slidy.slide_number==0)&&w3c_slidy.last_shown!=null)
+{var slide;if((incremental||w3c_slidy.slide_number===0)&&w3c_slidy.last_shown!==null)
 {w3c_slidy.last_shown=w3c_slidy.hide_previous_item(w3c_slidy.last_shown);w3c_slidy.set_eos_status(false);}
 else if(w3c_slidy.slide_number>0)
 {slide=w3c_slidy.slides[w3c_slidy.slide_number];w3c_slidy.hide_slide(slide);w3c_slidy.slide_number=w3c_slidy.slide_number-1;slide=w3c_slidy.slides[w3c_slidy.slide_number];w3c_slidy.set_visibility_all_incremental("visible");w3c_slidy.last_shown=w3c_slidy.previous_incremental_item(null);w3c_slidy.set_eos_status(true);w3c_slidy.show_slide(slide);}
 w3c_slidy.set_location();if(!w3c_slidy.ns_pos)
 w3c_slidy.refresh_toolbar(200);}},next_slide:function(incremental){if(!w3c_slidy.view_all)
 {var slide,last=w3c_slidy.last_shown;if(incremental||w3c_slidy.slide_number==w3c_slidy.slides.length-1)
-w3c_slidy.last_shown=w3c_slidy.reveal_next_item(w3c_slidy.last_shown);if((!incremental||w3c_slidy.last_shown==null)&&w3c_slidy.slide_number<w3c_slidy.slides.length-1)
+w3c_slidy.last_shown=w3c_slidy.reveal_next_item(w3c_slidy.last_shown);if((!incremental||w3c_slidy.last_shown===null)&&w3c_slidy.slide_number<w3c_slidy.slides.length-1)
 {slide=w3c_slidy.slides[w3c_slidy.slide_number];w3c_slidy.hide_slide(slide);w3c_slidy.slide_number=w3c_slidy.slide_number+1;slide=w3c_slidy.slides[w3c_slidy.slide_number];w3c_slidy.last_shown=null;w3c_slidy.set_visibility_all_incremental("hidden");w3c_slidy.show_slide(slide);}
 else if(!w3c_slidy.last_shown)
 {if(last&&incremental)
 w3c_slidy.last_shown=last;}
 w3c_slidy.set_location();w3c_slidy.set_eos_status(!w3c_slidy.next_incremental_item(w3c_slidy.last_shown));if(!w3c_slidy.ns_pos)
 w3c_slidy.refresh_toolbar(200);}},first_slide:function(){if(!w3c_slidy.view_all)
-{var slide;if(w3c_slidy.slide_number!=0)
+{var slide;if(w3c_slidy.slide_number!==0)
 {slide=w3c_slidy.slides[w3c_slidy.slide_number];w3c_slidy.hide_slide(slide);w3c_slidy.slide_number=0;slide=w3c_slidy.slides[w3c_slidy.slide_number];w3c_slidy.last_shown=null;w3c_slidy.set_visibility_all_incremental("hidden");w3c_slidy.show_slide(slide);}
 w3c_slidy.set_eos_status(!w3c_slidy.next_incremental_item(w3c_slidy.last_shown));w3c_slidy.set_location();}},last_slide:function(){if(!w3c_slidy.view_all)
 {var slide;w3c_slidy.last_shown=null;if(w3c_slidy.last_shown==null&&w3c_slidy.slide_number<w3c_slidy.slides.length-1)
