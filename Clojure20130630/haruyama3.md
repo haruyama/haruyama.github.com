@@ -11,6 +11,8 @@
 
 * ~/.lein/profiles.clj
 
+[$HOME/.lein/profiles.clj](https://github.com/haruyama/Settings/blob/30f57c9b82392007e45bec211b775be0e34fd7f8/.lein/profiles.clj)
+
 ```clojure
 {:user  {:plugins [[lein-kibit "0.0.8"]
                    [lein-difftest "2.0.0"]
@@ -47,7 +49,7 @@ for speeding up boot time.
 
 * [vim-scripts/paredit.vim](https://github.com/vim-scripts/paredit.vim)
 
-* [liquidz/lein-vim](https://github.com/liquidz/lein-vim)
+* [haruyama/vim-matchopen · GitHub](https://github.com/haruyama/vim-matchopen)
 
 # Vim setting
 
