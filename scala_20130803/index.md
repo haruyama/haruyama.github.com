@@ -1,4 +1,4 @@
-% 新宿Scala座
+% 新宿Scala座 2013/08/03
 % 春山 征吾([@haruyama](https://twitter.com/haruyama))
 
 # 自己紹介
@@ -6,6 +6,8 @@
 * 所属: 株式会社ミクシィ
     * 全文検索
     * セキュリティ
+
+* 毎週月曜に SICP読書会をやっています
 
 # Scala と私
 
@@ -16,8 +18,8 @@
 * Solr の拡張
     * [haruyama/solr-filter · GitHub](https://github.com/haruyama/solr-filter)
     * [haruyama/solr-function-query-sample · GitHub](https://github.com/haruyama/solr-function-query-sample)
-    * 社外に公開していないもの
-    
+    * 社外に公開していないものもあり
+
 * Leiningen で Scala
     * [haruyama/lein-scalac-example · GitHub](https://github.com/haruyama/lein-scalac-example)
     * [haruyama/lein-scalac · GitHub](https://github.com/haruyama/lein-scalac)
