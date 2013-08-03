@@ -9,7 +9,7 @@
 
 * 毎週月曜に SICP読書会をやっています
 
-* [職務経歴 - 春山征吾のWiki - Seesaa Wiki（ウィキ）](http://wiki.livedoor.jp/haruyama_seigo/d/%bf%a6%cc%b3%b7%d0%ce%f2)
+* [春山征吾のWiki - Seesaa Wiki（ウィキ）](http://wiki.livedoor.jp/haruyama_seigo/)
 
 # Scala と私
 
