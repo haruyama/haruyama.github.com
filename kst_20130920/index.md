@@ -21,6 +21,7 @@
 * Index (BlockTree Terms Distionary)
 * Fuzzy Query
     * [Changing Bits: Lucene's FuzzyQuery is 100 times faster in 4.0](http://blog.mikemccandless.com/2011/03/lucenes-fuzzyquery-is-100-times-faster.html)']
+    * [Fast string correction with Levenshtein automata](http://csi.ufs.ac.za/resres/files/Schultz.pdf)
 * Spell Checker/Suggester
 * Dictionary of kuromoji
     * lucene/analysis/kuromoji/src/java/org/apache/lucene/analysis/ja/dict/
@@ -33,5 +34,5 @@
 
 # Using Lucene's FST in Clojure
 
-* [mixi-clojure-commons/src/mixi/lucene/fst.clj at v0.2.0 · haruyama/mixi-clojure-commons · GitHub](https://github.com/haruyama/mixi-clojure-commons/blob/v0.2.0/src/mixi/lucene/fst.clj)
-* [mixi-clojure-commons/test/mixi/lucene/fst_test.clj at v0.2.0 · haruyama/mixi-clojure-commons · GitHub](https://github.com/haruyama/mixi-clojure-commons/blob/v0.2.0/test/mixi/lucene/fst_test.c)
+* [mixi-clojure-commons/src/mixi/lucene/fst.clj at v0.2.0](https://github.com/haruyama/mixi-clojure-commons/blob/v0.2.0/src/mixi/lucene/fst.clj)
+* [mixi-clojure-commons/test/mixi/lucene/fst_test.clj at v0.2.0](https://github.com/haruyama/mixi-clojure-commons/blob/v0.2.0/test/mixi/lucene/fst_test.clj)
