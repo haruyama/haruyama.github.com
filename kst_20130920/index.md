@@ -14,6 +14,9 @@
 
 * [Lucene's FST Implementation - Lucene Revolution](http://www.lucenerevolution.org/sites/default/files/AutomatonInvasionLuceneRevolution2012_1.pdf)
 * [Changing Bits: Using Finite State Transducers in Lucene](http://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html)
+* [Finite State Automata in Lucene](http://www.lucenerevolution.org/sites/default/files/Weiss%20Dawid%20-%20Finite%20State%20Automata%20in%20Lucene%281%29_0.pdf)
+
+# Using FST in Lucene 
 
 * Index (BlockTree Terms Distionary)
 * Fuzzy Query
