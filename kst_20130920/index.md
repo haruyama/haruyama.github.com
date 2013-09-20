@@ -1,10 +1,10 @@
-% KST 20130919 Lucene's FST
+% KST 20130920: Lucene's FST
 % HARUYAMA Seigo([@haruyama](https://twitter.com/haruyama))
 
 # FST
 
-* Finite State Transducer:
-
+* Finite State Transducer
+    * [Finite state transducer - Wikipedia, the free encyclopedia](http://en.wikipedia.org/wiki/Finite_state_transducer)
 
 # Lucene's FST
 
