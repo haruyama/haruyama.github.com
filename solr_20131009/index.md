@@ -25,4 +25,5 @@ SOLUTION: MappingCharFilterFactory
 
 lucene-gosen tokenizes HALFWIDTH characters into one unk, even if characters includes a punctuation.
 
-SOLUTION: MappingCharFilterFactory
+SOLUTION: MappingCharFilterFactory or kuromoji
+
