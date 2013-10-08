@@ -23,6 +23,6 @@ SOLUTION: MappingCharFilterFactory
 
 # lucene-gosen
 
-lucene-gosen tokenizes HALFWIDTH charactors into one unk, even if characters includes a punctuation.
+lucene-gosen tokenizes HALFWIDTH characters into one unk, even if characters includes a punctuation.
 
 SOLUTION: MappingCharFilterFactory
