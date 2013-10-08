@@ -1,4 +1,4 @@
-% small improvements of Lucene/Solr Tokenizer
+% Small Improvements for Lucene/Solr Tokenizer
 % HARUYAMA Seigo([@haruyama](https://twitter.com/haruyama))
 % 第12回 Solr 勉強会 2013/10/09
 
