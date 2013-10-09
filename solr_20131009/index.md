@@ -21,9 +21,12 @@ SOLUTION: MappingCharFilterFactory
 <tokenizer class="solr.JapaneseTokenizerFactory" mode="search"/>
 ```
 
+* [mapping-fullwidth-digit.txt](https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/mapping-fullwidth-digit.txt)
+
 # lucene-gosen
 
 lucene-gosen tokenizes HALFWIDTH characters into one unk, even if characters includes a punctuation.
 
 SOLUTION: MappingCharFilterFactory or kuromoji
 
+* [mapping-halfwidth-symbol.txt](https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/mapping-halfwidth-symbol.txt)

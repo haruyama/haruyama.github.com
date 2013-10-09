@@ -12,7 +12,7 @@
   <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
+table.sourceCode { width: 100%; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
 code > span.kw { color: #007020; font-weight: bold; }
@@ -41,23 +41,29 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
   </p>
   <p class="date">第12回 Solr 勉強会 2013/10/09</p>
 </div>
-<div id="standardtokenizer" class="slide section level1">
+<div class="section slide level1" id="standardtokenizer">
 <h1>StandardTokenizer</h1>
 <p>StandardTokenizer discards some kinds of characters: Symbol, Punctuation, …).</p>
 <p>SOLUTION: <a href="https://github.com/haruyama/StandardPlusTokenizer">haruyama/StandardPlusTokenizer · GitHub</a></p>
 <p>This tokenizer tokenizes all characters but spaces.</p>
 </div>
-<div id="kuromoji" class="slide section level1">
+<div class="section slide level1" id="kuromoji">
 <h1>kuromoji</h1>
 <p>kuromoji divides FULLWIDTH DIGIT series into separate character tokens.</p>
 <p>SOLUTION: MappingCharFilterFactory</p>
 <pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;charFilter</span><span class="ot"> class=</span><span class="st">&quot;solr.MappingCharFilterFactory&quot;</span><span class="ot"> mapping=</span><span class="st">&quot;mapping-fullwidth-digit.txt&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;tokenizer</span><span class="ot"> class=</span><span class="st">&quot;solr.JapaneseTokenizerFactory&quot;</span><span class="ot"> mode=</span><span class="st">&quot;search&quot;</span><span class="kw">/&gt;</span></code></pre>
+<ul>
+<li><a href="https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/mapping-fullwidth-digit.txt">mapping-fullwidth-digit.txt</a></li>
+</ul>
 </div>
-<div id="lucene-gosen" class="slide section level1">
+<div class="section slide level1" id="lucene-gosen">
 <h1>lucene-gosen</h1>
 <p>lucene-gosen tokenizes HALFWIDTH characters into one unk, even if characters includes a punctuation.</p>
 <p>SOLUTION: MappingCharFilterFactory or kuromoji</p>
+<ul>
+<li><a href="https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/mapping-halfwidth-symbol.txt">mapping-halfwidth-symbol.txt</a></li>
+</ul>
 </div>
 </body>
 </html>
