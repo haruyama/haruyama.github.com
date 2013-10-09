@@ -43,9 +43,12 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
 </div>
 <div class="section slide level1" id="standardtokenizer">
 <h1>StandardTokenizer</h1>
-<p>StandardTokenizer discards some kinds of characters: Symbol, Punctuation, …).</p>
+<p>StandardTokenizer discards some kinds of characters: Symbol, Punctuation, …</p>
 <p>SOLUTION: <a href="https://github.com/haruyama/StandardPlusTokenizer">haruyama/StandardPlusTokenizer · GitHub</a></p>
 <p>This tokenizer tokenizes all characters but spaces.</p>
+<ul>
+<li><a href="https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/schema.xml#L101">Anuenue text_cjk_plus fieldType</a></li>
+</ul>
 </div>
 <div class="section slide level1" id="kuromoji">
 <h1>kuromoji</h1>
@@ -54,6 +57,7 @@ HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
 <pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;charFilter</span><span class="ot"> class=</span><span class="st">&quot;solr.MappingCharFilterFactory&quot;</span><span class="ot"> mapping=</span><span class="st">&quot;mapping-fullwidth-digit.txt&quot;</span> <span class="kw">/&gt;</span>
 <span class="kw">&lt;tokenizer</span><span class="ot"> class=</span><span class="st">&quot;solr.JapaneseTokenizerFactory&quot;</span><span class="ot"> mode=</span><span class="st">&quot;search&quot;</span><span class="kw">/&gt;</span></code></pre>
 <ul>
+<li><a href="https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/schema.xml#L40">Anuenue text_ja fieldType</a></li>
 <li><a href="https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/mapping-fullwidth-digit.txt">mapping-fullwidth-digit.txt</a></li>
 </ul>
 </div>

@@ -4,11 +4,13 @@
 
 # StandardTokenizer
 
-StandardTokenizer discards some kinds of characters: Symbol, Punctuation, ...).
+StandardTokenizer discards some kinds of characters: Symbol, Punctuation, ...
 
 SOLUTION: [haruyama/StandardPlusTokenizer · GitHub](https://github.com/haruyama/StandardPlusTokenizer)
 
 This tokenizer tokenizes all characters but spaces.
+
+* [Anuenue text_cjk_plus fieldType](https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/schema.xml#L101)
 
 # kuromoji
 
@@ -21,6 +23,7 @@ SOLUTION: MappingCharFilterFactory
 <tokenizer class="solr.JapaneseTokenizerFactory" mode="search"/>
 ```
 
+* [Anuenue text_ja fieldType](https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/schema.xml#L40)
 * [mapping-fullwidth-digit.txt](https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/mapping-fullwidth-digit.txt)
 
 # lucene-gosen
