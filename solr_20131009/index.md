@@ -26,9 +26,9 @@ SOLUTION: MappingCharFilterFactory
 * [Anuenue text_ja fieldType](https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/schema.xml#L40)
 * [mapping-fullwidth-digit.txt](https://github.com/haruyama/Anuenue/blob/9bc4e8853cb2e2bbbcfdd740efeefedb9d98cdf8/src/solr/collection1/conf/mapping-fullwidth-digit.txt)
 
-# lucene-gosen
+# lucene-gosen-ipadic
 
-lucene-gosen tokenizes HALFWIDTH characters into one unk, even if characters include punctuations.
+lucene-gosen-ipadic tokenizes HALFWIDTH characters into one unk, even if characters include punctuations.
 
 SOLUTION: MappingCharFilterFactory or kuromoji
 
