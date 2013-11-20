@@ -11,10 +11,11 @@
 
 > This attack cannot be mitigated without replacing RC4.
 
-# Microsoft security advisory: Update for disabling RC4
+# RC4 (cont.)
 
+# [SSL/TLSでBEASTを恐れてRC4を優先するのは危ない - Tetsu=TaLowの雑記（はてブロ版）](http://tetsutalow.hateblo.jp/entry/2013/04/02/053927)
 * [Microsoft security advisory: Update for disabling RC4](http://support.microsoft.com/kb/2868725)
-* [自堕落な技術者の日記 : Windows 8.1やら2013年11月13日のWindows UpdateやらでRC4をサポートしなくなったというのでSSL/TLS CipherSuiteを見てみたぞ - livedoor Blog（ブログ）](http://blog.livedoor.jp/k_urushima/archives/1727733.html)
+    * [自堕落な技術者の日記 : Windows 8.1やら2013年11月13日のWindows UpdateやらでRC4をサポートしなくなったというのでSSL/TLS CipherSuiteを見てみたぞ - livedoor Blog（ブログ）](http://blog.livedoor.jp/k_urushima/archives/1727733.html)
 
 # AES-CBC
 
