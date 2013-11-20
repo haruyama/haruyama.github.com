@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="HARUYAMA Seigo(@haruyama)" />
+  <title>KST 20131122: Recent Topics of Practical Cryptography</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="slidy/styles/slidy.css" />
+  <script src="slidy/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">KST 20131122: Recent Topics of Practical Cryptography</h1>
+  <p class="author">
+HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
+  </p>
+</div>
+<div id="a-roster-of-tls-cipher-suites-weaknesses" class="slide section level1">
+<h1>A roster of TLS cipher suites weaknesses</h1>
+<p><a href="http://googleonlinesecurity.blogspot.jp/2013/11/a-roster-of-tls-cipher-suites-weaknesses.html">Google Online Security Blog: A roster of TLS cipher suites weaknesses</a></p>
+</div>
+<div id="rc4" class="slide section level1">
+<h1>RC4</h1>
+<blockquote>
+<p>The best, known attack against using RC4 with HTTPS involves causing a browser to transmit many HTTP requests – each with the same cookie – and exploiting known biases in RC4 to build an increasingly precise probability distribution for each byte in a cookie. However, the attack needs to see on the order of 10 billion copies of the cookie in order to make a good guess. This involves the browser sending ~7TB of data. In ideal situations, this requires nearly three months to complete.</p>
+</blockquote>
+<blockquote>
+<p>This attack cannot be mitigated without replacing RC4.</p>
+</blockquote>
+</div>
+<div id="aes-cbc" class="slide section level1">
+<h1>AES-CBC</h1>
+<blockquote>
+<p>AES-CBC has a couple of problems, both of which are problems with the way that TLS uses CBC (Cipher Block Chaining) mode, and not problems with AES.</p>
+</blockquote>
+<p>Known Attacks:</p>
+<ul>
+<li><a href="http://vnhacker.blogspot.jp/2011/09/beast.html">BEAST</a></li>
+<li><a href="http://www.isg.rhul.ac.uk/tls/Lucky13.html">Lucky 13</a></li>
+</ul>
+</div>
+<div id="aes-gcm" class="slide section level1">
+<h1>AES-GCM</h1>
+<blockquote>
+<p>There are no known breaks of AES-GCM and it is one of the ciphers that TLS servers are urged to support. However it suffers from a couple of practical issues:</p>
+</blockquote>
+<blockquote>
+<p>The first is that it’s very challenging to implement AES-GCM in software in a way which is both fast and secure.</p>
+</blockquote>
+<blockquote>
+<p>The second nit with AES-GCM is that, as integrated in TLS, implementations are free to use a random nonce value. However, the size of this nonce (8 bytes) is too small to safely support using this mode.</p>
+</blockquote>
+</div>
+<div id="aes-gcm-implementation-of-openssh-6.2-and-6.3-have-a-vulnerability." class="slide section level1">
+<h1>AES-GCM Implementation of OpenSSH 6.2 and 6.3 have a vulnerability.</h1>
+<p><a href="http://openssh.org/txt/gcmrekey.adv">OpenSSH Security Advisory: gcmrekey.adv</a></p>
+<blockquote>
+<p>A memory corruption vulnerability exists in the post-authentication sshd process when an AES-GCM cipher (aes128-gcm@openssh.com or aes256-gcm@openssh.com) is selected during kex exchange.</p>
+</blockquote>
+</div>
+<div id="chacha20-poly1305" class="slide section level1">
+<h1>ChaCha20-Poly1305</h1>
+<blockquote>
+<p>This cipher also has no known breaks but is designed to facilitate fast and secure software implementations. … Even when AES-GCM hardware is provided, ChaCha20-Poly1305 is currently within a factor of two in speed.</p>
+</blockquote>
+<p><a href="https://www.imperialviolet.org/2013/10/07/chacha20.html">ImperialViolet - ChaCha20 and Poly1305 for TLS</a></p>
+<blockquote>
+<p>Google servers and Chrome will soon be supporting cipher suites based around ChaCha20 and Poly1305.</p>
+</blockquote>
+<p><a href="https://lists.mindrot.org/pipermail/openssh-unix-dev/2013-November/031820.html">chacha20+poly1305 authenticated encryption</a></p>
+<p>OpenSSH will be supporting chacha20-poly1305@openssh.com.</p>
+</div>
+<div id="chacha20-poly1305-cont." class="slide section level1">
+<h1>ChaCha20-Poly1305 (cont.)</h1>
+<p>ChaCha20 is a stream cipher designed by D. J. Bernstein (a.k.a. DJB).</p>
+<p>Poly1305[2] also by DJB is a one-time Carter-Wegman MAC.</p>
+<p>DJB rulez!</p>
+</div>
+<div id="tls-ciphersuites" class="slide section level1">
+<h1>TLS CipherSuites</h1>
+<ul>
+<li><a href="http://blog.livedoor.jp/k_urushima/archives/1727793.html">自堕落な技術者の日記 : JRE 1.4-1.6やAndroidのAPIを使ったHTTPS接続のCipherSuitesがRC4-MD5を優先しているかなりヤバい話 - livedoor Blog（ブログ）</a></li>
+<li><a href="https://www.ssllabs.com/ssltest/analyze.html?d=s10.kabu.co.jp">Qualys SSL Labs - Projects / SSL Server Test / s10.kabu.co.jp</a>
+<ul>
+<li>only support TLS_RSA_WITH_3DES_EDE_CBC_SHA ! No Forward Secrecy.</li>
+</ul></li>
+<li><a href="https://www.ssllabs.com/ssltest/analyze.html?d=fp.mixi.co.jp">Qualys SSL Labs - Projects / SSL Server Test / fp.mixi.co.jp</a>
+<ul>
+<li>support WEAK ciphers. No Forward Secrecy.</li>
+</ul></li>
+<li>Forward Secrecy: <a href="http://itpro.nikkeibp.co.jp/word/page/10004958/">「PFS」とは：ITpro</a></li>
+</ul>
+</div>
+</body>
+</html>
