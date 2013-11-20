@@ -11,6 +11,11 @@
 
 > This attack cannot be mitigated without replacing RC4.
 
+# Microsoft security advisory: Update for disabling RC4
+
+* [Microsoft security advisory: Update for disabling RC4](http://support.microsoft.com/kb/2868725)
+* [自堕落な技術者の日記 : Windows 8.1やら2013年11月13日のWindows UpdateやらでRC4をサポートしなくなったというのでSSL/TLS CipherSuiteを見てみたぞ - livedoor Blog（ブログ）](http://blog.livedoor.jp/k_urushima/archives/1727733.html)
+
 # AES-CBC
 
 > AES-CBC has a couple of problems, both of which are problems with the way that TLS uses CBC (Cipher Block Chaining) mode, and not problems with AES.
@@ -62,4 +67,8 @@ DJB rulez!
 * [Qualys SSL Labs - Projects / SSL Server Test / fp.mixi.co.jp](https://www.ssllabs.com/ssltest/analyze.html?d=fp.mixi.co.jp)
     * support WEAK ciphers. No Forward Secrecy.
 
-* Forward Secrecy: [「PFS」とは：ITpro](http://itpro.nikkeibp.co.jp/word/page/10004958/)
+# Forward Secrecy
+
+* Forward Secrecy: [「PFS」とは：ITpro](http://itpro.nikkeibp.co.jp/word/page/10004959/)
+* [Lavabit 事件とその余波、そして Forward Secrecy - セキュリティは楽しいかね？ Part 2](http://negi.hatenablog.com/entry/2013/11/05/093606)
+* [OTRでオフレコチャット！ - セキュリティは楽しいかね？ Part 2](http://negi.hatenablog.com/entry/2013/11/09/103401)
