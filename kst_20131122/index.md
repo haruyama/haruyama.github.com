@@ -67,9 +67,17 @@ DJB rulez!
     * only support TLS_RSA_WITH_3DES_EDE_CBC_SHA ! No Forward Secrecy.
 * [Qualys SSL Labs - Projects / SSL Server Test / fp.mixi.co.jp](https://www.ssllabs.com/ssltest/analyze.html?d=fp.mixi.co.jp)
     * support WEAK ciphers. No Forward Secrecy.
+* [Qualys SSL Labs - Projects / SSL Server Test / mixi.jp](https://www.ssllabs.com/ssltest/analyze.html?d=mixi.jp)
+    * BEAST attack Not mitigated server-side. No Forward Secrecy.
 
 # Forward Secrecy
 
 * Forward Secrecy: [「PFS」とは：ITpro](http://itpro.nikkeibp.co.jp/word/page/10004959/)
+* [Google、GmailやGoogle+のセキュリティを強化　「forward secrecy」を採用 - ITmedia ニュース](http://www.itmedia.co.jp/news/articles/1111/24/news031.html)
+    * 2011/11
 * [Lavabit 事件とその余波、そして Forward Secrecy - セキュリティは楽しいかね？ Part 2](http://negi.hatenablog.com/entry/2013/11/05/093606)
 * [OTRでオフレコチャット！ - セキュリティは楽しいかね？ Part 2](http://negi.hatenablog.com/entry/2013/11/09/103401)
+
+# misc.
+
+* [サービス暗号化の優等生はGoogleとDropbox、Amazonは要注意──EFF調べ - ITmedia ニュース](http://www.itmedia.co.jp/news/articles/1311/21/news093.html)
