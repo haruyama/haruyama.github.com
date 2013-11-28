@@ -77,6 +77,8 @@ DJB rulez!
     * 2011/11
 * [Lavabit 事件とその余波、そして Forward Secrecy - セキュリティは楽しいかね？ Part 2](http://negi.hatenablog.com/entry/2013/11/05/093606)
 * [OTRでオフレコチャット！ - セキュリティは楽しいかね？ Part 2](http://negi.hatenablog.com/entry/2013/11/09/103401)
+* [自堕落な技術者の日記 : TwitterのPerfect Forward Secrecy(PFS)対応 - livedoor Blog（ブログ）](http://blog.livedoor.jp/k_urushima/archives/1728348.html)
+    * 2013/11/28 追記
 
 # misc.
 
