@@ -45,10 +45,9 @@ for speeding up boot time.
 * [~/.vim/syntax_checkers/clojure/nrepl.vim](https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.vim/syntax_checkers/clojure/nrepl.vim)
     * a syntax checker and test runnner using [scrooloose/syntastic](https://github.com/scrooloose/syntastic)
 
-# Requirements for syntax check
+# Requirements for syntax checking
 
 * add org.clojure/tools.namespace to profiles.dev.dependencies.
-    * [mixi-cj-lib/project.clj at master](https://github.com/haruyama/mixi-cj-lib/blob/master/project.clj)
 * execute 'lein repl' in a project directory.
 
 # Demo: syntax check and run test
