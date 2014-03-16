@@ -9,7 +9,7 @@
 
 # lein
 
-* [~/.lein/profiles.clj](https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.lein/profiles.clj)
+* [~/.lein/profiles.clj](https://github.com/haruyama/Settings/blob/b4bb70b5bc31ac5081a247aedbd907c6e23e09c5/.lein/profiles.clj)
 
 # jvm-opts
 
@@ -41,8 +41,8 @@ for speeding up boot time.
 
 # Vim setting
 
-* [~/.vim/after/ftplugin/clojure.vim](https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.vim/after/ftplugin/clojure.vim)
-* [~/.vim/syntax_checkers/clojure/nrepl.vim](https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.vim/syntax_checkers/clojure/nrepl.vim)
+* [~/.vim/after/ftplugin/clojure.vim](https://github.com/haruyama/Settings/blob/b4bb70b5bc31ac5081a247aedbd907c6e23e09c5/.vim/after/ftplugin/clojure.vim)
+* [~/.vim/syntax_checkers/clojure/nrepl.vim](https://github.com/haruyama/Settings/blob/b4bb70b5bc31ac5081a247aedbd907c6e23e09c5/.vim/syntax_checkers/clojure/nrepl.vim)
     * a syntax checker and test runnner using [scrooloose/syntastic](https://github.com/scrooloose/syntastic)
 
 # Requirements for syntax checking
