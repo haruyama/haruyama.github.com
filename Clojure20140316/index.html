@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="HARUYAMA Seigo(@haruyama)" />
+  <title>My Clojure Development Environment (Vol. 4)</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="slidy/styles/slidy.css" />
+  <script src="slidy/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">My Clojure Development Environment (Vol. 4)</h1>
+  <p class="author">
+HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)
+  </p>
+</div>
+<div id="lein-vim" class="slide section level1">
+<h1>lein + Vim</h1>
+<ul>
+<li><a href="https://github.com/technomancy/leiningen">technomancy/leiningen</a>
+<ul>
+<li>version 2</li>
+</ul></li>
+<li>Vim</li>
+</ul>
+</div>
+<div id="lein" class="slide section level1">
+<h1>lein</h1>
+<ul>
+<li>~/.lein/profiles.clj</li>
+</ul>
+<p><a href="https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.lein/profiles.clj">$HOME/.lein/profiles.clj</a></p>
+</div>
+<div id="jvm-opts" class="slide section level1">
+<h1>jvm-opts</h1>
+<pre><code>         :jvm-opts [&quot;-XX:+TieredCompilation&quot;
+                    &quot;-XX:TieredStopAtLevel=1&quot;]</code></pre>
+<p>for speeding up boot time.</p>
+<ul>
+<li><a href="http://tnoda-clojure.tumblr.com/post/51495039433/jvm-clojure-30">tnoda-clojure • JVM のオプション設定で Clojure の起動を 30% 高速化 → さらに高速化で起動時間半減へ</a></li>
+</ul>
+</div>
+<div id="static-analysis" class="slide section level1">
+<h1>Static Analysis</h1>
+<ul>
+<li><a href="https://github.com/jonase/lein-kibit">jonase/lein-kibit</a></li>
+<li><a href="https://github.com/jonase/eastwood">jonase/eastwood</a></li>
+<li><a href="https://github.com/dakrone/lein-bikeshed">dakrone/lein-bikeshed</a></li>
+</ul>
+</div>
+<div id="vim-plugins" class="slide section level1">
+<h1>Vim plugins</h1>
+<ul>
+<li><a href="https://github.com/tpope/vim-fireplace">tpope/vim-fireplace</a></li>
+<li><a href="https://github.com/guns/vim-clojure-highlight">guns/vim-clojure-highlight</a></li>
+<li><p><a href="https://github.com/guns/vim-clojure-static">guns/vim-clojure-static</a></p></li>
+<li><a href="https://github.com/vim-scripts/paredit.vim">vim-scripts/paredit.vim</a></li>
+<li><p><a href="https://github.com/amdt/vim-niji">amdt/vim-niji</a></p></li>
+<li><p><a href="https://github.com/haruyama/vim-matchopen">haruyama/vim-matchopen</a></p></li>
+</ul>
+</div>
+<div id="vim-setting" class="slide section level1">
+<h1>Vim setting</h1>
+<ul>
+<li><a href="https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.vim/after/ftplugin/clojure.vim">$HOME/.vim/after/ftplugin/clojure.vim</a></li>
+<li><a href="https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.vim/syntax_checkers/clojure/nrepl.vim">$HOME/.vim/syntax_checkers/clojure/nrepl.vim</a>
+<ul>
+<li>a syntax checker and test runnner using <a href="https://github.com/scrooloose/syntastic">scrooloose/syntastic</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="requirements-for-syntax-check" class="slide section level1">
+<h1>Requirements for syntax check</h1>
+<ul>
+<li>add org.clojure/tools.namespace to profiles.dev.dependencies.
+<ul>
+<li><a href="https://github.com/haruyama/mixi-cj-lib/blob/master/project.clj">mixi-cj-lib/project.clj at master</a></li>
+</ul></li>
+<li>execute ‘lein repl’ in a project directory.</li>
+</ul>
+</div>
+<div id="demo-syntax-check-and-run-test" class="slide section level1">
+<h1>Demo: syntax check and run test</h1>
+</div>
+<div id="references" class="slide section level1">
+<h1>References</h1>
+<ul>
+<li><a href="http://haruyama.github.com/Clojure20121021/haruyama.html">@haruyama の Clojure 開発環境</a></li>
+<li><a href="http://haruyama.github.com/Clojure20130317/haruyama2.html">@haruyama の Clojure 開発環境 その2</a></li>
+<li><a href="http://haruyama.github.com/Clojure20130630/haruyama3.html">@haruyama の Clojure 開発環境 その3</a></li>
+</ul>
+</div>
+</body>
+</html>
