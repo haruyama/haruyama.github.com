@@ -9,9 +9,7 @@
 
 # lein
 
-* ~/.lein/profiles.clj
-
-[$HOME/.lein/profiles.clj](https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.lein/profiles.clj)
+* [~/.lein/profiles.clj](https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.lein/profiles.clj)
 
 # jvm-opts
 
