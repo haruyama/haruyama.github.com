@@ -41,8 +41,8 @@ for speeding up boot time.
 
 # Vim setting
 
-* [$HOME/.vim/after/ftplugin/clojure.vim](https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.vim/after/ftplugin/clojure.vim)
-* [$HOME/.vim/syntax_checkers/clojure/nrepl.vim](https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.vim/syntax_checkers/clojure/nrepl.vim)
+* [~/.vim/after/ftplugin/clojure.vim](https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.vim/after/ftplugin/clojure.vim)
+* [~/.vim/syntax_checkers/clojure/nrepl.vim](https://github.com/haruyama/Settings/blob/91d9372293c491bf3a94b0997c94b171e82e1287/.vim/syntax_checkers/clojure/nrepl.vim)
     * a syntax checker and test runnner using [scrooloose/syntastic](https://github.com/scrooloose/syntastic)
 
 # Requirements for syntax check
@@ -55,6 +55,6 @@ for speeding up boot time.
 
 # References
 
-* [@haruyama の Clojure 開発環境](http://haruyama.github.com/Clojure20121021/haruyama.html)
-* [@haruyama の Clojure 開発環境 その2](http://haruyama.github.com/Clojure20130317/haruyama2.html)
-* [@haruyama の Clojure 開発環境 その3](http://haruyama.github.com/Clojure20130630/haruyama3.html)
+* [@haruyama の Clojure 開発環境](http://haruyama.github.io/Clojure20121021/haruyama.html)
+* [@haruyama の Clojure 開発環境 その2](http://haruyama.github.io/Clojure20130317/haruyama2.html)
+* [@haruyama の Clojure 開発環境 その3](http://haruyama.github.io/Clojure20130630/haruyama3.html)
