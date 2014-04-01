@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>My Clojure Development Environment (Vol. 4)</title>
+
+<meta name="description" content="My Clojure Development Environment (Vol. 4)">
+
+  <meta name="author" content="HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+
+<!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+  document.write( '<link rel="stylesheet" href="css/print/' +
+    ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) +
+    '.css" type="text/css" media="print">' );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<section>
+<h1>My Clojure Development Environment (Vol. 4)</h1>
+<h3>HARUYAMA Seigo(<a href="https://twitter.com/haruyama">@haruyama</a>)</h3>
+<p>
+<h4></h4>
+</p>
+</section>
+
+
+<section id="lein-vim" class="level1">
+<h1>lein + Vim</h1>
+<ul>
+<li><a href="https://github.com/technomancy/leiningen">technomancy/leiningen</a>
+<ul>
+<li>version 2</li>
+</ul></li>
+<li>Vim</li>
+</ul>
+</section>
+<section id="lein" class="level1">
+<h1>lein</h1>
+<ul>
+<li><a href="https://github.com/haruyama/Settings/blob/b4bb70b5bc31ac5081a247aedbd907c6e23e09c5/.lein/profiles.clj">~/.lein/profiles.clj</a></li>
+</ul>
+</section>
+<section id="jvm-opts" class="level1">
+<h1>jvm-opts</h1>
+<pre><code>         :jvm-opts [&quot;-XX:+TieredCompilation&quot;
+                    &quot;-XX:TieredStopAtLevel=1&quot;]</code></pre>
+<p>for speeding up boot time.</p>
+<ul>
+<li><a href="http://tnoda-clojure.tumblr.com/post/51495039433/jvm-clojure-30">tnoda-clojure • JVM のオプション設定で Clojure の起動を 30% 高速化 → さらに高速化で起動時間半減へ</a></li>
+</ul>
+</section>
+<section id="static-analysis" class="level1">
+<h1>Static Analysis</h1>
+<ul>
+<li><a href="https://github.com/jonase/lein-kibit">jonase/lein-kibit</a></li>
+<li><a href="https://github.com/jonase/eastwood">jonase/eastwood</a></li>
+<li><a href="https://github.com/dakrone/lein-bikeshed">dakrone/lein-bikeshed</a></li>
+</ul>
+</section>
+<section id="vim-plugins" class="level1">
+<h1>Vim plugins</h1>
+<ul>
+<li><a href="https://github.com/tpope/vim-fireplace">tpope/vim-fireplace</a></li>
+<li><a href="https://github.com/guns/vim-clojure-highlight">guns/vim-clojure-highlight</a></li>
+<li><p><a href="https://github.com/guns/vim-clojure-static">guns/vim-clojure-static</a></p></li>
+<li><a href="https://github.com/vim-scripts/paredit.vim">vim-scripts/paredit.vim</a></li>
+<li><p><a href="https://github.com/amdt/vim-niji">amdt/vim-niji</a></p></li>
+<li><p><a href="https://github.com/haruyama/vim-matchopen">haruyama/vim-matchopen</a></p></li>
+</ul>
+</section>
+<section id="vim-setting" class="level1">
+<h1>Vim setting</h1>
+<ul>
+<li><a href="https://github.com/haruyama/Settings/blob/b4bb70b5bc31ac5081a247aedbd907c6e23e09c5/.vim/after/ftplugin/clojure.vim">~/.vim/after/ftplugin/clojure.vim</a></li>
+<li><a href="https://github.com/haruyama/Settings/blob/b4bb70b5bc31ac5081a247aedbd907c6e23e09c5/.vim/syntax_checkers/clojure/nrepl.vim">~/.vim/syntax_checkers/clojure/nrepl.vim</a>
+<ul>
+<li>a syntax checker and test runnner using <a href="https://github.com/scrooloose/syntastic">scrooloose/syntastic</a></li>
+</ul></li>
+</ul>
+<section id="requirements-for-syntax-checking" class="level2">
+<h2>Requirements for syntax checking</h2>
+<ul>
+<li>add org.clojure/tools.namespace to profiles.dev.dependencies.</li>
+<li>execute 'lein repl' in a project directory.</li>
+</ul>
+</section>
+</section>
+<section id="demo-syntax-check-and-run-test" class="level1">
+<h1>Demo: syntax check and run test</h1>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<ul>
+<li><a href="http://haruyama.github.io/Clojure20121021/haruyama.html">@haruyama の Clojure 開発環境</a></li>
+<li><a href="http://haruyama.github.io/Clojure20130317/haruyama2.html">@haruyama の Clojure 開発環境 その2</a></li>
+<li><a href="http://haruyama.github.io/Clojure20130630/haruyama3.html">@haruyama の Clojure 開発環境 その3</a></li>
+</ul>
+</section>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: false,
+    slideNumber: true,
+    progress: true,
+    history: true,
+    center: false,
+    keyboard:true,
+    mouseWheel: true,
+    transitionSpeed: 'fast',
+
+  // available themes are in /css/theme
+      theme: Reveal.getQueryHash().theme || 'night',
+  
+  // default/cube/page/concave/zoom/linear/fade/none
+      transition: Reveal.getQueryHash().transition || 'none',
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+  });
+
+</script>
+
+</body>
+</html>
